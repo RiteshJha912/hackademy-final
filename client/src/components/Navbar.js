@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import {
   Shield,
@@ -8,14 +8,22 @@ import {
   User,
   LogOut,
   BookOpen,
+  Menu,
+  X,
 } from 'lucide-react'
 import styles from '../styles/Navbar.module.css'
 
 const Navbar = ({ currentUser, setUser }) => {
   const location = useLocation()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const handleLogout = () => {
     setUser('')
+    setIsMenuOpen(false) // Close menu on logout
+  }
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
   }
 
   const isActive = (path) => {
@@ -29,8 +37,30 @@ const Navbar = ({ currentUser, setUser }) => {
           <Shield className={styles.logoIcon} /> H4CK4DEMY
         </Link>
 
-        <div className={styles.navMenu}>
-          <Link to='/' className={`${styles.navLink} ${isActive('/')}`}>
+        <button
+          className={styles.hamburger}
+          onClick={toggleMenu}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          data-testid='hamburger-button'
+        >
+          {isMenuOpen ? (
+            <X className={styles.navIcon} />
+          ) : (
+            <Menu className={styles.navIcon} />
+          )}
+        </button>
+
+        <div
+          className={`${styles.navMenu} ${
+            isMenuOpen ? styles.navMenuOpen : ''
+          }`}
+          data-testid='nav-menu'
+        >
+          <Link
+            to='/'
+            className={`${styles.navLink} ${isActive('/')}`}
+            onClick={() => setIsMenuOpen(false)}
+          >
             <Home className={styles.navIcon} /> Home
           </Link>
 
@@ -39,26 +69,35 @@ const Navbar = ({ currentUser, setUser }) => {
               <Link
                 to='/learn'
                 className={`${styles.navLink} ${isActive('/learn')}`}
+                onClick={() => setIsMenuOpen(false)}
               >
                 <BookOpen className={styles.navIcon} /> Learn
               </Link>
               <Link
                 to='/leaderboard'
                 className={`${styles.navLink} ${isActive('/leaderboard')}`}
+                onClick={() => setIsMenuOpen(false)}
               >
                 <Trophy className={styles.navIcon} /> Leaderboard
               </Link>
               <Link
                 to='/game'
                 className={`${styles.navLink} ${isActive('/game')}`}
+                onClick={() => setIsMenuOpen(false)}
               >
                 <Gamepad2 className={styles.navIcon} /> Play Game
               </Link>
               <div className={styles.userInfo}>
-                <span className={styles.username}>
-                  <User className={styles.navIcon} /> {currentUser}
+                <span className={styles.usernameWrapper}>
+                  <span className={styles.username}>
+                    <User className={styles.userIcon} /> {currentUser}
+                  </span>
                 </span>
-                <button onClick={handleLogout} className={styles.logoutButton}>
+                <button
+                  onClick={handleLogout}
+                  className={styles.logoutButton}
+                  data-testid='logout-button'
+                >
                   <LogOut className={styles.navIcon} /> Logout
                 </button>
               </div>
@@ -68,18 +107,21 @@ const Navbar = ({ currentUser, setUser }) => {
               <Link
                 to='/learn'
                 className={`${styles.navLink} ${isActive('/learn')}`}
+                onClick={() => setIsMenuOpen(false)}
               >
                 <BookOpen className={styles.navIcon} /> Learn
               </Link>
               <Link
                 to='/leaderboard'
                 className={`${styles.navLink} ${isActive('/leaderboard')}`}
+                onClick={() => setIsMenuOpen(false)}
               >
                 <Trophy className={styles.navIcon} /> Leaderboard
               </Link>
               <Link
                 to='/username'
                 className={`${styles.navLink} ${isActive('/username')}`}
+                onClick={() => setIsMenuOpen(false)}
               >
                 <User className={styles.navIcon} /> Login
               </Link>
