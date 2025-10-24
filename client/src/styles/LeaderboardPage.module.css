@@ -38,6 +38,27 @@
   margin: 0 auto;
 }
 
+.graphContainer {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  padding: 1.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 3rem;
+  transition: box-shadow 0.4s ease-in-out;
+}
+
+.graphContainer:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.graphTitle {
+  text-align: center;
+  color: #a855f7;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
 .statsContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -51,7 +72,7 @@
   border-radius: 12px;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
 }
 
 .statCard:hover {
@@ -89,7 +110,7 @@
   border-radius: 12px;
   text-align: center;
   min-width: 160px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
   position: relative;
   overflow: hidden;
 }
@@ -105,9 +126,15 @@
       transparent 30%,
       rgba(255, 255, 255, 0.03) 50%,
       transparent 70%);
-  animation: shine 2s ease-in-out infinite;
   pointer-events: none;
   z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.podiumItem:hover::before {
+  opacity: 1;
+  animation: shine 2s ease-in-out infinite;
 }
 
 @keyframes shine {
@@ -230,7 +257,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.4s ease-in-out, color 0.4s ease-in-out, transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
 }
 
 .loadMoreButton:hover,

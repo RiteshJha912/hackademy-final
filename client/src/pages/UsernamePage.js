@@ -54,7 +54,7 @@ const UsernamePage = ({ setUser }) => {
       <div className={styles.formContainer}>
         <div className={styles.formHeader}>
           <h2>
-            <Key className={styles.icon} /> Welcome! Choose Your Name
+            <Key className={styles.icon} /> Choose Your Name
           </h2>
           <p>
             Please pick a simple name. This will be used to track your quiz
@@ -97,7 +97,7 @@ const UsernamePage = ({ setUser }) => {
               </>
             ) : (
               <>
-                <Zap className={styles.icon} /> Start Learning
+                 Test your knowledge
               </>
             )}
           </button>
@@ -110,7 +110,7 @@ const UsernamePage = ({ setUser }) => {
           <ul>
             <li>No technical skills required, just your name.</li>
             <li>Your progress saves automatically.</li>
-            <li>Learn about scams and online safety at your own pace.</li>
+            <li>Test your knowledge at your own page.</li>
             <li>Answer questions, earn points and feel confident online.</li>
           </ul>
         </div>

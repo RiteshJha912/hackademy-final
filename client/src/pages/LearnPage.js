@@ -11,18 +11,18 @@ import {
 import styles from '../styles/LearnPage.module.css'
 
 const LearnPage = ({ currentUser }) => {
+  const marqueeText =
+    'Stay alert! We update new scams as soon as they appear. Check here often to learn and protect yourself.'
+
   return (
     <div className={styles.learnPage}>
       <div className={styles.updateWrapper}>
         <div className={styles.updateBanner}>
           <div className={styles.updateLeft}>
             <div className={styles.pulse}></div>
-            <span className={styles.updateMessage}>
-              <span className={styles.ticker}>
-                Stay alert! We update new scams as soon as they appear. Check
-                here often to learn and protect yourself.
-              </span>
-            </span>
+            <div className={styles.updateMessage}>
+              <span className={styles.ticker}>{marqueeText}</span>
+            </div>
           </div>
         </div>
       </div>

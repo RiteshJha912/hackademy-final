@@ -138,16 +138,21 @@
   font-weight: 400;
   overflow: hidden;
   white-space: nowrap;
+  flex: 1;
+  position: relative;
 }
 
 .ticker {
   display: inline-block;
+  white-space: nowrap;
   animation: ticker 20s linear infinite;
+  padding-left: 100%;
+  /* Start from the right edge */
 }
 
 @keyframes ticker {
   0% {
-    transform: translateX(100%);
+    transform: translateX(0);
   }
 
   100% {
