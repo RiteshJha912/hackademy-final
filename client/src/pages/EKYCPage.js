@@ -110,21 +110,15 @@ const EKYCPage = () => {
           <h2>What is it?</h2>
           <p>
             Attackers collect personal information through fake forms, phishing
-            pages, or malicious apps and then misuse that data for identity
-            theft or to bypass authentication systems like e-KYC. These scams
-            often appear as legitimate requests from banks, telecom operators,
-            or government agencies asking users to “verify” their details. Once
-            the victim submits sensitive data such as Aadhaar numbers, PAN, or
-            SIM details, cybercriminals use it to open fraudulent accounts,
-            apply for loans, or conduct unauthorized transactions. In some
-            cases, this stolen data is sold on dark web markets and reused for
-            large scale fraud operations. The attackers may also combine this
-            with SIM swap techniques to gain full access to the victim’s digital
-            identity and financial accounts. These attacks exploit trust and
-            familiarity, making them especially dangerous for users who are less
-            aware of online verification processes. As a result, even a single
-            careless submission of personal data can lead to long-term financial
-            and identity related damage.
+            pages, or malicious apps and misuse it for identity theft or to
+            bypass authentication systems like e-KYC. These scams often appear
+            as legitimate requests from banks, telecom operators, or government
+            agencies asking users to verify their details. Once the victim
+            submits sensitive data such as Aadhaar numbers, PAN, or SIM details,
+            cybercriminals can open fraudulent accounts or conduct unauthorized
+            transactions. These attacks exploit trust and familiarity, making
+            them especially dangerous for users less aware of online
+            verification processes.
           </p>
           <div className={styles.imageContainer}>
             <img
@@ -153,7 +147,7 @@ const EKYCPage = () => {
           <h2>Prevention Tips</h2>
           <div className={styles.imageContainer}>
             <img
-              src='/images/ekyc2.png'
+              src='/images/ekyc3.png'
               alt='SIM Swap Protection'
               className={styles.bentoImage}
             />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { RefreshCw, Gamepad2 } from 'lucide-react'
+import { RefreshCw, Gamepad2, Users } from 'lucide-react'
+import { Trophy } from 'lucide-react'
 import { userAPI } from '../utils/api'
 import LeaderboardItem from '../components/LeaderboardItem'
 import styles from '../styles/LeaderboardPage.module.css'
@@ -31,7 +32,7 @@ const LeaderboardPage = () => {
         setStats(statsResponse.data)
       }
     } catch (error) {
-      setError('Failed to load leaderboard data')
+      setError('Oops! Could not load the leaderboard. Please try again.')
       console.error(error)
     } finally {
       setLoading(false)
@@ -43,7 +44,7 @@ const LeaderboardPage = () => {
       <div className={`${appStyles.pageContainer} ${styles.leaderboardPage}`}>
         <div className={styles.loadingContainer}>
           <div className={styles.loadingSpinner}></div>
-          <p>Loading leaderboard...</p>
+          <p>Loading the leaderboard… please wait a moment.</p>
         </div>
       </div>
     )
@@ -66,20 +67,20 @@ const LeaderboardPage = () => {
     <div className={`${appStyles.pageContainer} ${styles.leaderboardPage}`}>
       <div className={styles.leaderboardHeader}>
         <h2>
-          <span className={styles.headerIcon}>🏆</span> Global Leaderboard
+          <Trophy className={styles.headerIcon} /> Our Learning Leaders
         </h2>
-        <p>Top cybersecurity learning champions</p>
+        <p>See who is doing well and get inspired to improve your skills!</p>
       </div>
 
       {stats && (
         <div className={styles.statsContainer}>
           <div className={styles.statCard}>
             <span className={styles.statNumber}>{stats.totalUsers}</span>
-            <span className={styles.statLabel}>Total Players</span>
+            <span className={styles.statLabel}>Total Learners</span>
           </div>
           <div className={styles.statCard}>
             <span className={styles.statNumber}>{stats.totalGamesPlayed}</span>
-            <span className={styles.statLabel}>Games Played</span>
+            <span className={styles.statLabel}>Quizzes Completed</span>
           </div>
           <div className={styles.statCard}>
             <span className={styles.statNumber}>
@@ -94,13 +95,12 @@ const LeaderboardPage = () => {
         {leaderboard.length === 0 ? (
           <div className={styles.emptyLeaderboard}>
             <p>
-              <Gamepad2 className={styles.emptyIcon} /> No players yet! Be the
-              first to play and climb the leaderboard.
+              <Gamepad2 className={styles.emptyIcon} /> No learners have started
+              yet! You can be the first to try and see your name here.
             </p>
           </div>
         ) : (
           <>
-            {/* Podium view for top 3 */}
             <div className={styles.podiumContainer}>
               {leaderboard.slice(0, 3).map((user, idx) => (
                 <div key={user._id} className={styles.podiumItem}>

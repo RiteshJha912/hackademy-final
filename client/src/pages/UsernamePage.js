@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { userAPI } from '../utils/api'
+import { Key, Zap, Clipboard, Loader } from 'lucide-react'
 import styles from '../styles/UsernamePage.module.css'
 import commonStyles from '../styles/common.module.css'
-import { User, Gamepad, Clipboard, Loader } from 'lucide-react'
 
 const UsernamePage = ({ setUser }) => {
   const [username, setUsername] = useState('')
@@ -50,30 +50,41 @@ const UsernamePage = ({ setUser }) => {
 
   return (
     <div className={styles.usernamePage}>
+      <div className={styles.particleBackground}></div>
       <div className={styles.formContainer}>
         <div className={styles.formHeader}>
           <h2>
-            <User className={styles.icon} /> Enter Your Username
+            <Key className={styles.icon} /> Welcome! Choose Your Name
           </h2>
-          <p>Choose a unique username to start your cybersecurity journey!</p>
+          <p>
+            Please pick a simple name. This will be used to track your quiz
+            progress and scores.
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} className={styles.usernameForm}>
           <div className={styles.inputGroup}>
-            <label htmlFor='username'>Username:</label>
+            <label htmlFor='username'>Your Name:</label>
             <input
               type='text'
               id='username'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder='Enter your username...'
+              placeholder='Type your name here...'
               maxLength='30'
               disabled={loading}
+              className={error ? styles.inputError : ''}
             />
-            <small>2-30 characters, letters and numbers only</small>
+            <small>Use 2-30 letters or numbers. Keep it simple.</small>
           </div>
 
-          {error && <div className={commonStyles.errorMessage}>{error}</div>}
+          {error && (
+            <div
+              className={`${commonStyles.errorMessage} ${styles.errorShake}`}
+            >
+              {error}
+            </div>
+          )}
 
           <button
             type='submit'
@@ -82,11 +93,11 @@ const UsernamePage = ({ setUser }) => {
           >
             {loading ? (
               <>
-                <Loader className={styles.loadingIcon} /> Creating...
+                <Loader className={styles.loadingIcon} /> Logging in...
               </>
             ) : (
               <>
-                <Gamepad className={styles.icon} /> Start Playing
+                <Zap className={styles.icon} /> Start Learning
               </>
             )}
           </button>
@@ -94,13 +105,13 @@ const UsernamePage = ({ setUser }) => {
 
         <div className={styles.infoBox}>
           <h4>
-            <Clipboard className={styles.icon} /> Quick Info:
+            <Clipboard className={styles.icon} /> Tips for Getting Started:
           </h4>
           <ul>
-            <li>No signup required - just pick a username!</li>
-            <li>Your progress is automatically saved</li>
-            <li>Compete with players worldwide</li>
-            <li>Earn points by answering correctly</li>
+            <li>No technical skills required, just your name.</li>
+            <li>Your progress saves automatically.</li>
+            <li>Learn about scams and online safety at your own pace.</li>
+            <li>Answer questions, earn points and feel confident online.</li>
           </ul>
         </div>
       </div>

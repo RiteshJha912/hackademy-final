@@ -19,8 +19,8 @@ const LearnPage = ({ currentUser }) => {
             <div className={styles.pulse}></div>
             <span className={styles.updateMessage}>
               <span className={styles.ticker}>
-                Stay vigilant! New scams are updated in real-time as they start
-                occurring. Check back often to protect yourself.
+                Stay alert! We update new scams as soon as they appear. Check
+                here often to learn and protect yourself.
               </span>
             </span>
           </div>
@@ -29,12 +29,12 @@ const LearnPage = ({ currentUser }) => {
 
       <div className={styles.heroSection}>
         <h1 className={styles.heroTitle}>
-          <Shield className={styles.titleIcon} /> Learn About Cybersecurity
-          Scams
+          <Shield className={styles.titleIcon} /> Learn About Common Scams
         </h1>
         <p className={styles.heroDescription}>
-          Explore common scams targeting seniors and learn how to stay protected
-          with practical tips and real-world examples.
+          Scammers often target through calls, messages or apps.
+          <br />
+          Learn how these tricks work and how to protect yourself step by step.
         </p>
       </div>
 
@@ -44,8 +44,8 @@ const LearnPage = ({ currentUser }) => {
             <Shield className={styles.articleIcon} />
             <h2>Digital Arrest Scam</h2>
             <p>
-              Fake law enforcement threats demand payments or sensitive info,
-              preying on trust.
+              Scammers pretend to be police or government officials and say you
+              are in trouble. They ask for money or personal details.
             </p>
           </div>
         </Link>
@@ -55,8 +55,8 @@ const LearnPage = ({ currentUser }) => {
             <CreditCard className={styles.articleIcon} />
             <h2>UPI Payment Scams</h2>
             <p>
-              Fraudsters trick you into sending money via fake UPI apps or QR
-              codes.
+              Fraudsters may trick you into sending money through fake UPI apps
+              or QR codes.
             </p>
           </div>
         </Link>
@@ -64,10 +64,10 @@ const LearnPage = ({ currentUser }) => {
         <Link to='/learn/ekyc-sim-swap' className={styles.articleCard}>
           <div className={styles.articleContent}>
             <Smartphone className={styles.articleIcon} />
-            <h2>eKYC SIM Swap Scam</h2>
+            <h2>e-KYC / SIM Swap / Phone Number Theft</h2>
             <p>
-              Scammers steal your phone number to access bank accounts via fake
-              eKYC.
+              Scammers can take over your phone number and access your bank or
+              messages.
             </p>
           </div>
         </Link>
@@ -75,10 +75,10 @@ const LearnPage = ({ currentUser }) => {
         <Link to='/learn/fake-job-scams' className={styles.articleCard}>
           <div className={styles.articleContent}>
             <Briefcase className={styles.articleIcon} />
-            <h2>Fake Job Scams</h2>
+            <h2>Work From Home Job Scams</h2>
             <p>
-              Bogus job offers lure seniors with promises of easy money,
-              stealing data or fees.
+              Some offers promise easy work and high pay but ask for upfront
+              fees or personal info.
             </p>
           </div>
         </Link>
@@ -88,8 +88,8 @@ const LearnPage = ({ currentUser }) => {
             <AlertTriangle className={styles.articleIcon} />
             <h2>WhatsApp / Telegram Stock Market Group</h2>
             <p>
-              Fake stock tips in WhatsApp groups lead to fraudulent apps and
-              lost investments.
+              Scammers send stock tips in WhatsApp or Telegram groups. They may
+              try to get you to download fake apps or invest money.
             </p>
           </div>
         </Link>
