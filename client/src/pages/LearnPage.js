@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { BookOpen, Shield, Lock, AlertTriangle } from 'lucide-react'
+import { BookOpen, Shield, Lock, AlertTriangle, Briefcase } from 'lucide-react'
 import styles from '../styles/LearnPage.module.css'
 
 const LearnPage = () => {
@@ -57,6 +57,17 @@ const LearnPage = () => {
             <p>
               Understand e-KYC and data-harvesting scams, SIM-swap frauds, and
               practical steps to protect your identity and devices.
+            </p>
+          </div>
+        </Link>
+
+        <Link to='/learn/fake-job-scams' className={styles.articleCard}>
+          <div className={styles.articleContent}>
+            <Briefcase className={styles.articleIcon} />
+            <h2>Fake Job / Work-From-Home Scams</h2>
+            <p>
+              Learn about fake job and work-from-home scams, including
+              call-center frauds, and how to avoid them.
             </p>
           </div>
         </Link>

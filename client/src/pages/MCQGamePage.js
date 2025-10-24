@@ -26,50 +26,65 @@ const MCQGamePage = ({ currentUser }) => {
   const questions = [
     {
       id: 1,
-      question: "What does 'phishing' refer to in cybersecurity?",
+      question:
+        "You receive a phone call from someone claiming to be a police officer, saying your name is linked to a crime and you're under 'digital arrest.' They demand you transfer money to a safe account immediately. What should you do?",
       options: [
-        'A type of malware that encrypts files',
-        'A social engineering attack to steal sensitive information',
-        'A method of securing network connections',
-        'A type of firewall protection',
+        'Transfer the money quickly to avoid trouble',
+        'Hang up and call your local police station using a known number to verify',
+        'Share your bank details so they can handle it',
+        'Stay on the call and follow their instructions',
       ],
       correct: 1,
       points: 10,
     },
     {
       id: 2,
-      question: 'Which of the following is considered a strong password?',
-      options: ['password123', 'MyP@ssw0rd!2024', '12345678', 'qwerty'],
+      question:
+        "A stranger sends you ₹50 via UPI with a note saying 'Sent by mistake, please refund.' They then send a collect request for ₹500. What is the safest action?",
+      options: [
+        'Approve the collect request to return the money',
+        'Ignore the request and block the sender if unknown',
+        'Call them back to confirm the mistake',
+        'Send back exactly ₹50 using your own transaction',
+      ],
       correct: 1,
       points: 10,
     },
     {
       id: 3,
-      question: "What does 'MFA' stand for in cybersecurity?",
+      question:
+        "You get an email asking you to update your Aadhaar details via a link for e-KYC, promising faster services. The link looks official but you're unsure. How should you respond?",
       options: [
-        'Multiple File Access',
-        'Multi-Factor Authentication',
-        'Managed Firewall Application',
-        'Mobile Fraud Alert',
+        'Click the link and enter your Aadhaar number',
+        'Ignore the email and use the official UIDAI website or app for any updates',
+        'Reply to the email with your details',
+        'Forward it to a friend for advice',
       ],
       correct: 1,
       points: 15,
     },
     {
       id: 4,
-      question: 'Which port is commonly used for HTTPS traffic?',
-      options: ['80', '443', '21', '25'],
+      question:
+        'Your phone suddenly loses service, and soon after, you notice unauthorized transactions in your bank app. This might be a SIM swap fraud. What is your first step?',
+      options: [
+        'Wait for service to return',
+        'Contact your telecom provider immediately to check for unauthorized porting',
+        'Change your bank password online',
+        'Call the bank from another number',
+      ],
       correct: 1,
       points: 15,
     },
     {
       id: 5,
-      question: 'What is the primary purpose of a VPN?',
+      question:
+        'You see an ad for a work-from-home job offering ₹15,000/month for simple data entry, but they ask for ₹1,000 upfront for training materials. What should you do?',
       options: [
-        'To increase internet speed',
-        'To create a secure, encrypted connection over the internet',
-        'To block advertisements',
-        'To compress data files',
+        'Pay the fee to secure the job',
+        'Research the company on official job sites and avoid paying any upfront fees',
+        'Share your bank details for salary setup',
+        'Sign up and start the training immediately',
       ],
       correct: 1,
       points: 20,

@@ -168,6 +168,15 @@
   font-size: 2.5rem;
 }
 
+/* Make the award icon in the result header larger and more prominent */
+.resultContainer h2 .icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 0.75rem;
+  vertical-align: middle;
+  color: #8E24AA; /* subtle light tint for contrast */
+}
+
 /* lucide icon helpers for MCQ page */
 .icon {
   vertical-align: middle;

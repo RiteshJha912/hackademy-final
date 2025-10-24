@@ -1,5 +1,10 @@
-import React, { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
 import UsernamePage from './pages/UsernamePage'
 import MCQGamePage from './pages/MCQGamePage'
@@ -8,9 +13,21 @@ import LearnPage from './pages/LearnPage'
 import DigitalArrestScamPage from './pages/DigitalArrestScamPage'
 import UPIScamPage from './pages/UPIScamPage'
 import EKYCPage from './pages/EKYCPage'
+import FakeJobScamPage from './pages/FakeJobScamPage'
 import Navbar from './components/Navbar'
 import styles from './styles/App.module.css'
 import './styles/common.module.css' // Import common styles globally
+
+// ScrollToTop component to handle scrolling to top on route change
+function ScrollToTop() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return null
+}
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -32,6 +49,7 @@ function App() {
         <Navbar currentUser={currentUser} setUser={setUser} />
         <main className={styles.mainContent}>
           <div className={styles.pageContainer}>
+            <ScrollToTop />
             <Routes>
               <Route path='/' element={<LandingPage />} />
               <Route
@@ -53,6 +71,10 @@ function App() {
                 element={<UPIScamPage />}
               />
               <Route path='/learn/ekyc-sim-swap' element={<EKYCPage />} />
+              <Route
+                path='/learn/fake-job-scams'
+                element={<FakeJobScamPage />}
+              />
             </Routes>
           </div>
         </main>
