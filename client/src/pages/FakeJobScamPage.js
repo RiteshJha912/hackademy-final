@@ -26,7 +26,7 @@ const FakeJobScamPage = () => {
           </p>
           <div className={styles.imageContainer}>
             <img
-              src='https://cdn.prod.website-files.com/6082ee0e95eb6459d78fac06/6467d6b3e76bdcdd93af93e6_e38e8637.png'
+              src='/images/job2.jpg'
               alt='Fake Job Email Ad Example'
               className={styles.articleImage}
             />
@@ -65,7 +65,7 @@ const FakeJobScamPage = () => {
           </p>
           <div className={styles.imageContainer}>
             <img
-              src='/images/wfh-scam-warning.jpg'
+              src='/images/job3.png'
               alt='Work-From-Home Scam Warning'
               className={styles.articleImage}
             />

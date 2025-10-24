@@ -22,7 +22,7 @@ const DigitalArrestScamPage = () => {
           </p>
           <div className={styles.imageContainer}>
             <img
-              src='/images/digital-arrest-example.jpg'
+              src='/images/digitalarrest1.jpg'
               alt='Digital Arrest Scam Example'
               className={styles.articleImage}
             />
@@ -51,7 +51,7 @@ const DigitalArrestScamPage = () => {
           </p>
           <div className={styles.imageContainer}>
             <img
-              src='/images/scam-alert.jpg'
+              src='/images/digitalarrest2.png'
               alt='Scam Alert'
               className={styles.articleImage}
             />

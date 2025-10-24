@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { RefreshCw, Gamepad2 } from 'lucide-react'
 import { userAPI } from '../utils/api'
 import LeaderboardItem from '../components/LeaderboardItem'
 import styles from '../styles/LeaderboardPage.module.css'
@@ -54,7 +55,7 @@ const LeaderboardPage = () => {
         <div className={styles.errorContainer}>
           <p className={styles.errorMessage}>{error}</p>
           <button onClick={fetchData} className={styles.retryButton}>
-            🔄 Try Again
+            <RefreshCw className={styles.buttonIcon} /> Try Again
           </button>
         </div>
       </div>
@@ -64,7 +65,9 @@ const LeaderboardPage = () => {
   return (
     <div className={`${appStyles.pageContainer} ${styles.leaderboardPage}`}>
       <div className={styles.leaderboardHeader}>
-        <h2>🏆 Global Leaderboard</h2>
+        <h2>
+          <span className={styles.headerIcon}>🏆</span> Global Leaderboard
+        </h2>
         <p>Top cybersecurity learning champions</p>
       </div>
 
@@ -91,7 +94,8 @@ const LeaderboardPage = () => {
         {leaderboard.length === 0 ? (
           <div className={styles.emptyLeaderboard}>
             <p>
-              🎮 No players yet! Be the first to play and climb the leaderboard.
+              <Gamepad2 className={styles.emptyIcon} /> No players yet! Be the
+              first to play and climb the leaderboard.
             </p>
           </div>
         ) : (
@@ -122,7 +126,8 @@ const LeaderboardPage = () => {
             {leaderboard.length >= 20 && (
               <div className={styles.loadMoreContainer}>
                 <button onClick={fetchData} className={styles.loadMoreButton}>
-                  🔄 Refresh Leaderboard
+                  <RefreshCw className={styles.buttonIcon} /> Refresh
+                  Leaderboard
                 </button>
               </div>
             )}

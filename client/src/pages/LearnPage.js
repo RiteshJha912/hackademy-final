@@ -42,7 +42,7 @@ const LearnPage = () => {
         <Link to='/learn/upi-payment-scams' className={styles.articleCard}>
           <div className={styles.articleContent}>
             <Lock className={styles.articleIcon} />
-            <h2>UPI / Payment & Refund Scams</h2>
+            <h2>UPI Repayment Scam</h2>
             <p>
               Learn about UPI payment, refund and collect-request scams and how
               to spot and avoid fraudulent requests.
@@ -64,7 +64,7 @@ const LearnPage = () => {
         <Link to='/learn/fake-job-scams' className={styles.articleCard}>
           <div className={styles.articleContent}>
             <Briefcase className={styles.articleIcon} />
-            <h2>Fake Job / Work-From-Home Scams</h2>
+            <h2>Work-From-Home Scams</h2>
             <p>
               Learn about fake job and work-from-home scams, including
               call-center frauds, and how to avoid them.

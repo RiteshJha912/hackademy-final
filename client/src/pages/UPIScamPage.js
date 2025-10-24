@@ -20,6 +20,13 @@ const UPIScamPage = () => {
             transactions. These attacks often rely on urgency, impersonation, or
             vulnerabilities in how users approve payments.
           </p>
+          <div className={styles.imageContainer}>
+            <img
+              src='/images/upi1.jpg'
+              alt='UPI Scam Example'
+              className={styles.articleImage}
+            />
+          </div>
         </section>
 
         <section className={styles.section}>
@@ -57,6 +64,13 @@ const UPIScamPage = () => {
               authentication
             </li>
           </ul>
+          <div className={styles.imageContainer}>
+            <img
+              src='/images/upi2.png'
+              alt='UPI Safety Tips'
+              className={styles.articleImage}
+            />
+          </div>
         </section>
 
         <section className={styles.section}>

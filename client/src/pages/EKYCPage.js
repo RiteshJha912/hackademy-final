@@ -19,6 +19,13 @@ const EKYCPage = () => {
             pages, or malicious apps and then misuse that data for identity
             theft or to bypass authentication systems like e-KYC.
           </p>
+          <div className={styles.imageContainer}>
+            <img
+              src='/images/ekyc1.png'
+              alt='e-KYC Scam Example'
+              className={styles.articleImage}
+            />
+          </div>
         </section>
 
         <section className={styles.section}>
@@ -48,6 +55,13 @@ const EKYCPage = () => {
             </li>
             <li>Monitor accounts for unexpected changes and set alerts</li>
           </ul>
+          <div className={styles.imageContainer}>
+            <img
+              src='/images/ekyc2.png'
+              alt='SIM Swap Protection'
+              className={styles.articleImage}
+            />
+          </div>
         </section>
 
         <section className={styles.section}>
