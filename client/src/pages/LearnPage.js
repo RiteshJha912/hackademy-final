@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { BookOpen, Shield, Lock, AlertTriangle } from 'lucide-react'
 import styles from '../styles/LearnPage.module.css'
@@ -16,6 +15,18 @@ const LearnPage = () => {
         </p>
       </div>
 
+      <div className={styles.updateWrapper}>
+        <div className={styles.updateBanner} role='status'>
+          <div className={styles.updateLeft}>
+            <span className={styles.pulse} />
+            <span className={styles.updateMessage}>
+              Staying vigilant — We monitor and document new cybersecurity
+              threats as they emerge
+            </span>
+          </div>
+        </div>
+      </div>
+
       <div className={styles.articlesGrid}>
         <Link to='/learn/digital-arrest-scam' className={styles.articleCard}>
           <div className={styles.articleContent}>
@@ -28,24 +39,24 @@ const LearnPage = () => {
           </div>
         </Link>
 
-        <Link to='/learn/digital-arrest-scam' className={styles.articleCard}>
+        <Link to='/learn/upi-payment-scams' className={styles.articleCard}>
           <div className={styles.articleContent}>
             <Lock className={styles.articleIcon} />
-            <h2>Identity Protection</h2>
+            <h2>UPI / Payment & Refund Scams</h2>
             <p>
-              Understanding the importance of protecting your digital identity
-              in today's connected world.
+              Learn about UPI payment, refund and collect-request scams and how
+              to spot and avoid fraudulent requests.
             </p>
           </div>
         </Link>
 
-        <Link to='/learn/digital-arrest-scam' className={styles.articleCard}>
+        <Link to='/learn/ekyc-sim-swap' className={styles.articleCard}>
           <div className={styles.articleContent}>
             <AlertTriangle className={styles.articleIcon} />
-            <h2>Common Cyber Threats</h2>
+            <h2>e-KYC, Data Harvesting & SIM-Swap Frauds</h2>
             <p>
-              Discover the most common cybersecurity threats and learn effective
-              prevention strategies.
+              Understand e-KYC and data-harvesting scams, SIM-swap frauds, and
+              practical steps to protect your identity and devices.
             </p>
           </div>
         </Link>

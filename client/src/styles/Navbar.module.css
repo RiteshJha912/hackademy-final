@@ -70,7 +70,6 @@
 .username {
   color: #8E24AA;
   font-weight: bold;
-  text-shadow: 0 0 10px rgba(142, 36, 170, 0.5);
 }
 
 .logoutButton {

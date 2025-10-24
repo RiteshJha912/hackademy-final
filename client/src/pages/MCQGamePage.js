@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { userAPI } from '../utils/api'
+import styles from '../styles/MCQGamePage.module.css'
+import appStyles from '../styles/App.module.css'
+import {
+  Award,
+  RefreshCw,
+  Trophy,
+  CheckCircle,
+  Loader,
+  ArrowRight,
+  Flag,
+} from 'lucide-react'
 
 const MCQGamePage = ({ currentUser }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -117,12 +128,12 @@ const MCQGamePage = ({ currentUser }) => {
 
   const getScoreMessage = () => {
     const percentage = (score / 70) * 100 // Total possible score is 70
-    if (percentage >= 80) return "🏆 Excellent! You're a cybersecurity expert!"
+    if (percentage >= 80) return "Excellent! You're a cybersecurity expert!"
     if (percentage >= 60)
-      return '👍 Good job! You have solid cybersecurity knowledge.'
+      return 'Good job! You have solid cybersecurity knowledge.'
     if (percentage >= 40)
-      return '📚 Not bad! Consider studying more cybersecurity concepts.'
-    return '💪 Keep learning! Cybersecurity takes practice.'
+      return 'Not bad! Consider studying more cybersecurity concepts.'
+    return 'Keep learning! Cybersecurity takes practice.'
   }
 
   if (!currentUser) {
@@ -131,36 +142,39 @@ const MCQGamePage = ({ currentUser }) => {
 
   if (showResult) {
     return (
-      <div className='page-container game-page'>
-        <div className='result-container'>
-          <h2>🎯 Game Complete!</h2>
-          <div className='score-display'>
-            <div className='final-score'>
-              <span className='score-label'>Your Score:</span>
-              <span className='score-value'>{score} / 70</span>
+      <div className={`${appStyles.pageContainer} ${styles.gamePage}`}>
+        <div className={styles.resultContainer}>
+          <h2>
+            <Award className={styles.icon} /> Game Complete!
+          </h2>
+          <div className={styles.scoreDisplay}>
+            <div className={styles.finalScore}>
+              <span className={styles.scoreLabel}>Your Score:</span>
+              <span className={styles.scoreValue}>{score} / 70</span>
             </div>
-            <div className='score-percentage'>
+            <div className={styles.scorePercentage}>
               {((score / 70) * 100).toFixed(1)}%
             </div>
           </div>
 
-          <div className='result-message'>{getScoreMessage()}</div>
+          <div className={styles.resultMessage}>{getScoreMessage()}</div>
 
-          <div className='result-actions'>
-            <button onClick={resetGame} className='play-again-button'>
-              🔄 Play Again
+          <div className={styles.resultActions}>
+            <button onClick={resetGame} className={styles.playAgainButton}>
+              <RefreshCw className={styles.icon} /> Play Again
             </button>
             <button
               onClick={() => navigate('/leaderboard')}
-              className='leaderboard-button'
+              className={styles.leaderboardButton}
             >
-              🏆 View Leaderboard
+              <Trophy className={styles.icon} /> View Leaderboard
             </button>
           </div>
 
           {gameCompleted && (
-            <div className='completion-note'>
-              ✅ Score has been saved to your profile!
+            <div className={styles.completionNote}>
+              <CheckCircle className={styles.icon} /> Score has been saved to
+              your profile!
             </div>
           )}
         </div>
@@ -171,18 +185,18 @@ const MCQGamePage = ({ currentUser }) => {
   const question = questions[currentQuestion]
 
   return (
-    <div className='page-container game-page'>
-      <div className='game-container'>
-        <div className='game-header'>
-          <div className='progress-info'>
+    <div className={`${appStyles.pageContainer} ${styles.gamePage}`}>
+      <div className={styles.gameContainer}>
+        <div className={styles.gameHeader}>
+          <div className={styles.progressInfo}>
             <span>
               Question {currentQuestion + 1} of {questions.length}
             </span>
             <span>Score: {score}</span>
           </div>
-          <div className='progress-bar'>
+          <div className={styles.progressBar}>
             <div
-              className='progress-fill'
+              className={styles.progressFill}
               style={{
                 width: `${(currentQuestion / questions.length) * 100}%`,
               }}
@@ -190,39 +204,49 @@ const MCQGamePage = ({ currentUser }) => {
           </div>
         </div>
 
-        <div className='question-container'>
-          <h3 className='question-text'>{question.question}</h3>
-          <div className='question-points'>Worth {question.points} points</div>
+        <div className={styles.questionContainer}>
+          <h3 className={styles.questionText}>{question.question}</h3>
+          <div className={styles.questionPoints}>
+            Worth {question.points} points
+          </div>
         </div>
 
-        <div className='options-container'>
+        <div className={styles.optionsContainer}>
           {question.options.map((option, index) => (
             <button
               key={index}
-              className={`option-button ${
-                selectedAnswer === index ? 'selected' : ''
+              className={`${styles.optionButton} ${
+                selectedAnswer === index ? styles.selected : ''
               }`}
               onClick={() => handleAnswerClick(index)}
             >
-              <span className='option-letter'>
+              <span className={styles.optionLetter}>
                 {String.fromCharCode(65 + index)}
               </span>
-              <span className='option-text'>{option}</span>
+              <span className={styles.optionText}>{option}</span>
             </button>
           ))}
         </div>
 
-        <div className='game-actions'>
+        <div className={styles.gameActions}>
           <button
             onClick={handleNextQuestion}
             disabled={selectedAnswer === '' || loading}
-            className='next-button'
+            className={styles.nextButton}
           >
-            {loading
-              ? '⏳ Saving...'
-              : currentQuestion === questions.length - 1
-              ? '🏁 Finish Game'
-              : '➡️ Next Question'}
+            {loading ? (
+              <>
+                <Loader className={styles.loadingIcon} /> Saving...
+              </>
+            ) : currentQuestion === questions.length - 1 ? (
+              <>
+                <Flag className={styles.icon} /> Finish Game
+              </>
+            ) : (
+              <>
+                <ArrowRight className={styles.icon} /> Next Question
+              </>
+            )}
           </button>
         </div>
       </div>

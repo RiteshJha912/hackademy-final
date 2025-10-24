@@ -6,6 +6,8 @@ import MCQGamePage from './pages/MCQGamePage'
 import LeaderboardPage from './pages/LeaderboardPage'
 import LearnPage from './pages/LearnPage'
 import DigitalArrestScamPage from './pages/DigitalArrestScamPage'
+import UPIScamPage from './pages/UPIScamPage'
+import EKYCPage from './pages/EKYCPage'
 import Navbar from './components/Navbar'
 import styles from './styles/App.module.css'
 import './styles/common.module.css' // Import common styles globally
@@ -46,6 +48,11 @@ function App() {
                 path='/learn/digital-arrest-scam'
                 element={<DigitalArrestScamPage />}
               />
+              <Route
+                path='/learn/upi-payment-scams'
+                element={<UPIScamPage />}
+              />
+              <Route path='/learn/ekyc-sim-swap' element={<EKYCPage />} />
             </Routes>
           </div>
         </main>

@@ -19,7 +19,6 @@
 
 .formHeader h2 {
   color: #8E24AA;
-  text-shadow: 0 0 20px rgba(142, 36, 170, 0.6);
   margin-bottom: 0.5rem;
   font-size: 2rem;
 }
@@ -67,6 +66,31 @@
 .inputGroup small {
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.9rem;
+}
+
+/* Icon styles for lucide-react icons used on this page */
+.icon {
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  width: 20px;
+  height: 20px;
+  color: #8E24AA;
+  display: inline-block;
+}
+
+.loadingIcon {
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  width: 18px;
+  height: 18px;
+  color: white;
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .submitButton {

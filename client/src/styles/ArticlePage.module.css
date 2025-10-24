@@ -12,26 +12,28 @@
 .articleIcon {
   width: 4rem;
   height: 4rem;
-  color: #2563eb;
+  color: #8E24AA;
   margin-bottom: 1rem;
 }
 
 .articleHero h1 {
   font-size: 2.5rem;
-  color: #1f2937;
+  color: #8E24AA;
   margin-bottom: 1rem;
 }
 
 .articleHero p {
-  color: #6b7280;
+  color: rgba(255, 255, 255, 0.85);
   font-size: 1.2rem;
 }
 
 .articleContent {
-  background: white;
+  background: linear-gradient(135deg, #302A6A, #1A1B3B);
   border-radius: 1rem;
   padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(17, 12, 48, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .section {
@@ -39,15 +41,15 @@
 }
 
 .section h2 {
-  color: #2563eb;
+  color: #8E24AA;
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
-  border-bottom: 2px solid #e5e7eb;
+  border-bottom: 2px solid rgba(255,255,255,0.04);
   padding-bottom: 0.5rem;
 }
 
 .section p {
-  color: #4b5563;
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.8;
   margin-bottom: 1.5rem;
 }
@@ -55,7 +57,7 @@
 .section ul {
   list-style-type: disc;
   margin-left: 2rem;
-  color: #4b5563;
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.8;
 }
 
