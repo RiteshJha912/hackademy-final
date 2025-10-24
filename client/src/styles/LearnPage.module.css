@@ -12,7 +12,7 @@
 .heroTitle {
   font-size: 2.2rem;
   font-weight: 600;
-  color: #a855f7;
+  color: #8E24AA;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,7 +23,7 @@
 .titleIcon {
   width: 2.2rem;
   height: 2.2rem;
-  color: #a855f7;
+  color: #8E24AA;
 }
 
 .heroDescription {
@@ -66,7 +66,7 @@
 .articleIcon {
   width: 2.5rem;
   height: 2.5rem;
-  color: #a855f7;
+  color: #8E24AA;
   margin-bottom: 1rem;
 }
 
@@ -153,4 +153,37 @@
   100% {
     transform: translateX(-100%);
   }
+}
+
+.ctaContainer {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 1rem;
+}
+
+.testKnowledgeButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #8E24AA, #7e22ce);
+  color: rgba(255, 255, 255, 0.95);
+  padding: 0.9rem 2rem;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.testKnowledgeButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #c084fc, #a855f7);
+}
+
+.buttonIcon {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: rgba(255, 255, 255, 0.95);
 }

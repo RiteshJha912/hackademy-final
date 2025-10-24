@@ -1,7 +1,9 @@
 .articlePage {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  /* background: #1A1B3B; */
+  /* border-radius: 16px; */
 }
 
 .articleHero {
@@ -27,52 +29,98 @@
   font-size: 1.2rem;
 }
 
-.articleContent {
+.bentoGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1.5rem;
+  padding: 1rem;
+}
+
+.bentoCard {
   background: linear-gradient(135deg, #302A6A, #1A1B3B);
   border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 10px 30px rgba(17, 12, 48, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(17, 12, 48, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.95);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.section {
-  margin-bottom: 3rem;
+.bentoCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(17, 12, 48, 0.7);
 }
 
-.section h2 {
+.bentoCard h2 {
   color: #8E24AA;
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 2px solid rgba(255,255,255,0.04);
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.04);
   padding-bottom: 0.5rem;
 }
 
-.section p {
+.bentoCard p {
   color: rgba(255, 255, 255, 0.9);
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  font-size: 1rem;
 }
 
-.section ul {
+.bentoCard ul {
   list-style-type: disc;
-  margin-left: 2rem;
+  margin-left: 1.5rem;
   color: rgba(255, 255, 255, 0.9);
-  line-height: 1.8;
+  line-height: 1.7;
+  font-size: 1rem;
 }
 
-.section li {
+.bentoCard li {
   margin-bottom: 0.5rem;
 }
 
 .imageContainer {
-  margin: 2rem 0;
   border-radius: 0.5rem;
   overflow: hidden;
+  margin: 1rem 0;
 }
 
-.articleImage {
+.bentoImage {
   width: 100%;
   height: auto;
   display: block;
+  object-fit: cover;
+}
+
+/* Custom sizing for Bento Grid sections */
+.whatIsIt {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.howItHappens {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.realWorldStories {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.stayProtected {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+@media (max-width: 768px) {
+  .bentoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .whatIsIt,
+  .howItHappens,
+  .realWorldStories,
+  .stayProtected {
+    grid-column: span 1;
+    grid-row: auto;
+  }
 }

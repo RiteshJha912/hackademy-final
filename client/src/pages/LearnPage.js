@@ -6,10 +6,11 @@ import {
   CreditCard,
   Smartphone,
   Briefcase,
+  Brain,
 } from 'lucide-react'
 import styles from '../styles/LearnPage.module.css'
 
-const LearnPage = () => {
+const LearnPage = ({ currentUser }) => {
   return (
     <div className={styles.learnPage}>
       <div className={styles.updateWrapper}>
@@ -18,8 +19,8 @@ const LearnPage = () => {
             <div className={styles.pulse}></div>
             <span className={styles.updateMessage}>
               <span className={styles.ticker}>
-                Stay vigilant! New scams are
-                updated in real-time as they start occuring. Check back often to protect yourself.
+                Stay vigilant! New scams are updated in real-time as they start
+                occurring. Check back often to protect yourself.
               </span>
             </span>
           </div>
@@ -85,12 +86,22 @@ const LearnPage = () => {
         <Link to='/learn/whatsapp-stock-scam' className={styles.articleCard}>
           <div className={styles.articleContent}>
             <AlertTriangle className={styles.articleIcon} />
-            <h2>WhatsApp Stock Market Groups Scam</h2>
+            <h2>WhatsApp / Telegram Stock Market Group</h2>
             <p>
               Fake stock tips in WhatsApp groups lead to fraudulent apps and
               lost investments.
             </p>
           </div>
+        </Link>
+      </div>
+
+      <div className={styles.ctaContainer}>
+        <Link
+          to={currentUser ? '/game' : '/username'}
+          className={styles.testKnowledgeButton}
+        >
+          <Brain className={styles.buttonIcon} />
+          Test Your Knowledge
         </Link>
       </div>
     </div>

@@ -14,7 +14,7 @@ import DigitalArrestScamPage from './pages/DigitalArrestScamPage'
 import UPIScamPage from './pages/UPIScamPage'
 import EKYCPage from './pages/EKYCPage'
 import FakeJobScamPage from './pages/FakeJobScamPage'
-import WhatsAppStockScamPage from './pages/WhatsAppStockScamPage'
+import WhatsAppStockScamPage from './pages/WhatsAppStockScam'
 import Navbar from './components/Navbar'
 import styles from './styles/App.module.css'
 import './styles/common.module.css'
@@ -61,7 +61,10 @@ function App() {
                 element={<MCQGamePage currentUser={currentUser} />}
               />
               <Route path='/leaderboard' element={<LeaderboardPage />} />
-              <Route path='/learn' element={<LearnPage />} />
+              <Route
+                path='/learn'
+                element={<LearnPage currentUser={currentUser} />}
+              />
               <Route
                 path='/learn/digital-arrest-scam'
                 element={<DigitalArrestScamPage />}

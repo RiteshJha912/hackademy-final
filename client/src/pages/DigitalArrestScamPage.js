@@ -11,8 +11,8 @@ const DigitalArrestScamPage = () => {
         <p>Understanding and protecting yourself from digital arrest scams</p>
       </div>
 
-      <div className={styles.articleContent}>
-        <section className={styles.section}>
+      <div className={styles.bentoGrid}>
+        <section className={`${styles.bentoCard} ${styles.whatIsIt}`}>
           <h2>What is it?</h2>
           <p>
             A digital arrest scam is a sophisticated form of cybercrime where
@@ -24,14 +24,13 @@ const DigitalArrestScamPage = () => {
             <img
               src='/images/digitalarrest1.jpg'
               alt='Digital Arrest Scam Example'
-              className={styles.articleImage}
+              className={styles.bentoImage}
             />
           </div>
         </section>
 
-        <section className={styles.section}>
+        <section className={`${styles.bentoCard} ${styles.howItHappens}`}>
           <h2>How it happens</h2>
-          <p>Scammers typically initiate contact through:</p>
           <ul>
             <li>Fake emails claiming to be from law enforcement</li>
             <li>Threatening phone calls with spoofed police numbers</li>
@@ -40,28 +39,28 @@ const DigitalArrestScamPage = () => {
           </ul>
         </section>
 
-        <section className={styles.section}>
-  <h2>Real world stories</h2>
-  <p>
-    In a recent case, Maharashtra Police arrested seven individuals involved in
-    a massive 58-crore rupee digital arrest scam. The fraudsters pretended to be
-    government officials and tricked a 72-year-old businessman from Mumbai into
-    transferring his life savings through fake video court sessions and police
-    interrogations. Authorities found that over 6,500 fake bank accounts were
-    used to move the stolen money across multiple layers.
-  </p>
-  <div className={styles.imageContainer}>
-    <img
-      src="/images/digitalarrest2.png"
-      alt="Digital Arrest Scam"
-      className={styles.articleImage}
-    />
-  </div>
-</section>
+        <section className={`${styles.bentoCard} ${styles.realWorldStories}`}>
+          <h2>Real world stories</h2>
+          <div className={styles.imageContainer}>
+            <img
+              src='/images/digitalarrest2.png'
+              alt='Digital Arrest Scam'
+              className={styles.bentoImage}
+            />
+          </div>
+          <p>
+            In a recent case, Maharashtra Police arrested seven individuals
+            involved in a massive 58 crore rupee digital arrest scam. The
+            fraudsters pretended to be government officials and tricked a
+            72 year-old businessman from Mumbai into transferring his life
+            savings through fake video court sessions and police interrogations.
+            Authorities found that over 6,500 fake bank accounts were used to
+            move the stolen money across multiple layers.
+          </p>
+        </section>
 
-
-        <section className={styles.section}>
-          <h2>How to stay protected</h2>
+        <section className={`${styles.bentoCard} ${styles.stayProtected}`}>
+          <h2>If you were scammed</h2>
           <ul>
             <li>
               Never send money to unknown parties claiming to be law enforcement
