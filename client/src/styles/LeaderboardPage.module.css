@@ -1,0 +1,113 @@
+.leaderboardPage {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.leaderboardHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.leaderboardHeader h2 {
+  color: #8E24AA;
+  text-shadow: 0 0 25px rgba(142, 36, 170, 0.6);
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+}
+
+.leaderboardHeader p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+}
+
+.statsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.statCard {
+  background: linear-gradient(135deg, #302A6A, #1A1B3B);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.statNumber {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #8E24AA;
+  text-shadow: 0 0 15px rgba(142, 36, 170, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.leaderboardContainer {
+  background: linear-gradient(135deg, #302A6A, #1A1B3B);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.leaderboardList {
+  display: flex;
+  flex-direction: column;
+}
+
+.emptyLeaderboard {
+  padding: 3rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+}
+
+.loadMoreContainer {
+  padding: 1rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.loadMoreButton,
+.retryButton {
+  background: linear-gradient(135deg, #8E24AA, #302A6A);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(142, 36, 170, 0.3);
+}
+
+.loadMoreButton:hover,
+.retryButton:hover {
+  background: linear-gradient(135deg, #302A6A, #8E24AA);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(142, 36, 170, 0.4);
+}
+
+.loadingContainer {
+  text-align: center;
+  padding: 3rem;
+}
+
+.loadingContainer p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+.errorContainer {
+  text-align: center;
+  padding: 3rem;
+}

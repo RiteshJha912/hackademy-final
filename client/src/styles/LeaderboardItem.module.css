@@ -1,0 +1,113 @@
+.leaderboardItem {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.leaderboardItem:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.leaderboardItem:last-child {
+  border-bottom: none;
+}
+
+.leaderboardItem.top1 {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.1));
+  border-left: 4px solid #FFD700;
+}
+
+.leaderboardItem.top2 {
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.2), rgba(169, 169, 169, 0.1));
+  border-left: 4px solid #C0C0C0;
+}
+
+.leaderboardItem.top3 {
+  background: linear-gradient(135deg, rgba(205, 127, 50, 0.2), rgba(184, 115, 51, 0.1));
+  border-left: 4px solid #CD7F32;
+}
+
+.rankSection {
+  width: 60px;
+  text-align: center;
+}
+
+.rankIcon {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #8E24AA;
+}
+
+.userSection {
+  flex: 1;
+  margin-left: 1rem;
+}
+
+.username {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  display: block;
+  margin-bottom: 0.25rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.userStats {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.gamesPlayed,
+.lastPlayed {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.scoreSection {
+  text-align: right;
+}
+
+.score {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #8E24AA;
+  display: block;
+  text-shadow: 0 0 15px rgba(142, 36, 170, 0.5);
+}
+
+.pointsLabel {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+  .leaderboardItem {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .rankSection {
+    width: auto;
+  }
+
+  .userSection {
+    margin-left: 0;
+    order: 2;
+    flex: 1;
+  }
+
+  .scoreSection {
+    order: 3;
+  }
+
+  .userStats {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}

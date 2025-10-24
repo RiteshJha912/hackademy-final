@@ -1,0 +1,266 @@
+.gamePage {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.gameContainer {
+  background: linear-gradient(135deg, #302A6A, #1A1B3B);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gameHeader {
+  background: linear-gradient(135deg, #8E24AA, #302A6A);
+  color: white;
+  padding: 1.5rem;
+}
+
+.progressInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.progressBar {
+  background: rgba(255, 255, 255, 0.2);
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressFill {
+  background: white;
+  height: 100%;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.questionContainer {
+  padding: 2.5rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.questionText {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: white;
+  line-height: 1.6;
+}
+
+.questionPoints {
+  color: #8E24AA;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.optionsContainer {
+  padding: 1.5rem;
+}
+
+.optionButton {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  color: white;
+}
+
+.optionButton:hover {
+  border-color: #8E24AA;
+  background: rgba(142, 36, 170, 0.1);
+  transform: translateX(5px);
+}
+
+.optionButton.selected {
+  border-color: #8E24AA;
+  background: linear-gradient(135deg, rgba(142, 36, 170, 0.2), rgba(48, 42, 106, 0.2));
+  box-shadow: 0 0 15px rgba(142, 36, 170, 0.3);
+}
+
+.optionLetter {
+  background: linear-gradient(135deg, #8E24AA, #302A6A);
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.optionText {
+  flex: 1;
+  font-size: 1rem;
+}
+
+.gameActions {
+  padding: 1.5rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nextButton {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+}
+
+.nextButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+}
+
+.nextButton:disabled {
+  background: #555;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Result Container */
+.resultContainer {
+  background: linear-gradient(135deg, #302A6A, #1A1B3B);
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.resultContainer h2 {
+  color: #8E24AA;
+  text-shadow: 0 0 20px rgba(142, 36, 170, 0.6);
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.scoreDisplay {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.finalScore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.scoreLabel {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.scoreValue {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #8E24AA;
+  text-shadow: 0 0 15px rgba(142, 36, 170, 0.5);
+}
+
+.scorePercentage {
+  font-size: 1.5rem;
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.resultMessage {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  color: white;
+}
+
+.resultActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.playAgainButton,
+.leaderboardButton {
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.playAgainButton {
+  background: linear-gradient(135deg, #8E24AA, #302A6A);
+  color: white;
+  box-shadow: 0 4px 15px rgba(142, 36, 170, 0.3);
+}
+
+.playAgainButton:hover {
+  background: linear-gradient(135deg, #302A6A, #8E24AA);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(142, 36, 170, 0.4);
+}
+
+.leaderboardButton {
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  color: white;
+  box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+}
+
+.leaderboardButton:hover {
+  background: linear-gradient(135deg, #e67e22, #d35400);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
+}
+
+.completionNote {
+  color: #27ae60;
+  font-weight: bold;
+  padding: 1rem;
+  background: rgba(46, 204, 113, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+@media (max-width: 768px) {
+  .resultActions {
+    flex-direction: column;
+  }
+  
+  .finalScore {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
