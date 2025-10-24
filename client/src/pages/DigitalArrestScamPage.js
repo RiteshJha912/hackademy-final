@@ -1,14 +1,116 @@
-import React from 'react'
-import { Shield } from 'lucide-react'
+import React, { useState } from 'react'
+import { Shield, Play, Pause } from 'lucide-react'
 import styles from '../styles/ArticlePage.module.css'
 
 const DigitalArrestScamPage = () => {
+  const [isSpeaking, setIsSpeaking] = useState(false)
+  const utteranceRef = React.useRef(null)
+
+  const handleReadAloud = () => {
+    if (isSpeaking) {
+      // Pause speech
+      window.speechSynthesis.pause()
+      setIsSpeaking(false)
+    } else {
+      // If there's an ongoing utterance, resume it
+      if (utteranceRef.current && window.speechSynthesis.paused) {
+        window.speechSynthesis.resume()
+        setIsSpeaking(true)
+        return
+      }
+
+      // Stop any ongoing speech
+      window.speechSynthesis.cancel()
+
+      // Collect all text content from the page
+      const articleText = [
+        document.querySelector(`.${styles.articleHero} h1`)?.textContent,
+        document.querySelector(`.${styles.articleHero} p`)?.textContent,
+        document.querySelector(`.${styles.whatIsIt} h2`)?.textContent,
+        document.querySelector(`.${styles.whatIsIt} p`)?.textContent,
+        document.querySelector(`.${styles.howItHappens} h2`)?.textContent,
+        ...Array.from(
+          document.querySelectorAll(`.${styles.howItHappens} li`)
+        ).map((li) => li.textContent),
+        document.querySelector(`.${styles.realWorldStories} h2`)?.textContent,
+        document.querySelector(`.${styles.realWorldStories} p`)?.textContent,
+        document.querySelector(`.${styles.stayProtected} h2`)?.textContent,
+        ...Array.from(
+          document.querySelectorAll(`.${styles.stayProtected} li`)
+        ).map((li) => li.textContent),
+      ]
+        .filter((text) => text)
+        .join('. ')
+
+      // Create and configure speech synthesis
+      const utterance = new SpeechSynthesisUtterance(articleText)
+      utterance.lang = 'en-US'
+
+      // Select a natural, non-robotic voice
+      const voices = window.speechSynthesis.getVoices()
+      const naturalVoice = voices.find(
+        (voice) =>
+          voice.name.includes('Google US English') ||
+          voice.name.includes('Microsoft Zira') ||
+          voice.name.includes('Natural') ||
+          voice.name.includes('Samantha') ||
+          voice.name.includes('Alex') ||
+          voice.default
+      )
+      if (naturalVoice) {
+        utterance.voice = naturalVoice
+      }
+
+      // Adjust pitch and rate for a warmer, less robotic tone
+      utterance.volume = 1.0
+      utterance.rate = 0.95 // Slightly slower for clarity
+      utterance.pitch = 0.9 // Slightly lower pitch for warmth
+
+      // Handle end of speech
+      utterance.onend = () => {
+        setIsSpeaking(false)
+        utteranceRef.current = null
+      }
+
+      utteranceRef.current = utterance
+      window.speechSynthesis.speak(utterance)
+      setIsSpeaking(true)
+    }
+  }
+
+  // Ensure voices are loaded (some browsers load voices asynchronously)
+  React.useEffect(() => {
+    const loadVoices = () => {
+      window.speechSynthesis.getVoices()
+    }
+    window.speechSynthesis.onvoiceschanged = loadVoices
+    loadVoices()
+    return () => {
+      window.speechSynthesis.onvoiceschanged = null
+    }
+  }, [])
+
   return (
     <div className={styles.articlePage}>
       <div className={styles.articleHero}>
         <Shield className={styles.articleIcon} />
         <h1>Digital Arrest Scam</h1>
         <p>Understanding and protecting yourself from digital arrest scams</p>
+        <button
+          className={styles.readAloudButton}
+          onClick={handleReadAloud}
+          aria-label={isSpeaking ? 'Pause reading' : 'Read page content aloud'}
+        >
+          {isSpeaking ? (
+            <>
+              <Pause className={styles.buttonIcon} /> Read Aloud  
+            </>
+          ) : (
+            <>
+              <Play className={styles.buttonIcon} /> Read Aloud
+            </>
+          )}
+        </button>
       </div>
 
       <div className={styles.bentoGrid}>
@@ -51,9 +153,9 @@ const DigitalArrestScamPage = () => {
           <p>
             In a recent case, Maharashtra Police arrested seven individuals
             involved in a massive 58 crore rupee digital arrest scam. The
-            fraudsters pretended to be government officials and tricked a
-            72 year-old businessman from Mumbai into transferring his life
-            savings through fake video court sessions and police interrogations.
+            fraudsters pretended to be government officials and tricked a 72
+            year-old businessman from Mumbai into transferring his life savings
+            through fake video court sessions and police interrogations.
             Authorities found that over 6,500 fake bank accounts were used to
             move the stolen money across multiple layers.
           </p>

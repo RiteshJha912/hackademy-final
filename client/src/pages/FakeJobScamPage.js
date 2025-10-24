@@ -1,8 +1,87 @@
-import React from 'react'
-import { Briefcase } from 'lucide-react'
+import React, { useState } from 'react'
+import { Briefcase, Play, Pause } from 'lucide-react'
 import styles from '../styles/ArticlePage.module.css'
 
 const FakeJobScamPage = () => {
+  const [isSpeaking, setIsSpeaking] = useState(false)
+  const utteranceRef = React.useRef(null)
+
+  const handleReadAloud = () => {
+    if (isSpeaking) {
+      window.speechSynthesis.pause()
+      setIsSpeaking(false)
+    } else {
+      if (utteranceRef.current && window.speechSynthesis.paused) {
+        window.speechSynthesis.resume()
+        setIsSpeaking(true)
+        return
+      }
+
+      window.speechSynthesis.cancel()
+
+      const articleText = [
+        document.querySelector(`.${styles.articleHero} h1`)?.textContent,
+        document.querySelector(`.${styles.articleHero} p`)?.textContent,
+        document.querySelector(`.${styles.whatIsIt} h2`)?.textContent,
+        document.querySelector(`.${styles.whatIsIt} p`)?.textContent,
+        document.querySelector(`.${styles.howItHappens} h2`)?.textContent,
+        document.querySelector(`.${styles.howItHappens} p`)?.textContent,
+        ...Array.from(
+          document.querySelectorAll(`.${styles.howItHappens} li`)
+        ).map((li) => li.textContent),
+        document.querySelector(`.${styles.realWorldStories} h2`)?.textContent,
+        document.querySelector(`.${styles.realWorldStories} p`)?.textContent,
+        document.querySelector(`.${styles.stayProtected} h2`)?.textContent,
+        ...Array.from(
+          document.querySelectorAll(`.${styles.stayProtected} li`)
+        ).map((li) => li.textContent),
+      ]
+        .filter((text) => text)
+        .join('. ')
+
+      const utterance = new SpeechSynthesisUtterance(articleText)
+      utterance.lang = 'en-US'
+
+      const voices = window.speechSynthesis.getVoices()
+      const naturalVoice = voices.find(
+        (voice) =>
+          voice.name.includes('Google US English') ||
+          voice.name.includes('Microsoft Zira') ||
+          voice.name.includes('Natural') ||
+          voice.name.includes('Samantha') ||
+          voice.name.includes('Alex') ||
+          voice.default
+      )
+      if (naturalVoice) {
+        utterance.voice = naturalVoice
+      }
+
+      utterance.volume = 1.0
+      utterance.rate = 0.95
+      utterance.pitch = 0.9
+
+      utterance.onend = () => {
+        setIsSpeaking(false)
+        utteranceRef.current = null
+      }
+
+      utteranceRef.current = utterance
+      window.speechSynthesis.speak(utterance)
+      setIsSpeaking(true)
+    }
+  }
+
+  React.useEffect(() => {
+    const loadVoices = () => {
+      window.speechSynthesis.getVoices()
+    }
+    window.speechSynthesis.onvoiceschanged = loadVoices
+    loadVoices()
+    return () => {
+      window.speechSynthesis.onvoiceschanged = null
+    }
+  }, [])
+
   return (
     <div className={styles.articlePage}>
       <div className={styles.articleHero}>
@@ -12,6 +91,21 @@ const FakeJobScamPage = () => {
           Understanding and protecting yourself from fake job and work-from-home
           scams
         </p>
+        <button
+          className={styles.readAloudButton}
+          onClick={handleReadAloud}
+          aria-label={isSpeaking ? 'Pause reading' : 'Read page content aloud'}
+        >
+          {isSpeaking ? (
+            <>
+              <Pause className={styles.buttonIcon} /> Read Aloud
+            </>
+          ) : (
+            <>
+              <Play className={styles.buttonIcon} /> Read Aloud
+            </>
+          )}
+        </button>
       </div>
 
       <div className={styles.bentoGrid}>

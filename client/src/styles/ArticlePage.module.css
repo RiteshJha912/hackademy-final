@@ -2,13 +2,12 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  /* background: #1A1B3B; */
-  /* border-radius: 16px; */
 }
 
 .articleHero {
   text-align: center;
   margin-bottom: 3rem;
+  position: relative;
 }
 
 .articleIcon {
@@ -27,6 +26,35 @@
 .articleHero p {
   color: rgba(255, 255, 255, 0.85);
   font-size: 1.2rem;
+}
+
+.readAloudButton {
+  margin: 1rem auto 0;
+  padding: 0.75rem 1.5rem;
+  background: #8E24AA;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.readAloudButton:hover {
+  background: #6B1B7F;
+  transform: translateY(-2px);
+}
+
+.readAloudButton:active {
+  transform: translateY(0);
+}
+
+.buttonIcon {
+  width: 1.2rem;
+  height: 1.2rem;
 }
 
 .bentoGrid {
@@ -122,5 +150,9 @@
   .stayProtected {
     grid-column: span 1;
     grid-row: auto;
+  }
+
+  .readAloudButton {
+    margin: 1rem auto 0;
   }
 }
