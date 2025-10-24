@@ -26,7 +26,7 @@ const Navbar = ({ currentUser, setUser }) => {
     <nav className={styles.navbar}>
       <div className={styles.navContainer}>
         <Link to='/' className={styles.navLogo}>
-          <Shield className={styles.logoIcon} /> HACKADEMY
+          <Shield className={styles.logoIcon} /> H4CK4DEMY
         </Link>
 
         <div className={styles.navMenu}>
