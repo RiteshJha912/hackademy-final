@@ -1,30 +1,40 @@
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { BookOpen, Shield, Lock, AlertTriangle, Briefcase } from 'lucide-react'
+import {
+  Shield,
+  AlertTriangle,
+  CreditCard,
+  Smartphone,
+  Briefcase,
+} from 'lucide-react'
 import styles from '../styles/LearnPage.module.css'
 
 const LearnPage = () => {
   return (
     <div className={styles.learnPage}>
-      <div className={styles.heroSection}>
-        <h1 className={styles.heroTitle}>
-          <BookOpen className={styles.titleIcon} /> Learn Cybersecurity
-        </h1>
-        <p className={styles.heroDescription}>
-          Explore our comprehensive guides to understand and protect against
-          cyber threats
-        </p>
-      </div>
-
       <div className={styles.updateWrapper}>
-        <div className={styles.updateBanner} role='status'>
+        <div className={styles.updateBanner}>
           <div className={styles.updateLeft}>
-            <span className={styles.pulse} />
+            <div className={styles.pulse}></div>
             <span className={styles.updateMessage}>
-              Staying vigilant — We monitor and document new cybersecurity
-              threats as they emerge
+              <span className={styles.ticker}>
+                Stay vigilant! New scams are
+                updated in real-time as they start occuring. Check back often to protect yourself.
+              </span>
             </span>
           </div>
         </div>
+      </div>
+
+      <div className={styles.heroSection}>
+        <h1 className={styles.heroTitle}>
+          <Shield className={styles.titleIcon} /> Learn About Cybersecurity
+          Scams
+        </h1>
+        <p className={styles.heroDescription}>
+          Explore common scams targeting seniors and learn how to stay protected
+          with practical tips and real-world examples.
+        </p>
       </div>
 
       <div className={styles.articlesGrid}>
@@ -33,30 +43,30 @@ const LearnPage = () => {
             <Shield className={styles.articleIcon} />
             <h2>Digital Arrest Scam</h2>
             <p>
-              Learn about digital arrest scams and how to protect yourself from
-              these emerging threats.
+              Fake law enforcement threats demand payments or sensitive info,
+              preying on trust.
             </p>
           </div>
         </Link>
 
         <Link to='/learn/upi-payment-scams' className={styles.articleCard}>
           <div className={styles.articleContent}>
-            <Lock className={styles.articleIcon} />
-            <h2>UPI Repayment Scam</h2>
+            <CreditCard className={styles.articleIcon} />
+            <h2>UPI Payment Scams</h2>
             <p>
-              Learn about UPI payment, refund and collect-request scams and how
-              to spot and avoid fraudulent requests.
+              Fraudsters trick you into sending money via fake UPI apps or QR
+              codes.
             </p>
           </div>
         </Link>
 
         <Link to='/learn/ekyc-sim-swap' className={styles.articleCard}>
           <div className={styles.articleContent}>
-            <AlertTriangle className={styles.articleIcon} />
-            <h2>e-KYC, Data Harvesting & SIM-Swap Frauds</h2>
+            <Smartphone className={styles.articleIcon} />
+            <h2>eKYC SIM Swap Scam</h2>
             <p>
-              Understand e-KYC and data-harvesting scams, SIM-swap frauds, and
-              practical steps to protect your identity and devices.
+              Scammers steal your phone number to access bank accounts via fake
+              eKYC.
             </p>
           </div>
         </Link>
@@ -64,10 +74,21 @@ const LearnPage = () => {
         <Link to='/learn/fake-job-scams' className={styles.articleCard}>
           <div className={styles.articleContent}>
             <Briefcase className={styles.articleIcon} />
-            <h2>Work-From-Home Scams</h2>
+            <h2>Fake Job Scams</h2>
             <p>
-              Learn about fake job and work-from-home scams, including
-              call-center frauds, and how to avoid them.
+              Bogus job offers lure seniors with promises of easy money,
+              stealing data or fees.
+            </p>
+          </div>
+        </Link>
+
+        <Link to='/learn/whatsapp-stock-scam' className={styles.articleCard}>
+          <div className={styles.articleContent}>
+            <AlertTriangle className={styles.articleIcon} />
+            <h2>WhatsApp Stock Market Groups Scam</h2>
+            <p>
+              Fake stock tips in WhatsApp groups lead to fraudulent apps and
+              lost investments.
             </p>
           </div>
         </Link>

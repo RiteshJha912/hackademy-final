@@ -41,22 +41,24 @@ const DigitalArrestScamPage = () => {
         </section>
 
         <section className={styles.section}>
-          <h2>Real world stories</h2>
-          <p>
-            In a recent case, Sarah, a 34-year-old professional, received an
-            official-looking email claiming she had pending criminal charges.
-            The scammers demanded immediate payment to "clear her record."
-            Fortunately, she recognized the warning signs and reported the
-            incident to actual authorities.
-          </p>
-          <div className={styles.imageContainer}>
-            <img
-              src='/images/digitalarrest2.png'
-              alt='Scam Alert'
-              className={styles.articleImage}
-            />
-          </div>
-        </section>
+  <h2>Real world stories</h2>
+  <p>
+    In a recent case, Maharashtra Police arrested seven individuals involved in
+    a massive 58-crore rupee digital arrest scam. The fraudsters pretended to be
+    government officials and tricked a 72-year-old businessman from Mumbai into
+    transferring his life savings through fake video court sessions and police
+    interrogations. Authorities found that over 6,500 fake bank accounts were
+    used to move the stolen money across multiple layers.
+  </p>
+  <div className={styles.imageContainer}>
+    <img
+      src="/images/digitalarrest2.png"
+      alt="Digital Arrest Scam"
+      className={styles.articleImage}
+    />
+  </div>
+</section>
+
 
         <section className={styles.section}>
           <h2>How to stay protected</h2>

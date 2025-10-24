@@ -14,11 +14,11 @@ import DigitalArrestScamPage from './pages/DigitalArrestScamPage'
 import UPIScamPage from './pages/UPIScamPage'
 import EKYCPage from './pages/EKYCPage'
 import FakeJobScamPage from './pages/FakeJobScamPage'
+import WhatsAppStockScamPage from './pages/WhatsAppStockScamPage'
 import Navbar from './components/Navbar'
 import styles from './styles/App.module.css'
-import './styles/common.module.css' // Import common styles globally
+import './styles/common.module.css'
 
-// ScrollToTop component to handle scrolling to top on route change
 function ScrollToTop() {
   const { pathname } = useLocation()
 
@@ -74,6 +74,10 @@ function App() {
               <Route
                 path='/learn/fake-job-scams'
                 element={<FakeJobScamPage />}
+              />
+              <Route
+                path='/learn/whatsapp-stock-scam'
+                element={<WhatsAppStockScamPage />}
               />
             </Routes>
           </div>

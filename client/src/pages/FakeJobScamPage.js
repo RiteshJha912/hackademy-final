@@ -55,22 +55,24 @@ const FakeJobScamPage = () => {
           </ul>
         </section>
 
-        <section className={styles.section}>
-          <h2>Real world stories</h2>
-          <p>
-            Bengaluru-based fake call centers have been busted for scamming
-            Americans with "digital arrest" hoaxes, leading to 16 arrests. These
-            scam operations have caused significant financial and emotional
-            damage globally.
-          </p>
-          <div className={styles.imageContainer}>
-            <img
-              src='/images/job3.png'
-              alt='Work-From-Home Scam Warning'
-              className={styles.articleImage}
-            />
-          </div>
-        </section>
+      <section className={styles.section}>
+  <h2>Real world stories</h2>
+  <p>
+    A Delhi-based family was defrauded of ₹1.10 crore in a fake job and
+    investment scam. The accused, posing as a company CEO, used forged
+    documents, fake offer letters, and social media to trick victims.
+    Police tracked him down in Goa after months of digital investigation
+    and arrested him for running a sophisticated cyber fraud network.
+  </p>
+  <div className={styles.imageContainer}>
+    <img
+      src='/images/job3.png'
+      alt='Fake Job and Investment Scam Arrest'
+      className={styles.articleImage}
+    />
+  </div>
+</section>
+
 
         <section className={styles.section}>
           <h2>How to stay protected</h2>
