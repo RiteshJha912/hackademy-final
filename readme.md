@@ -131,4 +131,3 @@ JWT_SECRET=your_super_secret_jwt_key_here
 
 
 
-This will be a good projecttt sooon 
