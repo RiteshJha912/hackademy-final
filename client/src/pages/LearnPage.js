@@ -7,7 +7,7 @@ import {
   Smartphone,
   Briefcase,
   Brain,
-  Columns4
+  Columns4,
 } from 'lucide-react'
 import styles from '../styles/LearnPage.module.css'
 

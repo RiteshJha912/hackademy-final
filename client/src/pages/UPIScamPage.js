@@ -6,6 +6,7 @@ const UPIScamPage = () => {
   const [isSpeaking, setIsSpeaking] = useState(false)
   const utteranceRef = React.useRef(null)
 
+  // handles text-to-speech for article content, toggling play/pause and selecting a natural voice
   const handleReadAloud = () => {
     if (isSpeaking) {
       window.speechSynthesis.pause()
@@ -70,6 +71,7 @@ const UPIScamPage = () => {
     }
   }
 
+  // loads available voices for text-to-speech and cleans up event listener on unmount
   React.useEffect(() => {
     const loadVoices = () => {
       window.speechSynthesis.getVoices()

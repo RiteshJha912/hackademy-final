@@ -27,6 +27,7 @@ const LandingPage = () => {
     'Everyone',
   ]
 
+  // animates the main title by revealing words one by one with a delay
   useEffect(() => {
     const timer = setInterval(() => {
       setVisibleWords((prev) => {
@@ -39,12 +40,10 @@ const LandingPage = () => {
     }, 150)
 
     return () => clearInterval(timer)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <div className={styles.landingPage}>
-      {/* Hero Section */}
       <div className={styles.heroContainer}>
         <div className={styles.badge}>
           <ShieldUser size={16} className={styles.badgeIcon} />
@@ -73,9 +72,10 @@ const LandingPage = () => {
         </h1>
 
         <p className={styles.mainDescription}>
-          Join India's gamified cybersecurity awareness revolution. Learn
-          essential online safety through interactive challenges and compete
-          with fellow citizens to build a safer digital India.
+          Join India’s fight against online frauds. Discover real scams and
+          digital traps affecting everyday users, and learn how to stop them.
+          Stay alert, take short quizzes, and safeguard your digital life with
+          every lesson.
         </p>
 
         <div className={styles.buttonGroup}>
@@ -87,7 +87,6 @@ const LandingPage = () => {
           </Link>
         </div>
 
-        {/* Stats Section */}
         <div className={styles.statsGrid}>
           {[
             { value: '1.16B+', label: 'Indians Online', icon: Users },
@@ -103,7 +102,6 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Mission Section */}
       <div className={styles.missionSection}>
         <div className={styles.missionCard}>
           <div>
@@ -126,7 +124,6 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* How It Works Section */}
       <div className={styles.howItWorksSection}>
         <h2 className={styles.sectionTitle}>How It Works</h2>
         <p className={styles.howItWorksSubtitle}>
@@ -167,7 +164,6 @@ const LandingPage = () => {
           ))}
         </div>
 
-        {/* Learning Module Features */}
         <div className={styles.featuresSection}>
           <h3 className={styles.featuresTitle}>What You'll Learn</h3>
           <div className={styles.featuresGrid}>
@@ -207,7 +203,6 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Footer */}
       <div className={styles.footer}>
         <p>© 2025 H4ck4demy. All rights reserved.</p>
       </div>

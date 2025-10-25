@@ -6,23 +6,20 @@ const DigitalArrestScamPage = () => {
   const [isSpeaking, setIsSpeaking] = useState(false)
   const utteranceRef = React.useRef(null)
 
+  // handles text-to-speech for the article, toggling between play, pause, and resume with a natural voice
   const handleReadAloud = () => {
     if (isSpeaking) {
-      // Pause speech
       window.speechSynthesis.pause()
       setIsSpeaking(false)
     } else {
-      // If there's an ongoing utterance, resume it
       if (utteranceRef.current && window.speechSynthesis.paused) {
         window.speechSynthesis.resume()
         setIsSpeaking(true)
         return
       }
 
-      // Stop any ongoing speech
       window.speechSynthesis.cancel()
 
-      // Collect all text content from the page
       const articleText = [
         document.querySelector(`.${styles.articleHero} h1`)?.textContent,
         document.querySelector(`.${styles.articleHero} p`)?.textContent,
@@ -42,11 +39,9 @@ const DigitalArrestScamPage = () => {
         .filter((text) => text)
         .join('. ')
 
-      // Create and configure speech synthesis
       const utterance = new SpeechSynthesisUtterance(articleText)
       utterance.lang = 'en-US'
 
-      // Select a natural, non-robotic voice
       const voices = window.speechSynthesis.getVoices()
       const naturalVoice = voices.find(
         (voice) =>
@@ -61,12 +56,10 @@ const DigitalArrestScamPage = () => {
         utterance.voice = naturalVoice
       }
 
-      // Adjust pitch and rate for a warmer, less robotic tone
       utterance.volume = 1.0
-      utterance.rate = 0.95 // Slightly slower for clarity
-      utterance.pitch = 0.9 // Slightly lower pitch for warmth
+      utterance.rate = 0.95
+      utterance.pitch = 0.9
 
-      // Handle end of speech
       utterance.onend = () => {
         setIsSpeaking(false)
         utteranceRef.current = null
@@ -78,7 +71,6 @@ const DigitalArrestScamPage = () => {
     }
   }
 
-  // Ensure voices are loaded (some browsers load voices asynchronously)
   React.useEffect(() => {
     const loadVoices = () => {
       window.speechSynthesis.getVoices()
@@ -103,7 +95,7 @@ const DigitalArrestScamPage = () => {
         >
           {isSpeaking ? (
             <>
-              <Pause className={styles.buttonIcon} /> Read Aloud  
+              <Pause className={styles.buttonIcon} /> Read Aloud
             </>
           ) : (
             <>

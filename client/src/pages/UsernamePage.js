@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { userAPI } from '../utils/api'
-import { Key, Loader, Gamepad2 } from 'lucide-react'
+import { Loader, Gamepad2 } from 'lucide-react'
 import styles from '../styles/UsernamePage.module.css'
 import commonStyles from '../styles/common.module.css'
 
@@ -11,6 +11,7 @@ const UsernamePage = ({ setUser }) => {
   const [error, setError] = useState('')
   const navigate = useNavigate()
 
+  // handles username submission, validates input, creates user via API, and navigates to game
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -53,10 +54,7 @@ const UsernamePage = ({ setUser }) => {
       <div className={styles.particleBackground}></div>
       <div className={styles.formContainer}>
         <div className={styles.formHeader}>
-          <h2>
-            {/* <Key className={styles.icon} /> */}
-            Choose Your Username
-          </h2>
+          <h2>Choose Your Username</h2>
           <p>
             Please pick a simple name. This will be used to track your quiz
             progress and scores.

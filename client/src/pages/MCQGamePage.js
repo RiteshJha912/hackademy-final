@@ -22,7 +22,6 @@ const MCQGamePage = ({ currentUser }) => {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
-  // Sample cybersecurity questions
   const questions = [
     {
       id: 1,
@@ -91,16 +90,14 @@ const MCQGamePage = ({ currentUser }) => {
     },
   ]
 
+  // redirects to username page if no user is logged in
   useEffect(() => {
     if (!currentUser) {
       navigate('/username')
     }
   }, [currentUser, navigate])
 
-  const handleAnswerClick = (answerIndex) => {
-    setSelectedAnswer(answerIndex)
-  }
-
+  // handles answer selection, score updates, and backend score saving on game completion
   const handleNextQuestion = async () => {
     const isCorrect = selectedAnswer === questions[currentQuestion].correct
     let newScore = score
@@ -114,7 +111,6 @@ const MCQGamePage = ({ currentUser }) => {
       setCurrentQuestion(currentQuestion + 1)
       setSelectedAnswer('')
     } else {
-      // Game completed, update score in backend
       setLoading(true)
       try {
         if (newScore > 0) {
@@ -124,13 +120,16 @@ const MCQGamePage = ({ currentUser }) => {
         setShowResult(true)
       } catch (error) {
         console.error('Error updating score:', error)
-        // Still show results even if score update fails
         setGameCompleted(true)
         setShowResult(true)
       } finally {
         setLoading(false)
       }
     }
+  }
+
+  const handleAnswerClick = (answerIndex) => {
+    setSelectedAnswer(answerIndex)
   }
 
   const resetGame = () => {
@@ -142,7 +141,7 @@ const MCQGamePage = ({ currentUser }) => {
   }
 
   const getScoreMessage = () => {
-    const percentage = (score / 70) * 100 // Total possible score is 70
+    const percentage = (score / 70) * 100
     if (percentage >= 80) return "Excellent! You're a cybersecurity expert!"
     if (percentage >= 60)
       return 'Good job! You have solid cybersecurity knowledge.'

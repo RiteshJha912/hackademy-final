@@ -19,7 +19,7 @@ const Navbar = ({ currentUser, setUser }) => {
 
   const handleLogout = () => {
     setUser('')
-    setIsMenuOpen(false) // Close menu on logout
+    setIsMenuOpen(false)
   }
 
   const toggleMenu = () => {
@@ -30,6 +30,7 @@ const Navbar = ({ currentUser, setUser }) => {
     return location.pathname === path ? styles.active : ''
   }
 
+  // dynamically renders navigation links based on user login state and handles responsive menu toggle
   return (
     <nav className={styles.navbar}>
       <div className={styles.navContainer}>

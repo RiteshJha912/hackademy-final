@@ -3,6 +3,7 @@ import { Gamepad2, Clock } from 'lucide-react'
 import styles from '../styles/LeaderboardItem.module.css'
 
 const LeaderboardItem = ({ user, position }) => {
+  // determines rank icon based on position (1st, 2nd, 3rd, or default)
   const getRankIcon = (position) => {
     switch (position) {
       case 1:
@@ -16,6 +17,7 @@ const LeaderboardItem = ({ user, position }) => {
     }
   }
 
+  // applies specific CSS class for top 3 ranks
   const getRankClass = (position) => {
     if (position === 1) return styles.top1
     if (position === 2) return styles.top2
@@ -23,6 +25,7 @@ const LeaderboardItem = ({ user, position }) => {
     return ''
   }
 
+  // formats date string into a concise, readable format
   const formatDate = (dateString) => {
     const date = new Date(dateString)
     return date.toLocaleDateString('en-US', {
@@ -33,6 +36,7 @@ const LeaderboardItem = ({ user, position }) => {
     })
   }
 
+  // renders leaderboard item with dynamic user data and rank styling
   return (
     <div className={`${styles.leaderboardItem} ${getRankClass(position)}`}>
       <div className={styles.rankSection}>
