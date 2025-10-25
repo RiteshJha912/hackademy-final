@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Orbitron:wght@400..900&family=Quicksand:wght@300..700&display=swap');
+
 .articlePage {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+  font-family: 'Quicksand', sans-serif;
+  /* Default for normal text */
+  font-weight: 400;
+  /* Normal weight for body text */
 }
 
 .articleHero {
@@ -18,12 +24,18 @@
 }
 
 .articleHero h1 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  /* Bold for headers */
   font-size: 2.5rem;
   color: #8E24AA;
   margin-bottom: 1rem;
 }
 
 .articleHero p {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+  /* Normal weight for paragraph text */
   color: rgba(255, 255, 255, 0.85);
   font-size: 1.2rem;
 }
@@ -35,6 +47,9 @@
   color: white;
   border: none;
   border-radius: 0.5rem;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  /* Medium weight for button */
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.3s ease;
@@ -72,6 +87,9 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.95);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Quicksand', sans-serif;
+  /* Default for card content */
+  font-weight: 400;
 }
 
 .bentoCard:hover {
@@ -80,6 +98,9 @@
 }
 
 .bentoCard h2 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  /* Bold for section headers */
   color: #8E24AA;
   font-size: 1.6rem;
   margin-bottom: 1rem;
@@ -88,12 +109,18 @@
 }
 
 .bentoCard p {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+  /* Normal weight for paragraph text */
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.7;
   font-size: 1rem;
 }
 
 .bentoCard ul {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+  /* Normal weight for list items */
   list-style-type: disc;
   margin-left: 1.5rem;
   color: rgba(255, 255, 255, 0.9);
@@ -102,7 +129,18 @@
 }
 
 .bentoCard li {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+  /* Normal weight for list items */
   margin-bottom: 0.5rem;
+}
+
+/* For any extra random text, such as spans or divs not otherwise styled */
+.randomText {
+  font-family: 'Jura', sans-serif;
+  font-weight: 300;
+  /* Light weight for extra text */
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .imageContainer {

@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Orbitron:wght@400..900&family=Quicksand:wght@300..700&display=swap');
+
 .learnPage {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .heroSection {
@@ -10,6 +13,7 @@
 }
 
 .heroTitle {
+  font-family: 'Quicksand', sans-serif;
   font-size: 2.2rem;
   font-weight: 600;
   color: #8E24AA;
@@ -27,6 +31,7 @@
 }
 
 .heroDescription {
+  font-family: 'Quicksand', sans-serif;
   font-size: 1.1rem;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.85);
@@ -71,15 +76,18 @@
 }
 
 .articleContent h2 {
+  font-family: 'Quicksand', sans-serif;
   font-size: 1.4rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 1rem;
   color: rgba(255, 255, 255, 0.95);
 }
 
 .articleContent p {
+  font-family: 'Quicksand', sans-serif;
   color: rgba(255, 255, 255, 0.85);
   font-size: 0.95rem;
+  font-weight: 400;
   line-height: 1.6;
 }
 
@@ -133,9 +141,10 @@
 }
 
 .updateMessage {
+  font-family: 'Jura', sans-serif;
   color: rgba(255, 255, 255, 0.95);
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 300;
   overflow: hidden;
   white-space: nowrap;
   flex: 1;
@@ -167,12 +176,13 @@
 }
 
 .testKnowledgeButton {
+  font-family: 'Orbitron', sans-serif;
   background: linear-gradient(135deg, #7928ca 0%, #ff0080 100%);
   color: #FFFFFF;
   padding: 16px 32px;
   border-radius: 12px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1.1rem;
   display: inline-flex;
   align-items: center;

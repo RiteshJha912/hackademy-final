@@ -116,7 +116,7 @@ const DigitalArrestScamPage = () => {
           </p>
           <div className={styles.imageContainer}>
             <img
-              src='/images/digitalarrest3.jpg'
+              src='/images/digitalarrest1.jpg'
               alt='Digital Arrest Scam Example'
               className={styles.bentoImage}
             />

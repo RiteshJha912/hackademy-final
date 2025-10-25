@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Orbitron:wght@400..900&family=Quicksand:wght@300..700&display=swap');
+
 .usernamePage {
   max-width: 600px;
   margin: 2.5rem auto;
   padding: 0 1.5rem;
   position: relative;
   overflow: hidden;
+  font-family: 'Quicksand', sans-serif;
+  /* Default for normal text */
+  font-weight: 400;
 }
 
 .particleBackground {
@@ -55,9 +60,11 @@
 }
 
 .formHeader h2 {
+  font-family: 'Quicksand', sans-serif;
+  /* Header font */
+  font-weight: 600;
   color: #8E24AA;
   font-size: 2rem;
-  font-weight: 600;
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
@@ -66,9 +73,11 @@
 }
 
 .formHeader p {
+  font-family: 'Quicksand', sans-serif;
+  /* Normal text */
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.8);
   font-size: 1.1rem;
-  font-weight: 400;
 }
 
 .usernameForm {
@@ -80,13 +89,18 @@
 }
 
 .inputGroup label {
+  font-family: 'Quicksand', sans-serif;
+  /* Normal text */
+  font-weight: 500;
   display: block;
   margin-bottom: 0.5rem;
-  font-weight: 500;
   color: rgba(255, 255, 255, 0.9);
 }
 
 .inputGroup input {
+  font-family: 'Quicksand', sans-serif;
+  /* Normal text */
+  font-weight: 400;
   width: 100%;
   padding: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -98,6 +112,9 @@
 }
 
 .inputGroup input::placeholder {
+  font-family: 'Quicksand', sans-serif;
+  /* Normal text */
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.5);
   transition: opacity 0.3s ease;
 }
@@ -113,6 +130,9 @@
 }
 
 .inputGroup small {
+  font-family: 'Jura', sans-serif;
+  /* Extra random text */
+  font-weight: 300;
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.85rem;
   display: block;
@@ -172,12 +192,14 @@
 }
 
 .primaryButton {
+  font-family: 'Orbitron', sans-serif;
+  /* Button font */
+  font-weight: 500;
   background: linear-gradient(135deg, #7928ca 0%, #ff0080 100%);
   color: #FFFFFF;
   padding: 16px 32px;
   border-radius: 12px;
   text-decoration: none;
-  font-weight: 600;
   font-size: 1.1rem;
   display: inline-flex;
   align-items: center;

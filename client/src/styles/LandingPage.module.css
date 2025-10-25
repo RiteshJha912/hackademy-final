@@ -1,9 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Changa:wght@600&family=Orbitron:wght@400&family=Quicksand:wght@300;500;600;700&display=swap');
 
 .landingPage {
   min-height: 100vh;
   color: rgba(255, 255, 255, 0.9);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  /* Normal text */
   position: relative;
   overflow-x: hidden;
 }
@@ -38,6 +40,7 @@
   font-size: 14px;
   color: #ffffff;
   font-weight: 500;
+  /* Normal text */
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 15px rgba(120, 40, 200, 0.2);
 }
@@ -48,8 +51,10 @@
 }
 
 .mainTitle {
+  font-family: 'Changa', sans-serif;
+  font-weight: 600;
+  /* Main Header */
   font-size: clamp(2.5rem, 8vw, 5rem);
-  font-weight: 700;
   margin-bottom: 20px;
   line-height: 1.1;
   min-height: 1.2em;
@@ -75,8 +80,8 @@
 }
 
 .gradientText {
-background: linear-gradient(135deg, #8b5cf6 0%, #5b21b6 50%, #3b82f6 100%);  
--webkit-background-clip: text;
+  background: linear-gradient(135deg, #8b5cf6 0%, #5b21b6 50%, #3b82f6 100%);
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   background-size: 200% auto;
@@ -95,6 +100,8 @@ background: linear-gradient(135deg, #8b5cf6 0%, #5b21b6 50%, #3b82f6 100%);
   max-width: 700px;
   margin: 0 auto 40px;
   line-height: 1.6;
+  font-weight: 500;
+  /* Normal text */
 }
 
 .buttonGroup {
@@ -107,11 +114,13 @@ background: linear-gradient(135deg, #8b5cf6 0%, #5b21b6 50%, #3b82f6 100%);
 
 .primaryButton {
   background: linear-gradient(135deg, #7928ca 0%, #ff0080 100%);
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 16px 32px;
   border-radius: 12px;
   text-decoration: none;
-  font-weight: 600;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  /* Button text */
   font-size: 1.1rem;
   display: inline-flex;
   align-items: center;
@@ -144,11 +153,13 @@ background: linear-gradient(135deg, #8b5cf6 0%, #5b21b6 50%, #3b82f6 100%);
 
 .secondaryButton {
   background: rgba(255, 255, 255, 0.08);
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 16px 32px;
   border-radius: 12px;
   text-decoration: none;
-  font-weight: 600;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  /* Button text */
   font-size: 1.1rem;
   display: inline-flex;
   align-items: center;
@@ -196,7 +207,9 @@ background: linear-gradient(135deg, #8b5cf6 0%, #5b21b6 50%, #3b82f6 100%);
 
 .statValue {
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 600;
+  /* Header style */
+  font-family: 'Quicksand', sans-serif;
   margin-bottom: 5px;
   background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
   -webkit-background-clip: text;
@@ -207,6 +220,8 @@ background: linear-gradient(135deg, #8b5cf6 0%, #5b21b6 50%, #3b82f6 100%);
 .statLabel {
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.9rem;
+  font-weight: 500;
+  /* Normal text */
 }
 
 /* Mission Section */
@@ -234,17 +249,19 @@ background: linear-gradient(135deg, #8b5cf6 0%, #5b21b6 50%, #3b82f6 100%);
 
 .missionCard:hover {
   border-color: rgba(167, 139, 250, 0.4);
-  box-shadow: 0 12px 40px rgba(120, 40, 200, 0.3);
+  box-shadow: 0 12px 40px rgba(120, 40, 202, 0.3);
 }
 
 .sectionTitle {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  /* Other headers */
   font-size: 2.5rem;
   margin-bottom: 20px;
   background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-weight: 700;
 }
 
 .missionText {
@@ -252,6 +269,8 @@ background: linear-gradient(135deg, #8b5cf6 0%, #5b21b6 50%, #3b82f6 100%);
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.85);
   text-align: justify;
+  font-weight: 500;
+  /* Normal text */
 }
 
 .missionVisual {
@@ -274,6 +293,8 @@ background: linear-gradient(135deg, #8b5cf6 0%, #5b21b6 50%, #3b82f6 100%);
   margin-top: 20px;
   font-size: 1.2rem;
   font-weight: 600;
+  /* Header style */
+  font-family: 'Quicksand', sans-serif;
   background: linear-gradient(135deg, #a78bfa 0%, #06b6d4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -301,6 +322,8 @@ background: linear-gradient(135deg, #8b5cf6 0%, #5b21b6 50%, #3b82f6 100%);
   max-width: 800px;
   margin: 0 auto 50px;
   line-height: 1.6;
+  font-weight: 500;
+  /* Normal text */
 }
 
 .stepsGrid {
@@ -339,7 +362,9 @@ background: linear-gradient(135deg, #8b5cf6 0%, #5b21b6 50%, #3b82f6 100%);
   justify-content: center;
   margin-bottom: 20px;
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 600;
+  /* Header style */
+  font-family: 'Quicksand', sans-serif;
   box-shadow: 0 4px 15px rgba(121, 40, 202, 0.4);
 }
 
@@ -349,16 +374,20 @@ background: linear-gradient(135deg, #8b5cf6 0%, #5b21b6 50%, #3b82f6 100%);
 }
 
 .stepTitle {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  /* Other headers */
   font-size: 1.5rem;
   margin-bottom: 15px;
   color: rgba(255, 255, 255, 0.9);
-  font-weight: 600;
 }
 
 .stepDescription {
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.6;
   flex-grow: 1;
+  font-weight: 500;
+  /* Normal text */
 }
 
 /* Features Section */
@@ -368,13 +397,15 @@ background: linear-gradient(135deg, #8b5cf6 0%, #5b21b6 50%, #3b82f6 100%);
 }
 
 .featuresTitle {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  /* Other headers */
   font-size: 2rem;
   margin-bottom: 40px;
   background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-weight: 700;
 }
 
 .featuresGrid {
@@ -408,16 +439,20 @@ background: linear-gradient(135deg, #8b5cf6 0%, #5b21b6 50%, #3b82f6 100%);
 }
 
 .featureTitle {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  /* Other headers */
   font-size: 1.3rem;
   margin-bottom: 12px;
   color: rgba(255, 255, 255, 0.95);
-  font-weight: 600;
 }
 
 .featureDescription {
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.6;
   font-size: 0.95rem;
+  font-weight: 500;
+  /* Normal text */
 }
 
 /* Footer */
@@ -429,6 +464,8 @@ background: linear-gradient(135deg, #8b5cf6 0%, #5b21b6 50%, #3b82f6 100%);
   font-size: 0.9rem;
   position: relative;
   z-index: 1;
+  font-weight: 500;
+  /* Normal text */
 }
 
 /* Responsive Design */

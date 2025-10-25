@@ -40,8 +40,8 @@ const LandingPage = () => {
     }, 150)
 
     return () => clearInterval(timer)
-  }, [])
-
+  }, [words.length])
+  
   return (
     <div className={styles.landingPage}>
       <div className={styles.heroContainer}>
@@ -65,8 +65,10 @@ const LandingPage = () => {
                   word
                 )}
               </span>
-              {index === 1 && <br />}
-              {index < words.length - 1 && ' '}
+              {index === 1 && <br />}{' '}
+              {/* Existing line break after 'Cybersecurity' */}
+              {index === 5 && <br />} {/* New line break after 'for' */}
+              {index < words.length - 1 && ' '} {/* Space between words */}
             </React.Fragment>
           ))}
         </h1>
@@ -204,7 +206,7 @@ const LandingPage = () => {
       </div>
 
       <div className={styles.footer}>
-        <p>© 2025 H4ck4demy. All rights reserved.</p>
+        <p>© 2025 H4CK4DEMY. All rights reserved.</p>
       </div>
     </div>
   )
