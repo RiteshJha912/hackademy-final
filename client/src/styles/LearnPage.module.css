@@ -188,7 +188,7 @@
   align-items: center;
   gap: 8px;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 30px rgba(121, 40, 202, 0.4);
+  /* box-shadow: 0 8px 30px rgba(121, 40, 202, 0.4); */
   position: relative;
   overflow: hidden;
 }
@@ -210,7 +210,7 @@
 
 .testKnowledgeButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(121, 40, 202, 0.6);
+  /* box-shadow: 0 12px 40px rgba(121, 40, 202, 0.6); */
 }
 
 .buttonIcon {

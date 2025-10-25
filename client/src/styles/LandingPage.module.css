@@ -5,7 +5,6 @@
   color: rgba(255, 255, 255, 0.9);
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  /* Normal text */
   position: relative;
   overflow-x: hidden;
 }
@@ -40,7 +39,6 @@
   font-size: 14px;
   color: #ffffff;
   font-weight: 500;
-  /* Normal text */
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 15px rgba(120, 40, 200, 0.2);
 }
@@ -53,7 +51,6 @@
 .mainTitle {
   font-family: 'Changa', sans-serif;
   font-weight: 600;
-  /* Main Header */
   font-size: clamp(2.5rem, 8vw, 5rem);
   margin-bottom: 20px;
   line-height: 1.1;
@@ -101,7 +98,6 @@
   margin: 0 auto 40px;
   line-height: 1.6;
   font-weight: 500;
-  /* Normal text */
 }
 
 .buttonGroup {
@@ -120,13 +116,11 @@
   text-decoration: none;
   font-family: 'Orbitron', sans-serif;
   font-weight: 500;
-  /* Button text */
   font-size: 1.1rem;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 30px rgba(121, 40, 202, 0.4);
   position: relative;
   overflow: hidden;
 }
@@ -148,7 +142,6 @@
 
 .primaryButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(121, 40, 202, 0.6);
 }
 
 .secondaryButton {
@@ -159,7 +152,6 @@
   text-decoration: none;
   font-family: 'Orbitron', sans-serif;
   font-weight: 500;
-  /* Button text */
   font-size: 1.1rem;
   display: inline-flex;
   align-items: center;
@@ -167,6 +159,8 @@
   border: 1px solid rgba(167, 139, 250, 0.3);
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  cursor: pointer;
+  /* Added to ensure button-like behavior */
 }
 
 .secondaryButton:hover {
@@ -208,7 +202,6 @@
 .statValue {
   font-size: 2rem;
   font-weight: 600;
-  /* Header style */
   font-family: 'Quicksand', sans-serif;
   margin-bottom: 5px;
   background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
@@ -221,7 +214,6 @@
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.9rem;
   font-weight: 500;
-  /* Normal text */
 }
 
 /* Mission Section */
@@ -255,7 +247,6 @@
 .sectionTitle {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  /* Other headers */
   font-size: 2.5rem;
   margin-bottom: 20px;
   background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
@@ -270,7 +261,6 @@
   color: rgba(255, 255, 255, 0.85);
   text-align: justify;
   font-weight: 500;
-  /* Normal text */
 }
 
 .missionVisual {
@@ -293,7 +283,6 @@
   margin-top: 20px;
   font-size: 1.2rem;
   font-weight: 600;
-  /* Header style */
   font-family: 'Quicksand', sans-serif;
   background: linear-gradient(135deg, #a78bfa 0%, #06b6d4 100%);
   -webkit-background-clip: text;
@@ -323,7 +312,6 @@
   margin: 0 auto 50px;
   line-height: 1.6;
   font-weight: 500;
-  /* Normal text */
 }
 
 .stepsGrid {
@@ -363,7 +351,6 @@
   margin-bottom: 20px;
   font-size: 1.5rem;
   font-weight: 600;
-  /* Header style */
   font-family: 'Quicksand', sans-serif;
   box-shadow: 0 4px 15px rgba(121, 40, 202, 0.4);
 }
@@ -376,7 +363,6 @@
 .stepTitle {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  /* Other headers */
   font-size: 1.5rem;
   margin-bottom: 15px;
   color: rgba(255, 255, 255, 0.9);
@@ -387,10 +373,8 @@
   line-height: 1.6;
   flex-grow: 1;
   font-weight: 500;
-  /* Normal text */
 }
 
-/* Features Section */
 .featuresSection {
   margin-top: 80px;
   text-align: center;
@@ -399,7 +383,6 @@
 .featuresTitle {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  /* Other headers */
   font-size: 2rem;
   margin-bottom: 40px;
   background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
@@ -441,7 +424,6 @@
 .featureTitle {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-  /* Other headers */
   font-size: 1.3rem;
   margin-bottom: 12px;
   color: rgba(255, 255, 255, 0.95);
@@ -452,10 +434,8 @@
   line-height: 1.6;
   font-size: 0.95rem;
   font-weight: 500;
-  /* Normal text */
 }
 
-/* Footer */
 .footer {
   border-top: 1px solid rgba(167, 139, 250, 0.2);
   padding: 40px 20px;
@@ -465,7 +445,6 @@
   position: relative;
   z-index: 1;
   font-weight: 500;
-  /* Normal text */
 }
 
 /* Responsive Design */

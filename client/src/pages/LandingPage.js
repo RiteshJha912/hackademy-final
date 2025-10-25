@@ -41,7 +41,17 @@ const LandingPage = () => {
 
     return () => clearInterval(timer)
   }, [words.length])
-  
+
+  // function to handle smooth scrolling to How It Works section
+  const scrollToHowItWorks = () => {
+    const howItWorksSection = document.querySelector(
+      `.${styles.howItWorksSection}`
+    )
+    if (howItWorksSection) {
+      howItWorksSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <div className={styles.landingPage}>
       <div className={styles.heroContainer}>
@@ -84,9 +94,12 @@ const LandingPage = () => {
           <Link to='/username' className={styles.primaryButton}>
             Start Learning <ArrowRight size={20} />
           </Link>
-          <Link to='/learn' className={styles.secondaryButton}>
-            <BookOpen size={20} /> Learn More
-          </Link>
+          <button
+            onClick={scrollToHowItWorks}
+            className={styles.secondaryButton}
+          >
+            <BookOpen size={20} /> Know More
+          </button>
         </div>
 
         <div className={styles.statsGrid}>

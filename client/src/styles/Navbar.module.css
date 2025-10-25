@@ -76,12 +76,10 @@
   color: rgba(255, 255, 255, 0.95);
   font-size: 1rem;
   font-weight: 400;
-  /* Belanosima has a single weight, typically regular */
   padding: 0.6rem 1.2rem;
   border-radius: 8px;
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
   font-family: 'Belanosima', sans-serif;
-  /* Applied to Home, Learn, Play, Leaderboard */
 }
 
 .navLink:hover,
@@ -216,7 +214,6 @@
     padding: 0.8rem 1rem;
     font-size: 1.1rem;
     font-family: 'Belanosima', sans-serif;
-    /* Ensure consistency in mobile view */
   }
 
   .userInfo {
