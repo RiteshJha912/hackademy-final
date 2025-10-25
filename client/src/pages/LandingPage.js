@@ -122,10 +122,11 @@ const LandingPage = () => {
           <div>
             <h2 className={styles.sectionTitle}>Our Mission</h2>
             <p className={styles.missionText}>
-              Empowering every Indian citizen with essential cybersecurity
-              knowledge through gamification. From password hygiene to safe
-              browsing, we make learning engaging and accessible, creating a
-              digitally secure nation one player at a time.
+              Equipping every Indian with practical skills to recognize and
+              prevent digital threats. Through interactive, gamified lessons on
+              scams, phishing, and fraud tactics, we turn everyday users into
+              vigilant defenders, building a safer digital India, one learner at
+              a time.
             </p>
           </div>
           <div className={styles.missionVisual}>
