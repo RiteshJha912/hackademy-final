@@ -1,12 +1,8 @@
-# H4ck4demy 
+# Hackademy 
 
-> **Making Cybersecurity Fun & Accessible for Everyone**
+A comprehensive cybersecurity education platform that transforms learning into an engaging game experience. Learn about real-world cyber threats through interactive quizzes, detailed scam guides and compete on a global leaderboard.
 
-A comprehensive cybersecurity education platform that transforms learning into an engaging game experience. Learn about real-world cyber threats through interactive quizzes, detailed scam guides, and compete on a global leaderboard.
-
-##  Live Demo
-- **Frontend**: [https://hackademy-in.onrender.com](https://hackademy-in.onrender.com)
-- **Backend API**: [https://hackademy.onrender.com](https://hackademy.onrender.com)
+##  Live Demo : [https://hackademy-in.onrender.com](https://hackademy-in.onrender.com)
 
 ---
 
@@ -32,7 +28,7 @@ A comprehensive cybersecurity education platform that transforms learning into a
 - **No Registration Required** - Just enter a username and start playing
 
 ###  **Modern User Experience**
-- **Responsive Design** - Works perfectly on desktop, tablet, and mobile
+- **Responsive Design** - Works perfectly on desktop, tablet and mobile
 - **Intuitive Navigation** - Clean, user-friendly interface
 - **Fast Performance** - Optimized for quick loading and smooth interactions
 - **Accessibility** - Designed with all users in mind
@@ -171,8 +167,6 @@ JWT_SECRET=your_super_secret_jwt_key_here
 - **mongoose** (^8.18.0) - MongoDB object modeling for Node.js  
 - **cors** (^2.8.5) - Enables cross-origin resource sharing  
 - **dotenv** (^17.2.2) - Loads environment variables from a `.env` file  
-- **bcryptjs** (^3.0.2) - Password hashing library
-- **jsonwebtoken** (^9.0.2) - JWT token generation and verification
 - **colors** (^1.4.0) - Adds colors to console output for better readability  
 
 **Dev Dependencies:**  
