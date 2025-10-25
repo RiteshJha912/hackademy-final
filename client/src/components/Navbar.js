@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import {
-  Shield,
+  ShieldUser,
   Home,
   Gamepad2,
   Trophy,
@@ -34,7 +34,7 @@ const Navbar = ({ currentUser, setUser }) => {
     <nav className={styles.navbar}>
       <div className={styles.navContainer}>
         <Link to='/' className={styles.navLogo}>
-          <Shield className={styles.logoIcon} /> H4CK4DEMY
+          <ShieldUser className={styles.logoIcon} /> Hackademy
         </Link>
 
         <button

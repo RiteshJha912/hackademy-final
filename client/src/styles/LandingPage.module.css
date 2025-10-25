@@ -1,124 +1,512 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 .landingPage {
-  text-align: center;
-  padding: 3rem 1rem;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.heroSection {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.heroTitle {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  color: #8E24AA;
-  font-weight: bold;
-}
-
-.heroSubtitle {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  min-height: 100vh;
   color: rgba(255, 255, 255, 0.9);
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow-x: hidden;
 }
 
-.heroDescription {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  color: rgba(255, 255, 255, 0.8);
+.landingPage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+/* Hero Section */
+.heroContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.badge {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(120, 40, 200, 0.2) 0%, rgba(88, 28, 135, 0.2) 100%);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 30px;
+  padding: 8px 20px;
+  margin-bottom: 30px;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(120, 40, 200, 0.2);
+}
+
+.badgeIcon {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.mainTitle {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.1;
+  min-height: 1.2em;
+}
+
+/* Animated word appearance */
+.animatedWord {
+  display: inline-block;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gradientText {
+background: linear-gradient(135deg, #8b5cf6 0%, #5b21b6 50%, #3b82f6 100%);  
+-webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.mainDescription {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 700px;
+  margin: 0 auto 40px;
   line-height: 1.6;
 }
 
-.heroStats {
+.buttonGroup {
   display: flex;
+  gap: 15px;
   justify-content: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
   flex-wrap: wrap;
+  margin-bottom: 80px;
 }
 
-.statItem {
-  display: flex;
-  flex-direction: column;
+.primaryButton {
+  background: linear-gradient(135deg, #7928ca 0%, #ff0080 100%);
+  color: #FFFFFF;
+  padding: 16px 32px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1rem;
-  background: linear-gradient(135deg, #302A6A, #1A1B3B);
-  border-radius: 8px;
-  min-width: 150px;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 30px rgba(121, 40, 202, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.primaryButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.primaryButton:hover::before {
+  left: 100%;
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(121, 40, 202, 0.6);
+}
+
+.secondaryButton {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  padding: 16px 32px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.secondaryButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(167, 139, 250, 0.5);
+}
+
+/* Stats Grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.statCard {
+  background: linear-gradient(135deg, rgba(88, 28, 135, 0.4) 0%, rgba(15, 12, 41, 0.6) 100%);
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.statCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(167, 139, 250, 0.4);
+  box-shadow: 0 8px 30px rgba(120, 40, 200, 0.3);
 }
 
 .statIcon {
-  width: 2rem;
-  height: 2rem;
-  color: #8E24AA;
+  color: #a78bfa;
+  margin-bottom: 15px;
 }
 
-.titleIcon {
-  width: 2.5rem;
-  height: 2.5rem;
-  vertical-align: middle;
-  margin-right: 0.5rem;
-  color: #8E24AA;
+.statValue {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.buttonIcon {
-  width: 1.2rem;
-  height: 1.2rem;
-  vertical-align: middle;
-  margin-right: 0.5rem;
-}
-
-.statText {
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 500;
-}
-
-.ctaButton {
-  display: inline-block;
-  background: linear-gradient(135deg, #8E24AA, #302A6A);
-  color: white;
-  padding: 1.2rem 2.5rem;
-  text-decoration: none;
-  border-radius: 12px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  margin-bottom: 1rem;
-  box-shadow: 0 6px 25px rgba(142, 36, 170, 0.4);
-}
-
-.ctaButton:hover {
-  background: linear-gradient(135deg, #302A6A, #8E24AA);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(142, 36, 170, 0.6);
-}
-
-.secondaryActions {
-  margin-top: 1rem;
-}
-
-.secondaryLink {
+.statLabel {
   color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
-  transition: color 0.3s ease;
+  font-size: 0.9rem;
 }
 
-.secondaryLink:hover {
-  color: #8E24AA;
-  text-decoration: underline;
+/* Mission Section */
+.missionSection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  position: relative;
+  z-index: 1;
 }
 
+.missionCard {
+  background: linear-gradient(135deg, rgba(88, 28, 135, 0.3) 0%, rgba(15, 12, 41, 0.5) 100%);
+  border-radius: 24px;
+  padding: 60px 40px;
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.missionCard:hover {
+  border-color: rgba(167, 139, 250, 0.4);
+  box-shadow: 0 12px 40px rgba(120, 40, 200, 0.3);
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.missionText {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: justify;
+}
+
+.missionVisual {
+  text-align: center;
+  padding: 40px;
+}
+
+.flagPlaceholder {
+  width: 100%;
+  max-width: 300px;
+  height: 200px;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  object-fit: cover;
+  border: 1px solid rgba(167, 139, 250, 0.2);
+}
+
+.flagCaption {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #a78bfa 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* How It Works Section */
+.howItWorksSection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.howItWorksSection .sectionTitle {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.howItWorksSubtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 800px;
+  margin: 0 auto 50px;
+  line-height: 1.6;
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.stepCard {
+  background: linear-gradient(135deg, rgba(88, 28, 135, 0.3) 0%, rgba(15, 12, 41, 0.5) 100%);
+  padding: 40px 30px;
+  border-radius: 16px;
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  position: relative;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.stepCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(167, 139, 250, 0.4);
+  box-shadow: 0 8px 30px rgba(120, 40, 200, 0.3);
+}
+
+.stepNumber {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #7928ca 0%, #ff0080 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(121, 40, 202, 0.4);
+}
+
+.stepIcon {
+  color: #a78bfa;
+  margin-bottom: 15px;
+}
+
+.stepTitle {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+.stepDescription {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+/* Features Section */
+.featuresSection {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.featuresTitle {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.featureCard {
+  background: linear-gradient(135deg, rgba(88, 28, 135, 0.25) 0%, rgba(15, 12, 41, 0.4) 100%);
+  padding: 35px 25px;
+  border-radius: 16px;
+  border: 1px solid rgba(167, 139, 250, 0.15);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(167, 139, 250, 0.35);
+  box-shadow: 0 8px 30px rgba(120, 40, 200, 0.25);
+}
+
+.featureIcon {
+  color: #a78bfa;
+  margin: 0 auto 15px;
+  filter: drop-shadow(0 4px 10px rgba(120, 40, 200, 0.3));
+}
+
+.featureTitle {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+}
+
+.featureDescription {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid rgba(167, 139, 250, 0.2);
+  padding: 40px 20px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  .heroTitle {
+  .heroContainer {
+    padding: 60px 20px;
+  }
+
+  .mainTitle {
     font-size: 2.5rem;
   }
-  
-  .heroStats {
+
+  .buttonGroup {
     flex-direction: column;
-    gap: 1rem;
+    align-items: center;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .missionCard {
+    padding: 40px 20px;
+    grid-template-columns: 1fr;
+  }
+
+  .stepsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .featuresTitle {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainTitle {
+    font-size: 2rem;
+  }
+
+  .mainDescription {
+    font-size: 1rem;
+  }
+
+  .badge {
+    font-size: 12px;
+    padding: 6px 16px;
+  }
+
+  .statValue {
+    font-size: 1.5rem;
+  }
+
+  .stepTitle {
+    font-size: 1.2rem;
+  }
+
+  .featureTitle {
+    font-size: 1.1rem;
+  }
+
+  .howItWorksSubtitle {
+    font-size: 1rem;
   }
 }

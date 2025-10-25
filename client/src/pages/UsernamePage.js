@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { userAPI } from '../utils/api'
-import { Key, Zap, Clipboard, Loader } from 'lucide-react'
+import { Key, Loader, Gamepad2 } from 'lucide-react'
 import styles from '../styles/UsernamePage.module.css'
 import commonStyles from '../styles/common.module.css'
 
@@ -54,7 +54,8 @@ const UsernamePage = ({ setUser }) => {
       <div className={styles.formContainer}>
         <div className={styles.formHeader}>
           <h2>
-            <Key className={styles.icon} /> Choose Your Name
+            {/* <Key className={styles.icon} /> */}
+            Choose Your Username
           </h2>
           <p>
             Please pick a simple name. This will be used to track your quiz
@@ -89,7 +90,9 @@ const UsernamePage = ({ setUser }) => {
           <button
             type='submit'
             disabled={loading}
-            className={styles.submitButton}
+            className={`${styles.primaryButton} ${
+              loading ? styles.disabledButton : ''
+            }`}
           >
             {loading ? (
               <>
@@ -97,23 +100,11 @@ const UsernamePage = ({ setUser }) => {
               </>
             ) : (
               <>
-                 Test your knowledge
+                <Gamepad2 className={styles.icon} /> Start Playing
               </>
             )}
           </button>
         </form>
-
-        <div className={styles.infoBox}>
-          <h4>
-            <Clipboard className={styles.icon} /> Tips for Getting Started:
-          </h4>
-          <ul>
-            <li>No technical skills required, just your name.</li>
-            <li>Your progress saves automatically.</li>
-            <li>Test your knowledge at your own page.</li>
-            <li>Answer questions, earn points and feel confident online.</li>
-          </ul>
-        </div>
       </div>
     </div>
   )

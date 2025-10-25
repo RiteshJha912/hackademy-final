@@ -7,6 +7,7 @@ import {
   Smartphone,
   Briefcase,
   Brain,
+  Columns4
 } from 'lucide-react'
 import styles from '../styles/LearnPage.module.css'
 
@@ -41,7 +42,7 @@ const LearnPage = ({ currentUser }) => {
       <div className={styles.articlesGrid}>
         <Link to='/learn/digital-arrest-scam' className={styles.articleCard}>
           <div className={styles.articleContent}>
-            <Shield className={styles.articleIcon} />
+            <Columns4 className={styles.articleIcon} />
             <h2>Digital Arrest Scam</h2>
             <p>
               Scammers pretend to be police or government officials and say you
