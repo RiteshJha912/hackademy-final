@@ -1,10 +1,8 @@
 # H4ck4demy
 
-### This needs a complete restructuring very very soon 
 
 A gamified cybersecurity learning platform built with the MERN stack. Learn cybersecurity concepts through interactive quizzes and compete on a global leaderboard.
 
-needs update in the scoring algorithm and with the story games 
 
 ---
 
@@ -111,17 +109,26 @@ JWT_SECRET=your_super_secret_jwt_key_here
 ## Dependencies
 
 ### Backend
-- **express**: Web framework  
-- **mongoose**: MongoDB ODM  
-- **cors**: Cross-origin resource sharing  
-- **dotenv**: Environment variables  
-- **colors**: Console colors  
-- **nodemon**: Development server (dev dependency)  
+- **express**: Fast, minimalist web framework for Node.js  
+- **mongoose**: MongoDB object modeling for Node.js  
+- **cors**: Enables cross-origin resource sharing  
+- **dotenv**: Loads environment variables from a `.env` file  
+- **colors**: Adds colors to console output for better readability  
+
+**Dev Dependencies:**  
+- **nodemon**: Automatically restarts the server during development  
 
 ### Frontend
-- **react**: UI library  
-- **react-router-dom**: Client-side routing  
-- **axios**: HTTP client for API calls  
+- **react**: Core React library for building user interfaces  
+- **react-dom**: Renders React components to the DOM  
+- **react-router-dom**: Handles client-side routing in React apps  
+- **axios**: HTTP client for making API requests  
+- **chart.js**: Charting library for data visualization  
+- **react-chartjs-2**: React wrapper for Chart.js  
+- **recharts**: Library for creating responsive charts and graphs  
+- **lucide-react**: Icon library for modern UI elements  
+- **react-scripts**: Configuration and scripts for Create React App  
+
 
 
 This will be a good projecttt sooon 

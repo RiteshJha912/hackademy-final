@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import { RefreshCw, Gamepad2, Users } from 'lucide-react'
+import { RefreshCw, Gamepad2 } from 'lucide-react'
 import { Trophy } from 'lucide-react'
 import { userAPI } from '../utils/api'
 import LeaderboardItem from '../components/LeaderboardItem'
@@ -23,32 +23,31 @@ const LeaderboardPage = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
-  // fetches leaderboard and stats data on mount, handling loading and errors
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true)
-      try {
-        const [leaderboardResponse, statsResponse] = await Promise.all([
-          userAPI.getLeaderboard(20),
-          userAPI.getStats(),
-        ])
-        if (leaderboardResponse.success) {
-          setLeaderboard(leaderboardResponse.data)
-        }
-        if (statsResponse.success) {
-          setStats(statsResponse.data)
-        }
-      } catch (error) {
-        setError('Oops! Could not load the leaderboard. Please try again.')
-        console.error(error)
-      } finally {
-        setLoading(false)
-      }
-    }
     fetchData()
   }, [])
 
-  // processes leaderboard data to create a chart of games played per month
+  const fetchData = async () => {
+    setLoading(true)
+    try {
+      const [leaderboardResponse, statsResponse] = await Promise.all([
+        userAPI.getLeaderboard(20),
+        userAPI.getStats(),
+      ])
+      if (leaderboardResponse.success) {
+        setLeaderboard(leaderboardResponse.data)
+      }
+      if (statsResponse.success) {
+        setStats(statsResponse.data)
+      }
+    } catch (error) {
+      setError('Oops! Could not load the leaderboard. Please try again.')
+      console.error(error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   const graphData = useMemo(() => {
     const months = []
     const now = new Date()
@@ -90,7 +89,7 @@ const LeaderboardPage = () => {
       <div className={`${appStyles.pageContainer} ${styles.leaderboardPage}`}>
         <div className={styles.errorContainer}>
           <p className={styles.errorMessage}>{error}</p>
-          <button onClick={() => fetchData()} className={styles.retryButton}>
+          <button onClick={fetchData} className={styles.retryButton}>
             <RefreshCw className={styles.buttonIcon} /> Try Again
           </button>
         </div>
@@ -202,10 +201,7 @@ const LeaderboardPage = () => {
             </div>
             {leaderboard.length >= 20 && (
               <div className={styles.loadMoreContainer}>
-                <button
-                  onClick={() => fetchData()}
-                  className={styles.loadMoreButton}
-                >
+                <button onClick={fetchData} className={styles.loadMoreButton}>
                   <RefreshCw className={styles.buttonIcon} /> Refresh
                   Leaderboard
                 </button>
