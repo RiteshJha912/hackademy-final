@@ -17,7 +17,7 @@ app.use(
   cors({
     origin:
       process.env.NODE_ENV === 'production'
-        ? ['https://your-frontend-domain.vercel.app']
+        ? [process.env.FRONTEND_URL] // Use environment variable
         : ['http://localhost:3000'],
     credentials: true,
   })

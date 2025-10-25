@@ -1,10 +1,10 @@
 import axios from 'axios'
 
 // Base URL for API calls
-const API_BASE_URL =
-  process.env.NODE_ENV === 'production'
-    ? 'https://your-backend-url.render.com'
-    : 'http://localhost:5000'
+   const API_BASE_URL =
+     process.env.NODE_ENV === 'production'
+       ? process.env.REACT_APP_BACKEND_URL  // This will use the environment variable
+       : 'http://localhost:5000'
 
 const api = axios.create({
   baseURL: API_BASE_URL,
