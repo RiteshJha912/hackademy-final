@@ -141,7 +141,7 @@ Create a `.env` file in the `server/` directory with the following variables:
 PORT=5000
 MONGODB_URI=your_mongodb_connection_string_here
 NODE_ENV=development
-JWT_SECRET=your_super_secret_jwt_key_here
+
 ```
 
 
