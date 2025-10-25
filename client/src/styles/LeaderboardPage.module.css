@@ -5,7 +5,6 @@
   margin: 2.5rem auto;
   padding: 0 1.5rem;
   font-family: 'Quicksand', sans-serif;
-  /* Normal text */
   font-weight: 400;
 }
 
@@ -19,7 +18,6 @@
 
 .leaderboardHeader h2 {
   font-family: 'Quicksand', sans-serif;
-  /* Header */
   font-weight: 600;
   color: #8E24AA;
   margin-bottom: 0.75rem;
@@ -38,7 +36,6 @@
 
 .leaderboardHeader p {
   font-family: 'Quicksand', sans-serif;
-  /* Normal text */
   font-weight: 400;
   color: rgba(255, 255, 255, 0.9);
   font-size: 1.15rem;
@@ -61,7 +58,6 @@
 
 .graphTitle {
   font-family: 'Quicksand', sans-serif;
-  /* Header */
   font-weight: 600;
   text-align: center;
   color: #a855f7;
@@ -92,7 +88,6 @@
 
 .statNumber {
   font-family: 'Quicksand', sans-serif;
-  /* Normal text */
   font-weight: 500;
   display: block;
   font-size: 2rem;
@@ -102,7 +97,6 @@
 
 .statLabel {
   font-family: 'Quicksand', sans-serif;
-  /* Normal text */
   font-weight: 400;
   color: rgba(255, 255, 255, 0.8);
   font-size: 1rem;
@@ -164,26 +158,26 @@
 
 .podiumMedal {
   font-family: 'Jura', sans-serif;
-  /* Extra text */
   font-weight: 300;
   position: relative;
   z-index: 2;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .podiumName {
   font-family: 'Quicksand', sans-serif;
-  /* Normal text */
   font-weight: 500;
   position: relative;
   z-index: 2;
   color: rgba(255, 255, 255, 0.95);
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
+  word-break: break-word;
 }
 
 .podiumScore {
   font-family: 'Quicksand', sans-serif;
-  /* Normal text */
   font-weight: 500;
   position: relative;
   z-index: 2;
@@ -239,7 +233,6 @@
 
 .emptyLeaderboard {
   font-family: 'Quicksand', sans-serif;
-  /* Normal text */
   font-weight: 400;
   padding: 3rem;
   text-align: center;
@@ -266,7 +259,6 @@
 .loadMoreButton,
 .retryButton {
   font-family: 'Orbitron', sans-serif;
-  /* Button */
   font-weight: 500;
   background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(168, 85, 247, 0.05) 100%);
   color: #a855f7;
@@ -323,7 +315,6 @@
 
 .loadingContainer p {
   font-family: 'Quicksand', sans-serif;
-  /* Normal text */
   font-weight: 400;
   color: rgba(255, 255, 255, 0.9);
   margin-top: 1.25rem;
@@ -339,7 +330,6 @@
 
 .errorMessage {
   font-family: 'Jura', sans-serif;
-  /* Extra text */
   font-weight: 300;
   background: rgba(239, 68, 68, 0.15);
   color: #f87171;
@@ -349,4 +339,236 @@
   margin-bottom: 2rem;
   display: inline-block;
   font-size: 1.05rem;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .leaderboardPage {
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+  }
+
+  .leaderboardHeader {
+    margin-bottom: 2rem;
+    padding: 1.25rem 1rem;
+  }
+
+  .leaderboardHeader h2 {
+    font-size: 1.75rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .headerIcon {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .leaderboardHeader p {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .graphContainer {
+    padding: 1.25rem 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .graphTitle {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .statsContainer {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .statCard {
+    padding: 1.25rem;
+  }
+
+  .statNumber {
+    font-size: 1.75rem;
+  }
+
+  .statLabel {
+    font-size: 0.95rem;
+  }
+
+  .podiumContainer {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+    margin-bottom: 2rem;
+    align-items: stretch;
+  }
+
+  .podiumItem {
+    min-width: auto;
+    width: 100%;
+    padding: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .podiumMedal {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+
+  .podiumName {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+    flex: 1;
+    text-align: left;
+    padding: 0 1rem;
+  }
+
+  .podiumScore {
+    font-size: 1.2rem;
+  }
+
+  .emptyLeaderboard {
+    padding: 2rem 1rem;
+    font-size: 1rem;
+  }
+
+  .emptyIcon {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .loadMoreContainer {
+    padding: 1.5rem;
+  }
+
+  .loadMoreButton,
+  .retryButton {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .buttonIcon {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .loadingContainer,
+  .errorContainer {
+    padding: 3rem 1.5rem;
+  }
+
+  .loadingContainer p {
+    font-size: 1rem;
+  }
+
+  .errorMessage {
+    font-size: 0.95rem;
+    padding: 1rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .leaderboardPage {
+    margin: 1rem auto;
+    padding: 0 0.75rem;
+  }
+
+  .leaderboardHeader {
+    padding: 1rem 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .leaderboardHeader h2 {
+    font-size: 1.5rem;
+  }
+
+  .headerIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .leaderboardHeader p {
+    font-size: 0.9rem;
+  }
+
+  .graphContainer {
+    padding: 1rem 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .graphTitle {
+    font-size: 1.1rem;
+  }
+
+  .statsContainer {
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .statCard {
+    padding: 1rem;
+  }
+
+  .statNumber {
+    font-size: 1.5rem;
+  }
+
+  .statLabel {
+    font-size: 0.85rem;
+  }
+
+  .podiumContainer {
+    padding: 1rem 0.75rem;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .podiumItem {
+    padding: 1rem;
+  }
+
+  .podiumMedal {
+    font-size: 1.75rem;
+  }
+
+  .podiumName {
+    font-size: 1rem;
+    padding: 0 0.75rem;
+  }
+
+  .podiumScore {
+    font-size: 1.1rem;
+  }
+
+  .emptyLeaderboard {
+    padding: 1.5rem 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .loadMoreContainer {
+    padding: 1.25rem;
+  }
+
+  .loadMoreButton,
+  .retryButton {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .loadingContainer,
+  .errorContainer {
+    padding: 2.5rem 1rem;
+  }
+
+  .loadingSpinner {
+    width: 40px;
+    height: 40px;
+    border-width: 4px;
+  }
 }

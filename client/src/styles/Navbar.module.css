@@ -17,6 +17,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .navLogo {
@@ -30,6 +31,8 @@
   transition: all 0.3s ease;
   position: relative;
   font-family: 'Bitcount Grid Single', sans-serif;
+  white-space: nowrap;
+  z-index: 1002;
 }
 
 .navLogo:hover {
@@ -46,6 +49,7 @@
   width: 1.6rem;
   height: 1.6rem;
   color: #a855f7;
+  flex-shrink: 0;
 }
 
 .navIcon {
@@ -54,6 +58,7 @@
   vertical-align: middle;
   margin-right: 0.4rem;
   color: rgba(255, 255, 255, 0.9);
+  flex-shrink: 0;
 }
 
 .userIcon {
@@ -61,6 +66,7 @@
   height: 1.2rem;
   color: #a855f7;
   margin-right: 0.5rem;
+  flex-shrink: 0;
 }
 
 .navMenu {
@@ -80,6 +86,9 @@
   border-radius: 8px;
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
   font-family: 'Belanosima', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
 }
 
 .navLink:hover,
@@ -116,6 +125,7 @@
   display: flex;
   align-items: center;
   font-family: 'Bitcount Grid Single', sans-serif;
+  white-space: nowrap;
 }
 
 .logoutButton {
@@ -129,6 +139,9 @@
   font-weight: 500;
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
   font-family: 'Belanosima', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
 }
 
 .logoutButton:hover {
@@ -142,107 +155,252 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0.6rem;
+  padding: 0.5rem;
   color: rgba(255, 255, 255, 0.95);
   transition: color 0.2s ease;
+  z-index: 1002;
+  flex-shrink: 0;
 }
 
 .hamburger:hover {
   color: #a855f7;
 }
 
-@media (max-width: 768px) {
+/* Tablet responsiveness */
+@media (max-width: 992px) {
   .navContainer {
-    flex-direction: row;
-    align-items: center;
+    padding: 0 1.25rem;
+  }
+
+  .navMenu {
+    gap: 1rem;
+  }
+
+  .navLink {
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .navLogo {
+    font-size: 1.4rem;
+  }
+
+  .logoIcon {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.75rem 0;
+  }
+
+  .navContainer {
+    flex-wrap: nowrap;
     padding: 0 1rem;
+    gap: 1rem;
+  }
+
+  .navLogo {
+    font-size: 1.3rem;
+    gap: 0.4rem;
+  }
+
+  .logoIcon {
+    width: 1.3rem;
+    height: 1.3rem;
   }
 
   .hamburger {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .navMenu {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     width: 100%;
     background: linear-gradient(135deg, #2a2a4a, #1c1c2e);
     position: absolute;
     top: 100%;
     left: 0;
-    padding: 1rem 1.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     z-index: 1000;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    opacity: 0;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   .navMenu.navMenuOpen {
-    max-height: 500px;
-    opacity: 1;
-  }
-
-  .navLink,
-  .userInfo {
-    width: 100%;
-    margin-bottom: 0.75rem;
-    opacity: 0;
-    animation: fadeIn 0.3s ease forwards;
-    animation-delay: 0.1s;
-  }
-
-  .navLink:nth-child(2) {
-    animation-delay: 0.15s;
-  }
-
-  .navLink:nth-child(3) {
-    animation-delay: 0.2s;
-  }
-
-  .navLink:nth-child(4) {
-    animation-delay: 0.25s;
-  }
-
-  .userInfo {
-    animation-delay: 0.3s;
+    max-height: 600px;
+    padding: 1rem 0;
   }
 
   .navLink {
-    padding: 0.8rem 1rem;
-    font-size: 1.1rem;
-    font-family: 'Belanosima', sans-serif;
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: background 0.2s ease, color 0.2s ease, opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .navMenuOpen .navLink {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .navMenuOpen .navLink:nth-child(1) {
+    transition-delay: 0.05s;
+  }
+
+  .navMenuOpen .navLink:nth-child(2) {
+    transition-delay: 0.1s;
+  }
+
+  .navMenuOpen .navLink:nth-child(3) {
+    transition-delay: 0.15s;
+  }
+
+  .navMenuOpen .navLink:nth-child(4) {
+    transition-delay: 0.2s;
+  }
+
+  .navLink:hover {
+    background: rgba(168, 85, 247, 0.15);
+    transform: translateY(0) translateX(5px);
+  }
+
+  .navLink.active {
+    background: rgba(168, 85, 247, 0.2);
+    border-left: 3px solid #a855f7;
   }
 
   .userInfo {
+    width: 100%;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 0.5rem;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .navMenuOpen .userInfo {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.25s;
   }
 
   .usernameWrapper {
     width: 100%;
-    padding: 0.8rem 1rem;
-    font-family: 'Bitcount Grid Single', sans-serif;
+    padding: 0.75rem 1rem;
+    justify-content: flex-start;
+  }
+
+  .username {
+    font-size: 0.95rem;
   }
 
   .logoutButton {
     width: 100%;
     text-align: left;
-    padding: 0.8rem 1rem;
-    font-family: 'Bitcount Grid Single', sans-serif;
+    padding: 0.75rem 1rem;
+    justify-content: flex-start;
   }
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
+  .navIcon {
+    width: 1.15rem;
+    height: 1.15rem;
+    margin-right: 0.6rem;
+  }
 
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .userIcon {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .navContainer {
+    padding: 0 0.75rem;
+  }
+
+  .navLogo {
+    font-size: 1.15rem;
+    gap: 0.35rem;
+  }
+
+  .logoIcon {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+
+  .hamburger {
+    padding: 0.4rem;
+  }
+
+  .navLink {
+    padding: 0.85rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .userInfo {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .usernameWrapper,
+  .logoutButton {
+    padding: 0.7rem 0.9rem;
+  }
+
+  .username {
+    font-size: 0.9rem;
+  }
+
+  .navIcon {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-right: 0.5rem;
+  }
+
+  .userIcon {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .navLogo {
+    font-size: 1.05rem;
+  }
+
+  .logoIcon {
+    width: 1.05rem;
+    height: 1.05rem;
+  }
+
+  .navLink {
+    font-size: 0.9rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .userInfo {
+    padding: 0.65rem 1rem;
   }
 }

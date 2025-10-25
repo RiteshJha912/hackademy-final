@@ -28,6 +28,7 @@
   width: 2.2rem;
   height: 2.2rem;
   color: #8E24AA;
+  flex-shrink: 0;
 }
 
 .heroDescription {
@@ -37,6 +38,7 @@
   color: rgba(255, 255, 255, 0.85);
   max-width: 700px;
   margin: 0 auto;
+  line-height: 1.6;
 }
 
 .articlesGrid {
@@ -73,6 +75,7 @@
   height: 2.5rem;
   color: #8E24AA;
   margin-bottom: 1rem;
+  flex-shrink: 0;
 }
 
 .articleContent h2 {
@@ -112,6 +115,7 @@
   align-items: center;
   gap: 1rem;
   flex: 1;
+  min-width: 0;
 }
 
 .pulse {
@@ -121,6 +125,7 @@
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(248, 113, 113, 0.6);
   animation: pulse 1.5s ease-in-out infinite;
+  flex-shrink: 0;
 }
 
 @keyframes pulse {
@@ -149,6 +154,7 @@
   white-space: nowrap;
   flex: 1;
   position: relative;
+  min-width: 0;
 }
 
 .ticker {
@@ -156,7 +162,6 @@
   white-space: nowrap;
   animation: ticker 20s linear infinite;
   padding-left: 100%;
-  /* Start from the right edge */
 }
 
 @keyframes ticker {
@@ -188,7 +193,6 @@
   align-items: center;
   gap: 8px;
   transition: all 0.3s ease;
-  /* box-shadow: 0 8px 30px rgba(121, 40, 202, 0.4); */
   position: relative;
   overflow: hidden;
 }
@@ -210,11 +214,153 @@
 
 .testKnowledgeButton:hover {
   transform: translateY(-2px);
-  /* box-shadow: 0 12px 40px rgba(121, 40, 202, 0.6); */
 }
 
 .buttonIcon {
   width: 1.2rem;
   height: 1.2rem;
   color: rgba(255, 255, 255, 0.95);
+  flex-shrink: 0;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .learnPage {
+    padding: 1rem;
+  }
+
+  .heroSection {
+    margin-bottom: 2rem;
+  }
+
+  .heroTitle {
+    font-size: 1.6rem;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .titleIcon {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .heroDescription {
+    font-size: 0.95rem;
+    padding: 0 0.5rem;
+  }
+
+  .updateWrapper {
+    padding: 0 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .updateBanner {
+    padding: 0.6rem 1rem;
+  }
+
+  .updateLeft {
+    gap: 0.75rem;
+  }
+
+  .updateMessage {
+    font-size: 0.85rem;
+  }
+
+  .articlesGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding: 0.5rem;
+  }
+
+  .articleCard {
+    padding: 1.5rem;
+  }
+
+  .articleIcon {
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .articleContent h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .articleContent p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .ctaContainer {
+    margin-top: 2rem;
+    padding: 0.5rem;
+  }
+
+  .testKnowledgeButton {
+    padding: 14px 24px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+
+  .buttonIcon {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .learnPage {
+    padding: 0.75rem;
+  }
+
+  .heroTitle {
+    font-size: 1.4rem;
+  }
+
+  .titleIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .heroDescription {
+    font-size: 0.9rem;
+  }
+
+  .updateBanner {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .updateMessage {
+    font-size: 0.8rem;
+  }
+
+  .articlesGrid {
+    gap: 1rem;
+    padding: 0.25rem;
+  }
+
+  .articleCard {
+    padding: 1.25rem;
+  }
+
+  .articleIcon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .articleContent h2 {
+    font-size: 1.1rem;
+  }
+
+  .articleContent p {
+    font-size: 0.85rem;
+  }
+
+  .testKnowledgeButton {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
 }

@@ -4,11 +4,9 @@
   max-width: 800px;
   margin: 2rem auto;
   padding: 0 1rem;
-  /* ensure consistent spacing with other pages */
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   font-family: 'Quicksand', sans-serif;
-  /* Normal text */
   font-weight: 400;
 }
 
@@ -25,7 +23,6 @@
   color: white;
   padding: 1.5rem;
   font-family: 'Quicksand', sans-serif;
-  /* Header */
   font-weight: 600;
 }
 
@@ -34,7 +31,6 @@
   justify-content: space-between;
   margin-bottom: 1rem;
   font-weight: 600;
-  /* Use Quicksand bold for headers */
   font-size: 1.1rem;
   font-family: 'Quicksand', sans-serif;
 }
@@ -65,14 +61,12 @@
   color: white;
   line-height: 1.6;
   font-family: 'Quicksand', sans-serif;
-  /* Header */
   font-weight: 600;
 }
 
 .questionPoints {
   color: #8E24AA;
   font-weight: 400;
-  /* Normal text */
   font-size: 1.1rem;
   font-family: 'Quicksand', sans-serif;
 }
@@ -95,7 +89,6 @@
   text-align: left;
   color: white;
   font-family: 'Orbitron', sans-serif;
-  /* Button */
   font-weight: 500;
 }
 
@@ -130,14 +123,12 @@
   margin-right: 1rem;
   flex-shrink: 0;
   font-family: 'Orbitron', sans-serif;
-  /* Button */
 }
 
 .optionText {
   flex: 1;
   font-size: 1rem;
   font-family: 'Quicksand', sans-serif;
-  /* Normal text */
   font-weight: 400;
 }
 
@@ -159,7 +150,6 @@
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
   font-family: 'Orbitron', sans-serif;
-  /* Button */
 }
 
 .nextButton:hover:not(:disabled) {
@@ -184,7 +174,6 @@
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.1);
   font-family: 'Quicksand', sans-serif;
-  /* Normal text */
   font-weight: 400;
 }
 
@@ -193,7 +182,6 @@
   margin-bottom: 2rem;
   font-size: 2.5rem;
   font-family: 'Quicksand', sans-serif;
-  /* Header */
   font-weight: 600;
 }
 
@@ -213,7 +201,6 @@
   color: #8E24AA;
   display: inline-block;
   font-family: 'Jura', sans-serif;
-  /* Extra random text */
   font-weight: 300;
 }
 
@@ -226,7 +213,6 @@
   display: inline-block;
   animation: spin 1s linear infinite;
   font-family: 'Jura', sans-serif;
-  /* Extra random text */
   font-weight: 300;
 }
 
@@ -260,7 +246,6 @@
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.8);
   font-family: 'Quicksand', sans-serif;
-  /* Normal text */
   font-weight: 400;
 }
 
@@ -269,7 +254,6 @@
   font-weight: 600;
   color: #8E24AA;
   font-family: 'Quicksand', sans-serif;
-  /* Header */
 }
 
 .scorePercentage {
@@ -277,7 +261,6 @@
   color: #27ae60;
   font-weight: 600;
   font-family: 'Quicksand', sans-serif;
-  /* Header */
 }
 
 .resultMessage {
@@ -288,7 +271,6 @@
   border-radius: 8px;
   color: white;
   font-family: 'Quicksand', sans-serif;
-  /* Normal text */
   font-weight: 400;
 }
 
@@ -311,7 +293,6 @@
   text-decoration: none;
   display: inline-block;
   font-family: 'Orbitron', sans-serif;
-  /* Button */
 }
 
 .playAgainButton {
@@ -344,7 +325,6 @@
   width: 18px;
   height: 18px;
   font-family: 'Jura', sans-serif;
-  /* Extra random text */
   font-weight: 300;
 }
 
@@ -356,16 +336,365 @@
   border-radius: 8px;
   border: 1px solid rgba(46, 204, 113, 0.3);
   font-family: 'Quicksand', sans-serif;
-  /* Normal text */
 }
 
+/* Tablet Responsiveness (768px and below) */
 @media (max-width: 768px) {
+  .gamePage {
+    margin: 1rem auto;
+    padding: 0 0.75rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .gameContainer {
+    border-radius: 12px;
+  }
+
+  .gameHeader {
+    padding: 1.25rem;
+  }
+
+  .progressInfo {
+    font-size: 1rem;
+  }
+
+  .questionContainer {
+    padding: 2rem 1.5rem;
+  }
+
+  .questionText {
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+
+  .questionPoints {
+    font-size: 1rem;
+  }
+
+  .optionsContainer {
+    padding: 1.25rem;
+  }
+
+  .optionButton {
+    padding: 0.9rem;
+  }
+
+  .optionLetter {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
+  .optionText {
+    font-size: 0.95rem;
+  }
+
+  .gameActions {
+    padding: 1.25rem;
+  }
+
+  .nextButton {
+    padding: 0.9rem 1.75rem;
+    font-size: 0.95rem;
+  }
+
+  .resultContainer {
+    padding: 2.5rem 1.5rem;
+    border-radius: 12px;
+  }
+
+  .resultContainer h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .resultContainer h2 .icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .scoreDisplay {
+    padding: 1.5rem;
+  }
+
+  .scoreValue {
+    font-size: 2rem;
+  }
+
+  .scorePercentage {
+    font-size: 1.3rem;
+  }
+
+  .resultMessage {
+    font-size: 1.1rem;
+    padding: 0.9rem;
+  }
+
   .resultActions {
     flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .playAgainButton,
+  .leaderboardButton {
+    width: 100%;
+    padding: 0.9rem 1.25rem;
   }
 
   .finalScore {
     flex-direction: column;
     gap: 0.5rem;
+  }
+}
+
+/* Mobile Responsiveness (480px and below) */
+@media (max-width: 480px) {
+  .gamePage {
+    margin: 0.5rem auto;
+    padding: 0 0.5rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .gameContainer {
+    border-radius: 10px;
+  }
+
+  .gameHeader {
+    padding: 1rem;
+  }
+
+  .progressInfo {
+    font-size: 0.9rem;
+    gap: 0.5rem;
+  }
+
+  .progressBar {
+    height: 5px;
+  }
+
+  .questionContainer {
+    padding: 1.5rem 1rem;
+  }
+
+  .questionText {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+
+  .questionPoints {
+    font-size: 0.95rem;
+  }
+
+  .optionsContainer {
+    padding: 1rem;
+  }
+
+  .optionButton {
+    padding: 0.75rem;
+    margin-bottom: 0.6rem;
+    border-radius: 6px;
+  }
+
+  .optionButton:hover {
+    transform: translateX(3px);
+  }
+
+  .optionLetter {
+    width: 28px;
+    height: 28px;
+    font-size: 0.85rem;
+    margin-right: 0.75rem;
+  }
+
+  .optionText {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .gameActions {
+    padding: 1rem;
+  }
+
+  .nextButton {
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 0.4rem;
+  }
+
+  .loadingIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Result Page Mobile */
+  .resultContainer {
+    padding: 2rem 1rem;
+    border-radius: 10px;
+  }
+
+  .resultContainer h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .resultContainer h2 .icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 0;
+  }
+
+  .scoreDisplay {
+    padding: 1.25rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .finalScore {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .scoreLabel {
+    font-size: 1rem;
+  }
+
+  .scoreValue {
+    font-size: 1.75rem;
+  }
+
+  .scorePercentage {
+    font-size: 1.2rem;
+  }
+
+  .resultMessage {
+    font-size: 1rem;
+    padding: 0.85rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .resultActions {
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .playAgainButton,
+  .leaderboardButton {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .playAgainButton .icon,
+  .leaderboardButton .icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .completionNote {
+    font-size: 0.9rem;
+    padding: 0.85rem;
+  }
+
+  .completionNote .icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Extra Small Mobile (360px and below) */
+@media (max-width: 360px) {
+  .gamePage {
+    padding: 0 0.4rem;
+  }
+
+  .gameHeader {
+    padding: 0.85rem;
+  }
+
+  .progressInfo {
+    font-size: 0.85rem;
+  }
+
+  .questionContainer {
+    padding: 1.25rem 0.85rem;
+  }
+
+  .questionText {
+    font-size: 1rem;
+  }
+
+  .questionPoints {
+    font-size: 0.9rem;
+  }
+
+  .optionsContainer {
+    padding: 0.85rem;
+  }
+
+  .optionButton {
+    padding: 0.65rem;
+  }
+
+  .optionLetter {
+    width: 26px;
+    height: 26px;
+    font-size: 0.8rem;
+    margin-right: 0.6rem;
+  }
+
+  .optionText {
+    font-size: 0.85rem;
+  }
+
+  .gameActions {
+    padding: 0.85rem;
+  }
+
+  .nextButton {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+  }
+
+  .resultContainer {
+    padding: 1.5rem 0.85rem;
+  }
+
+  .resultContainer h2 {
+    font-size: 1.5rem;
+  }
+
+  .scoreDisplay {
+    padding: 1rem 0.75rem;
+  }
+
+  .scoreValue {
+    font-size: 1.5rem;
+  }
+
+  .scorePercentage {
+    font-size: 1.1rem;
+  }
+
+  .resultMessage {
+    font-size: 0.95rem;
+  }
+
+  .playAgainButton,
+  .leaderboardButton {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.85rem;
   }
 }

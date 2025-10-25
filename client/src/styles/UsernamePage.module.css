@@ -7,8 +7,10 @@
   position: relative;
   overflow: hidden;
   font-family: 'Quicksand', sans-serif;
-  /* Default for normal text */
   font-weight: 400;
+  min-height: calc(100vh - 5rem);
+  display: flex;
+  align-items: center;
 }
 
 .particleBackground {
@@ -52,6 +54,7 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   position: relative;
   z-index: 1;
+  width: 100%;
 }
 
 .formHeader {
@@ -61,7 +64,6 @@
 
 .formHeader h2 {
   font-family: 'Quicksand', sans-serif;
-  /* Header font */
   font-weight: 600;
   color: #8E24AA;
   font-size: 2rem;
@@ -70,14 +72,15 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .formHeader p {
   font-family: 'Quicksand', sans-serif;
-  /* Normal text */
   font-weight: 400;
   color: rgba(255, 255, 255, 0.8);
   font-size: 1.1rem;
+  line-height: 1.6;
 }
 
 .usernameForm {
@@ -90,16 +93,15 @@
 
 .inputGroup label {
   font-family: 'Quicksand', sans-serif;
-  /* Normal text */
   font-weight: 500;
   display: block;
   margin-bottom: 0.5rem;
   color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
 }
 
 .inputGroup input {
   font-family: 'Quicksand', sans-serif;
-  /* Normal text */
   font-weight: 400;
   width: 100%;
   padding: 1rem;
@@ -109,11 +111,11 @@
   background: rgba(255, 255, 255, 0.05);
   color: rgba(255, 255, 255, 0.9);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
 }
 
 .inputGroup input::placeholder {
   font-family: 'Quicksand', sans-serif;
-  /* Normal text */
   font-weight: 400;
   color: rgba(255, 255, 255, 0.5);
   transition: opacity 0.3s ease;
@@ -131,16 +133,16 @@
 
 .inputGroup small {
   font-family: 'Jura', sans-serif;
-  /* Extra random text */
   font-weight: 300;
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.85rem;
   display: block;
   margin-top: 0.5rem;
+  line-height: 1.4;
 }
 
 .inputError {
-  border-color: #f87171;
+  border-color: #f87171 !important;
   animation: shake 0.3s ease;
 }
 
@@ -169,7 +171,7 @@
   height: 1.2rem;
   color: #ffffff;
   vertical-align: middle;
-  margin-right: 0.5rem;
+  flex-shrink: 0;
 }
 
 .loadingIcon {
@@ -177,8 +179,8 @@
   height: 1.1rem;
   color: rgba(255, 255, 255, 0.95);
   vertical-align: middle;
-  margin-right: 0.5rem;
   animation: spin 1s linear infinite;
+  flex-shrink: 0;
 }
 
 @keyframes spin {
@@ -193,7 +195,6 @@
 
 .primaryButton {
   font-family: 'Orbitron', sans-serif;
-  /* Button font */
   font-weight: 500;
   background: linear-gradient(135deg, #7928ca 0%, #ff0080 100%);
   color: #FFFFFF;
@@ -203,15 +204,16 @@
   font-size: 1.1rem;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   transition: all 0.3s ease;
-  /* box-shadow: 0 8px 30px rgba(121, 40, 202, 0.4); */
   position: relative;
   overflow: hidden;
   width: 100%;
   border: none;
   cursor: pointer;
-  justify-content: center;
+  box-sizing: border-box;
+  min-height: 56px;
 }
 
 .primaryButton::before {
@@ -231,7 +233,10 @@
 
 .primaryButton:hover:not(:disabled) {
   transform: translateY(-2px);
-  /* box-shadow: 0 12px 40px rgba(121, 40, 202, 0.6); */
+}
+
+.primaryButton:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .disabledButton {
@@ -239,4 +244,161 @@
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
+}
+
+/* Tablet breakpoint */
+@media (max-width: 768px) {
+  .usernamePage {
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+  }
+
+  .formContainer {
+    padding: 2rem;
+  }
+
+  .formHeader h2 {
+    font-size: 1.75rem;
+  }
+
+  .formHeader p {
+    font-size: 1rem;
+  }
+
+  .primaryButton {
+    font-size: 1rem;
+    padding: 14px 28px;
+  }
+}
+
+/* Mobile breakpoint */
+@media (max-width: 480px) {
+  .usernamePage {
+    margin: 1rem auto;
+    padding: 0 0.75rem;
+    min-height: calc(100vh - 2rem);
+  }
+
+  .formContainer {
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .formHeader {
+    margin-bottom: 1.5rem;
+  }
+
+  .formHeader h2 {
+    font-size: 1.5rem;
+    gap: 0.4rem;
+  }
+
+  .formHeader p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .inputGroup {
+    margin-bottom: 1.25rem;
+  }
+
+  .inputGroup label {
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .inputGroup input {
+    padding: 0.875rem;
+    font-size: 0.95rem;
+    border-radius: 6px;
+  }
+
+  .inputGroup small {
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+  }
+
+  .primaryButton {
+    font-size: 0.95rem;
+    padding: 13px 24px;
+    border-radius: 10px;
+    min-height: 52px;
+  }
+
+  .icon {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .loadingIcon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .usernameForm {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 360px) {
+  .usernamePage {
+    padding: 0 0.5rem;
+  }
+
+  .formContainer {
+    padding: 1.25rem;
+  }
+
+  .formHeader h2 {
+    font-size: 1.35rem;
+  }
+
+  .formHeader p {
+    font-size: 0.9rem;
+  }
+
+  .inputGroup input {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .primaryButton {
+    font-size: 0.9rem;
+    padding: 12px 20px;
+    min-height: 50px;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+  .usernamePage {
+    margin: 1rem auto;
+    min-height: auto;
+  }
+
+  .formContainer {
+    padding: 1.5rem;
+  }
+
+  .formHeader {
+    margin-bottom: 1rem;
+  }
+
+  .formHeader h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .formHeader p {
+    font-size: 0.9rem;
+  }
+
+  .inputGroup {
+    margin-bottom: 1rem;
+  }
+
+  .usernameForm {
+    margin-bottom: 1rem;
+  }
 }
