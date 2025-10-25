@@ -1,9 +1,6 @@
 # Hackademy 
 
 A comprehensive cybersecurity education platform that transforms learning into an engaging game experience. Learn about real-world cyber threats through interactive quizzes, detailed scam guides and compete on a global leaderboard.
-
-##  Live Demo : [https://hackademy-in.onrender.com](https://hackademy-in.onrender.com)
-
 ---
 
 ##  Key Features
@@ -196,6 +193,7 @@ We welcome contributions! Here's how you can help:
 5. **Open a Pull Request**
 
 
+###  Server : [https://hackademy.onrender.com](https://hackademy.onrender.com)
 
 
 
