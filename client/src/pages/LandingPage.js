@@ -1,48 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {
-  ShieldUser,
   Shield,
   Users,
   Brain,
-  BookOpen,
+  Zap,
+  Ghost,
   ArrowRight,
-  Trophy,
+  TrendingUp,
   Target,
   Search,
-  UserLock,
-  Siren,
+  Lock,
+  AlertTriangle,
+  CheckCircle,
 } from 'lucide-react'
 import styles from '../styles/LandingPage.module.css'
 
 const LandingPage = () => {
-  const [visibleWords, setVisibleWords] = useState(0)
-  const words = [
-    'Making',
-    'Cybersecurity',
-    'Fun',
-    '&',
-    'Accessible',
-    'for',
-    'Everyone',
-  ]
+  const [mounted, setMounted] = useState(false)
 
-  // animates the main title by revealing words one by one with a delay
   useEffect(() => {
-    const timer = setInterval(() => {
-      setVisibleWords((prev) => {
-        if (prev < words.length) {
-          return prev + 1
-        }
-        clearInterval(timer)
-        return prev
-      })
-    }, 150)
+    setMounted(true)
+  }, [])
 
-    return () => clearInterval(timer)
-  }, [words.length])
-
-  // function to handle smooth scrolling to How It Works section
   const scrollToHowItWorks = () => {
     const howItWorksSection = document.querySelector(
       `.${styles.howItWorksSection}`
@@ -54,62 +34,48 @@ const LandingPage = () => {
 
   return (
     <div className={styles.landingPage}>
+      {/* Decorative Background Elements */}
+      <div className={styles.glowingOrb} style={{ top: '10%', left: '5%' }} />
+      <div className={styles.glowingOrb} style={{ bottom: '20%', right: '10%', background: 'rgba(236, 72, 153, 0.2)' }} />
+
       <div className={styles.heroContainer}>
-        <div className={styles.badge}>
-          <ShieldUser size={16} className={styles.badgeIcon} />
-          Secure India, One Game at a Time
+        <div className={`${styles.badge} ${mounted ? styles.fadeInDown : ''}`}>
+          <Zap size={16} className={styles.badgeIcon} />
+          <span>Cybersecurity, but actually fun.</span>
         </div>
 
-        <h1 className={styles.mainTitle}>
-          {words.map((word, index) => (
-            <React.Fragment key={index}>
-              <span
-                className={`${styles.animatedWord} ${
-                  index < visibleWords ? styles.visible : ''
-                }`}
-                style={{ animationDelay: `${index * 0.15}s` }}
-              >
-                {word === 'Cybersecurity' ? (
-                  <span className={styles.gradientText}>{word}</span>
-                ) : (
-                  word
-                )}
-              </span>
-              {index === 1 && <br />}{' '}
-              {/* Existing line break after 'Cybersecurity' */}
-              {index === 5 && <br />} {/* New line break after 'for' */}
-              {index < words.length - 1 && ' '} {/* Space between words */}
-            </React.Fragment>
-          ))}
+        <h1 className={`${styles.mainTitle} ${mounted ? styles.fadeInUp : ''}`}>
+          Don't Let A <span className={styles.gradientText}>Scammer</span>
+          <br />
+          <span className={styles.glitchText} data-text="Ruin Your Day">Ruin Your Day</span>
         </h1>
 
-        <p className={styles.mainDescription}>
-          Join India’s fight against online frauds. Discover real scams and
-          digital traps affecting everyday users, and learn how to stop them.
-          Stay alert, take short quizzes, and safeguard your digital life with
-          every lesson.
+        <p className={`${styles.mainDescription} ${mounted ? styles.fadeInUpDelay : ''}`}>
+          The internet is a wild place. Nigerian Princes want your money, "Bank Managers" want your OTP, and random numbers want to offer you a job.
+          <br /><br />
+          <strong>We teach you how to say "Nice Try" and move on.</strong>
         </p>
 
-        <div className={styles.buttonGroup}>
+        <div className={`${styles.buttonGroup} ${mounted ? styles.fadeInUpDelay2 : ''}`}>
           <Link to='/username' className={styles.primaryButton}>
-            Start Learning <ArrowRight size={20} />
+            Start Playing <ArrowRight size={20} />
           </Link>
           <button
             onClick={scrollToHowItWorks}
             className={styles.secondaryButton}
           >
-            <BookOpen size={20} /> Know More
+            <Ghost size={20} /> How It Works
           </button>
         </div>
 
-        <div className={styles.statsGrid}>
+        <div className={`${styles.statsGrid} ${mounted ? styles.fadeInUpDelay3 : ''}`}>
           {[
-            { value: '1.16B+', label: 'Indians Online', icon: Users },
-            { value: '50,000+', label: 'Cyber Crimes Daily', icon: Shield },
-            { value: '₹1.25T', label: 'Annual Cyber Losses', icon: Trophy },
+            { value: '1.16B+', label: 'Indians Online', icon: Users, color: '#a78bfa' },
+            { value: '50,000+', label: 'Cyber Crimes Daily', icon: AlertTriangle, color: '#f472b6' },
+            { value: '₹1.25T', label: 'Annual Cyber Losses', icon: TrendingUp, color: '#fbbf24' },
           ].map((stat, idx) => (
-            <div key={idx} className={styles.statCard}>
-              <stat.icon size={32} className={styles.statIcon} />
+            <div key={idx} className={styles.statCard} style={{ animationDelay: `${idx * 0.2}s` }}>
+              <stat.icon size={32} className={styles.statIcon} style={{ color: stat.color }} />
               <div className={styles.statValue}>{stat.value}</div>
               <div className={styles.statLabel}>{stat.label}</div>
             </div>
@@ -119,23 +85,23 @@ const LandingPage = () => {
 
       <div className={styles.missionSection}>
         <div className={styles.missionCard}>
-          <div>
+          <div className={styles.missionContent}>
             <h2 className={styles.sectionTitle}>Our Mission</h2>
             <p className={styles.missionText}>
-              Equipping every Indian with practical skills to recognize and
-              prevent digital threats. Through interactive, gamified lessons on
-              scams, phishing, and fraud tactics, we turn everyday users into
-              vigilant defenders, building a safer digital India, one learner at
-              a time.
+              We believe cybersecurity shouldn't be boring lectures about strong passwords. It should be about spotting the red flags in a "You won an iPhone" email.
+              <br /><br />
+              We're here to turn every Indian internet user into a <strong>human firewall</strong>. Less panic, more logic.
             </p>
           </div>
           <div className={styles.missionVisual}>
-            <img
-              src='/images/flag.png'
-              alt='Indian Flag'
-              className={styles.flagPlaceholder}
-            />
-            <p className={styles.flagCaption}>Digital India, Secure India</p>
+            <div className={styles.floatingCard}>
+              <AlertTriangle size={48} className={styles.floatingIcon} />
+              <p>Warning: Scam Detected</p>
+            </div>
+            <div className={`${styles.floatingCard} ${styles.topCard}`}>
+              <CheckCircle size={48} className={styles.floatingIcon} style={{ color: '#34d399' }} />
+              <p>Threat Blocked</p>
+            </div>
           </div>
         </div>
       </div>
@@ -143,37 +109,35 @@ const LandingPage = () => {
       <div className={styles.howItWorksSection}>
         <h2 className={styles.sectionTitle}>How It Works</h2>
         <p className={styles.howItWorksSubtitle}>
-          A comprehensive, gamified learning experience designed to protect you
-          from real-world cyber threats
+          Three simple steps to becoming un-scammable.
         </p>
 
         <div className={styles.stepsGrid}>
           {[
             {
               step: '1',
-              title: 'Quick Access',
-              description:
-                'No signup required - just enter your username and dive straight into learning. Start your cybersecurity journey instantly without any barriers.',
-              icon: Users,
+              title: 'Enter The Arena',
+              description: 'No signup forms longer than a CVS receipt. Just pick a username and jump in.',
+              icon: Zap,
             },
             {
               step: '2',
-              title: 'Interactive Learning',
-              description:
-                'Explore comprehensive modules on Digital Arrest Scams, UPI Frauds, e-KYC attacks, Job Scams, and more. Audio narration enhances accessibility.',
-              icon: BookOpen,
+              title: 'Play The Victim',
+              description: 'We simulate real scams. Get "arrested" digitally, get "hired" for a fake job. Fail safely here so you don’t fail in real life.',
+              icon: Ghost,
             },
             {
               step: '3',
-              title: 'Real-World Quizzes',
-              description:
-                'Test your knowledge with scenario-based quizzes simulating actual scam attempts. Discover vulnerabilities and learn protection strategies.',
-              icon: Brain,
+              title: 'Get Smart',
+              description: 'Learn the red flags. Take the quizzes. Earn points. Brag to your friends that you saved the family inheritance.',
+              icon: TrendingUp,
             },
           ].map((item, idx) => (
             <div key={idx} className={styles.stepCard}>
-              <div className={styles.stepNumber}>{item.step}</div>
-              <item.icon size={40} className={styles.stepIcon} />
+              <div className={styles.stepHeader}>
+                <div className={styles.stepNumber}>{item.step}</div>
+                <item.icon size={32} className={styles.stepIcon} />
+              </div>
               <h3 className={styles.stepTitle}>{item.title}</h3>
               <p className={styles.stepDescription}>{item.description}</p>
             </div>
@@ -181,38 +145,34 @@ const LandingPage = () => {
         </div>
 
         <div className={styles.featuresSection}>
-          <h3 className={styles.featuresTitle}>What You'll Learn</h3>
+          {/* <h3 className={styles.featuresTitle}>What You'll Actually Learn</h3> */}
           <div className={styles.featuresGrid}>
             <div className={styles.featureCard}>
-              <Target size={48} className={styles.featureIcon} />
-              <h4 className={styles.featureTitle}>What is it?</h4>
+              <Target size={40} className={styles.featureIcon} />
+              <h4 className={styles.featureTitle}>The "Digital Arrest"</h4>
               <p className={styles.featureDescription}>
-                Clear explanations of each scam type, how fraudsters operate,
-                and why these threats are dangerous
+                Spoiler: The police don't do video calls on Skype to ask for money.
               </p>
             </div>
             <div className={styles.featureCard}>
-              <Search size={48} className={styles.featureIcon} />
-              <h4 className={styles.featureTitle}>How it Happens</h4>
+              <Search size={40} className={styles.featureIcon} />
+              <h4 className={styles.featureTitle}>The "Job Offer"</h4>
               <p className={styles.featureDescription}>
-                Step-by-step breakdown of scammer tactics, common red flags, and
-                real-world case studies
+                If they pay you ₹5000/hr to like YouTube videos, it's a trap.
               </p>
             </div>
             <div className={styles.featureCard}>
-              <UserLock size={48} className={styles.featureIcon} />
-              <h4 className={styles.featureTitle}>How to Protect Yourself</h4>
+              <Lock size={40} className={styles.featureIcon} />
+              <h4 className={styles.featureTitle}>The "KYC Expired"</h4>
               <p className={styles.featureDescription}>
-                Actionable prevention strategies, best practices, and security
-                measures to stay safe online
+                 Your bank account won't explode if you don't click that link within 10 mins.
               </p>
             </div>
             <div className={styles.featureCard}>
-              <Siren size={48} className={styles.featureIcon} />
-              <h4 className={styles.featureTitle}>If You Were Scammed</h4>
+              <AlertTriangle size={40} className={styles.featureIcon} />
+              <h4 className={styles.featureTitle}>The Panic Button</h4>
               <p className={styles.featureDescription}>
-                Immediate action steps, reporting procedures, and recovery
-                guidance if you've been victimized
+                What to actually do when you realize you messed up (besides crying).
               </p>
             </div>
           </div>
@@ -220,7 +180,7 @@ const LandingPage = () => {
       </div>
 
       <div className={styles.footer}>
-        <p>© 2025 H4CK4DEMY. All rights reserved.</p>
+        <p>© 2025 Hackademy. Staying safe, one pixel at a time.</p>
       </div>
     </div>
   )
