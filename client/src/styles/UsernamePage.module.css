@@ -402,3 +402,25 @@
     margin-bottom: 1rem;
   }
 }
+
+.loadingMessage {
+  font-family: 'Jura', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  margin-top: 1rem;
+  animation: fadeIn 0.5s ease;
+  line-height: 1.4;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

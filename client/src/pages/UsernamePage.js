@@ -102,6 +102,11 @@ const UsernamePage = ({ setUser }) => {
               </>
             )}
           </button>
+          {loading && (
+            <p className={styles.loadingMessage}>
+              Hold tight! The server is waking up, so this might take a moment...
+            </p>
+          )}
         </form>
       </div>
     </div>
