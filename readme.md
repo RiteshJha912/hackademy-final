@@ -1,4 +1,4 @@
-# Hackademy 
+# Hackademy      
 
 A comprehensive cybersecurity education platform that transforms learning into an engaging game experience. Learn about real-world cyber threats through interactive quizzes, detailed scam guides and compete on a global leaderboard.
 ---
