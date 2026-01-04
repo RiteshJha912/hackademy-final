@@ -180,7 +180,7 @@ const LandingPage = () => {
       </div>
 
       <div className={styles.footer}>
-        <p>© 2025 Hackademy. Staying safe, one pixel at a time.</p>
+        <p>© 2026 Hackademy. Staying safe, one pixel at a time.</p>
       </div>
     </div>
   )
