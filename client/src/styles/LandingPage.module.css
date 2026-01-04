@@ -2,7 +2,7 @@
 
 /* Global Layout */
 .landingPage {
-  margin-top: -4rem;
+  margin-top: -5rem;
   min-height: 100vh;
   color: #fff;
   font-family: 'Quicksand', sans-serif;
@@ -588,6 +588,9 @@
 }
 
 @media (max-width: 768px) {
+  .landingPage {
+      margin-top: -1rem;
+    }
   .heroContainer {
     padding: 60px 20px;
   }

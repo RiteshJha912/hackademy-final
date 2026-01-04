@@ -51,7 +51,7 @@ const LandingPage = () => {
         </h1>
 
         <p className={`${styles.mainDescription} ${mounted ? styles.fadeInUpDelay : ''}`}>
-          The internet is a wild place. Nigerian Princes want your money, "Bank Managers" want your OTP, and random numbers want to offer you a job.
+          The "CBI" is video calling you, your KYC has "expired", and strangers want to pay you to like videos. Welcome to the internet.
           <br /><br />
           <strong>We teach you how to say "Nice Try" and move on.</strong>
         </p>
