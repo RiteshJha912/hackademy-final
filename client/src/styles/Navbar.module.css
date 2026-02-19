@@ -2,10 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Belanosima&display=swap');
 
 .navbar {
-  background: linear-gradient(135deg, #212139, #10101a);
+  background: rgba(16, 16, 26, 0.8);
+  /* Semi-transparent matching theme */
   padding: 1rem 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  /* Subtle border for definition */
+  backdrop-filter: blur(12px);
+  /* Premium blur effect */
+  position: sticky;
+  top: 0;
+  width: 100%;
   z-index: 1001;
 }
 
@@ -223,12 +229,16 @@
     flex-direction: column;
     align-items: stretch;
     width: 100%;
-    background: linear-gradient(135deg, #2a2a4a, #1c1c2e);
+    background: rgba(16, 16, 26, 0.95);
+    /* Updated to match theme */
+    backdrop-filter: blur(12px);
     position: absolute;
     top: 100%;
     left: 0;
     padding: 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    /* Added border */
     z-index: 1000;
     max-height: 0;
     overflow: hidden;
@@ -236,7 +246,8 @@
   }
 
   .navMenu.navMenuOpen {
-    max-height: 600px;
+    max-height: 100vh;
+    /* Allow full height if needed */
     padding: 1rem 0;
   }
 

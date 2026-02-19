@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import {
   Shield,
   Users,
-  Brain,
   Zap,
   Ghost,
   ArrowRight,
@@ -12,177 +11,262 @@ import {
   Search,
   Lock,
   AlertTriangle,
-  CheckCircle,
+  Terminal,
+  Activity,
+  CheckCircle2,
+  Cpu,
+  Globe,
+  Fingerprint
 } from 'lucide-react'
 import styles from '../styles/LandingPage.module.css'
+import CyberText from '../components/CyberText'
 
 const LandingPage = () => {
   const [mounted, setMounted] = useState(false)
+  const [terminalStep, setTerminalStep] = useState(0);
 
   useEffect(() => {
     setMounted(true)
+    const interval = setInterval(() => {
+      setTerminalStep((prev) => (prev + 1) % 4);
+    }, 2000);
+    return () => clearInterval(interval);
   }, [])
 
-  const scrollToHowItWorks = () => {
-    const howItWorksSection = document.querySelector(
-      `.${styles.howItWorksSection}`
-    )
-    if (howItWorksSection) {
-      howItWorksSection.scrollIntoView({ behavior: 'smooth' })
-    }
+  const scrollToSection = (selector) => {
+    const el = document.querySelector(selector)
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
-    <div className={styles.landingPage}>
-      {/* Decorative Background Elements */}
-      <div className={styles.glowingOrb} style={{ top: '10%', left: '5%' }} />
-      <div className={styles.glowingOrb} style={{ bottom: '20%', right: '10%', background: 'rgba(236, 72, 153, 0.2)' }} />
+    <main className={styles.landingPage}>
+      {/* Dynamic Background */}
+      <div className={styles.ambientLight} />
+      <div className={styles.gridOverlay} />
 
-      <div className={styles.heroContainer}>
-        <div className={`${styles.badge} ${mounted ? styles.fadeInDown : ''}`}>
-          <Zap size={16} className={styles.badgeIcon} />
-          <span>Cybersecurity, but actually fun.</span>
+      {/* Hero Section */}
+      <section className={styles.heroSection}>
+        <div className={`${styles.badge} ${mounted ? styles.fadeDown : ''}`}>
+          <div className={styles.pulseDot} />
+          <span>The Modern Survival Guide for the Internet</span>
         </div>
 
-        <h1 className={`${styles.mainTitle} ${mounted ? styles.fadeInUp : ''}`}>
-          Don't Let A <span className={styles.gradientText}>Scammer</span>
+        <h1 className={`${styles.heroTitle} ${mounted ? styles.fadeUp : ''}`}>
+          Don't Let A <span className={styles.gradientText}><CyberText text="Scammer" /></span>
           <br />
-          <span className={styles.glitchText} data-text="Ruin Your Day">Ruin Your Day</span>
+          <span className={styles.glitchText}><CyberText text="Ruin Your Day" /></span>
         </h1>
 
-        <p className={`${styles.mainDescription} ${mounted ? styles.fadeInUpDelay : ''}`}>
-          The "CBI" is video calling you, your KYC has "expired", and strangers want to pay you to like videos. Welcome to the internet.
-          <br /><br />
-          <strong>We teach you how to say "Nice Try" and move on.</strong>
+        <p className={`${styles.heroSubtitle} ${mounted ? styles.fadeUpDelay : ''}`}>
+          The "CBI" is calling. Your KYC has "expired". Strangers want to pay you to like videos.
+          <br />
+          <strong>Welcome to the digital jungle. We teach you how to survive.</strong>
         </p>
 
-        <div className={`${styles.buttonGroup} ${mounted ? styles.fadeInUpDelay2 : ''}`}>
-          <Link to='/username' className={styles.primaryButton}>
-            Start Playing <ArrowRight size={20} />
+        <div className={`${styles.ctaGroup} ${mounted ? styles.fadeUpDelay2 : ''}`}>
+          <Link to='/game' className={styles.primaryBtn}>
+            Start Training <ArrowRight size={18} />
           </Link>
-          <button
-            onClick={scrollToHowItWorks}
-            className={styles.secondaryButton}
-          >
-            <Ghost size={20} /> How It Works
+          <button onClick={() => scrollToSection(`.${styles.bentoSection}`)} className={styles.secondaryBtn}>
+            Explore Modules
           </button>
         </div>
 
-        <div className={`${styles.statsGrid} ${mounted ? styles.fadeInUpDelay3 : ''}`}>
-          {[
-            { value: '1.16B+', label: 'Indians Online', icon: Users, color: '#a78bfa' },
-            { value: '50,000+', label: 'Cyber Crimes Daily', icon: AlertTriangle, color: '#f472b6' },
-            { value: '₹1.25T', label: 'Annual Cyber Losses', icon: TrendingUp, color: '#fbbf24' },
-          ].map((stat, idx) => (
-            <div key={idx} className={styles.statCard} style={{ animationDelay: `${idx * 0.2}s` }}>
-              <stat.icon size={32} className={styles.statIcon} style={{ color: stat.color }} />
-              <div className={styles.statValue}>{stat.value}</div>
-              <div className={styles.statLabel}>{stat.label}</div>
+        {/* Floating Dashboard Preview (Visual Anchor) */}
+        <div className={`${styles.heroDashboard} ${mounted ? styles.fadeUpDelay3 : ''}`}>
+          <div className={styles.dashboardHeader}>
+            <div className={styles.windowControls}>
+              <span className={styles.controlDot} />
+              <span className={styles.controlDot} />
+              <span className={styles.controlDot} />
             </div>
-          ))}
-        </div>
-      </div>
-
-      <div className={styles.missionSection}>
-        <div className={styles.missionCard}>
-          <div className={styles.missionContent}>
-            <h2 className={styles.sectionTitle}>Our Mission</h2>
-            <p className={styles.missionText}>
-              We believe cybersecurity shouldn't be boring lectures about strong passwords. It should be about spotting the red flags in a "You won an iPhone" email.
-              <br /><br />
-              We're here to turn every Indian internet user into a <strong>human firewall</strong>. Less panic, more logic.
-            </p>
+            <div className={styles.searchBar}>hackademy://defense_protocols/active</div>
           </div>
-          <div className={styles.missionVisual}>
-            <div className={styles.floatingCard}>
-              <AlertTriangle size={48} className={styles.floatingIcon} />
-              <p>Warning: Scam Detected</p>
-            </div>
-            <div className={`${styles.floatingCard} ${styles.topCard}`}>
-              <CheckCircle size={48} className={styles.floatingIcon} style={{ color: '#34d399' }} />
-              <p>Threat Blocked</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.howItWorksSection}>
-        <h2 className={styles.sectionTitle}>How It Works</h2>
-        <p className={styles.howItWorksSubtitle}>
-          Three simple steps to becoming un-scammable.
-        </p>
-
-        <div className={styles.stepsGrid}>
-          {[
-            {
-              step: '1',
-              title: 'Enter The Arena',
-              description: 'No signup forms longer than a CVS receipt. Just pick a username and jump in.',
-              icon: Zap,
-            },
-            {
-              step: '2',
-              title: 'Play The Victim',
-              description: 'We simulate real scams. Get "arrested" digitally, get "hired" for a fake job. Fail safely here so you don’t fail in real life.',
-              icon: Ghost,
-            },
-            {
-              step: '3',
-              title: 'Get Smart',
-              description: 'Learn the red flags. Take the quizzes. Earn points. Brag to your friends that you saved the family inheritance.',
-              icon: TrendingUp,
-            },
-          ].map((item, idx) => (
-            <div key={idx} className={styles.stepCard}>
-              <div className={styles.stepHeader}>
-                <div className={styles.stepNumber}>{item.step}</div>
-                <item.icon size={32} className={styles.stepIcon} />
-              </div>
-              <h3 className={styles.stepTitle}>{item.title}</h3>
-              <p className={styles.stepDescription}>{item.description}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className={styles.featuresSection}>
-          {/* <h3 className={styles.featuresTitle}>What You'll Actually Learn</h3> */}
-          <div className={styles.featuresGrid}>
-            <div className={styles.featureCard}>
-              <Target size={40} className={styles.featureIcon} />
-              <h4 className={styles.featureTitle}>The "Digital Arrest"</h4>
-              <p className={styles.featureDescription}>
-                Spoiler: The police don't do video calls on Skype to ask for money.
-              </p>
-            </div>
-            <div className={styles.featureCard}>
-              <Search size={40} className={styles.featureIcon} />
-              <h4 className={styles.featureTitle}>The "Job Offer"</h4>
-              <p className={styles.featureDescription}>
-                If they pay you ₹5000/hr to like YouTube videos, it's a trap.
-              </p>
-            </div>
-            <div className={styles.featureCard}>
-              <Lock size={40} className={styles.featureIcon} />
-              <h4 className={styles.featureTitle}>The "KYC Expired"</h4>
-              <p className={styles.featureDescription}>
-                 Your bank account won't explode if you don't click that link within 10 mins.
-              </p>
-            </div>
-            <div className={styles.featureCard}>
-              <AlertTriangle size={40} className={styles.featureIcon} />
-              <h4 className={styles.featureTitle}>The Panic Button</h4>
-              <p className={styles.featureDescription}>
-                What to actually do when you realize you messed up (besides crying).
-              </p>
-            </div>
+          <div className={styles.dashboardContent}>
+             <div className={styles.statRow}>
+                <div className={styles.statItem}>
+                   <span className={styles.statLabel}>Active Threats</span>
+                   <span className={styles.statValue}>50,000+</span>
+                   <span className={styles.statTrend}><TrendingUp size={12}/> +12%</span>
+                </div>
+                <div className={styles.statItem}>
+                   <span className={styles.statLabel}>Your Status</span>
+                   <span className={styles.statValue} style={{color: '#fff'}}>Unprotected</span>
+                   <span className={styles.statTrend} style={{color: '#f472b6'}}><AlertTriangle size={12}/> Risk</span>
+                </div>
+                <div className={styles.statItem}>
+                   <span className={styles.statLabel}>Potential Loss</span>
+                   <span className={styles.statValue}>₹1.25T</span>
+                </div>
+             </div>
+             <div className={styles.scanVisual}>
+                <div className={styles.scanLine} />
+                <div className={styles.threatNode} style={{top: '30%', left: '20%'}}></div>
+                <div className={styles.threatNode} style={{top: '60%', left: '70%'}}></div>
+                <div className={styles.threatNode} style={{top: '40%', left: '50%'}}></div>
+                <div className={styles.gridLines}></div>
+             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className={styles.footer}>
-        <p>© 2026 Hackademy. Staying safe, one pixel at a time.</p>
-      </div>
-    </div>
+      {/* Bento Grid Features Section */}
+      <section className={styles.bentoSection}>
+        <div className={styles.sectionHeader}>
+           <h2>Defense Protocols</h2>
+           <p>Master these modules to become scambait-proof.</p>
+        </div>
+        
+        <div className={styles.bentoGrid}>
+          {/* Large Card: Mission/Terminal */}
+          <div className={`${styles.bentoCard} ${styles.colSpan2} ${styles.rowSpan2}`}>
+             <div className={styles.cardHeader}>
+               <Terminal className={styles.cardIcon} size={24} color="#a78bfa" />
+               <h3>Live Threat Simulation</h3>
+             </div>
+             <p className={styles.cardDesc}>We simulate real-world attacks in a safe sandbox environment.</p>
+             <div className={styles.terminalWindow}>
+                <div className={styles.terminalLine}>
+                   <span className={styles.prompt}>user@hackademy:~$</span> 
+                   {terminalStep === 0 && <span className={styles.typing}> analyze_incoming_call -v</span>}
+                   {terminalStep > 0 && <span> analyze_incoming_call -v</span>}
+                </div>
+                {terminalStep > 0 && (
+                   <div className={styles.terminalLine}>
+                      <span className={styles.warning}>[WARNING]</span> Spoofed Caller ID detected.
+                   </div>
+                )}
+                {terminalStep > 1 && (
+                   <div className={styles.terminalLine}>
+                      <span className={styles.info}>[INFO]</span> Pattern match: "Digital Arrest Scam"
+                   </div>
+                )}
+                {terminalStep > 2 && (
+                   <div className={styles.terminalLine}>
+                      <span className={styles.success}>[ACTION]</span> Call blocked. User educated.
+                   </div>
+                )}
+             </div>
+          </div>
+
+          {/* Medium Card: Digital Arrest */}
+          <div className={styles.bentoCard}>
+             <div className={styles.cardHeader}>
+               <Target className={styles.cardIcon} size={24} color="#f472b6" />
+               <h3>The "Digital Arrest"</h3>
+             </div>
+             <p className={styles.cardDesc}>Spoiler: The police don't use Skype to interrogate you.</p>
+             <div className={styles.miniVisual}>
+                <div className={styles.visualIcon}><Target size={40} /></div>
+             </div>
+          </div>
+
+          {/* Medium Card: Job Scams */}
+          <div className={styles.bentoCard}>
+             <div className={styles.cardHeader}>
+               <Search className={styles.cardIcon} size={24} color="#34d399" />
+               <h3>Fake Job Offers</h3>
+             </div>
+             <p className={styles.cardDesc}>₹5000/hr to like YouTube videos? Takes 5 seconds to spot the trap.</p>
+          </div>
+
+          {/* Wide Card: The Stats */}
+          <div className={`${styles.bentoCard} ${styles.colSpan2}`}>
+             <div className={styles.rowContent}>
+                <div className={styles.textContent}>
+                   <h3>Why It Matters</h3>
+                   <p>India is the #1 target for cyber fraud. Be the firewall.</p>
+                </div>
+                <div className={styles.statGroup}>
+                   <div className={styles.miniStat}>
+                      <span>1.16B+</span>
+                      <small>Users</small>
+                   </div>
+                   <div className={styles.miniStat}>
+                      <span>₹1.25T</span>
+                      <small>Lost</small>
+                   </div>
+                </div>
+             </div>
+          </div>
+
+          {/* Tall Card: Panic Button */}
+          <div className={`${styles.bentoCard} ${styles.rowSpan2} ${styles.panicCard}`}>
+             <div className={styles.cardHeader}>
+               <AlertTriangle className={styles.cardIcon} size={24} color="#fbbf24" />
+               <h3>Panic Button</h3>
+             </div>
+             <p className={styles.cardDesc}>Real-time steps to take when you realize you've been compromised.</p>
+             <div className={styles.panicVisual}>
+                <div className={styles.panicBtn}>SOS</div>
+             </div>
+          </div>
+
+          {/* Small Card: KYC */}
+          <div className={styles.bentoCard}>
+             <div className={styles.cardHeader}>
+               <Lock className={styles.cardIcon} size={24} color="#60a5fa" />
+               <h3>KYC Fraud</h3>
+             </div>
+             <p className={styles.cardDesc}>Your bank won't SMS you for KYC.</p>
+          </div>
+
+          {/* Small Card: Deepfakes */}
+          <div className={styles.bentoCard}>
+             <div className={styles.cardHeader}>
+               <Fingerprint className={styles.cardIcon} size={24} color="#a78bfa" />
+               <h3>AI & Deepfakes</h3>
+             </div>
+             <p className={styles.cardDesc}>Is that really your uncle calling?</p>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works - Step Timeline */}
+      <section className={styles.timelineSection}>
+         <div className={styles.sectionHeader}>
+            <h2>The Protocol</h2>
+            <p>Three steps to immunity.</p>
+         </div>
+         
+         <div className={styles.timeline}>
+            <div className={styles.timelineItem}>
+               <div className={styles.stepNumber}>01</div>
+               <div className={styles.stepContent}>
+                  <h3>Enter The Arena</h3>
+                  <p>No login walls. Just pick a handle and start.</p>
+               </div>
+            </div>
+            <div className={styles.connector} />
+            <div className={styles.timelineItem}>
+               <div className={styles.stepNumber}>02</div>
+               <div className={styles.stepContent}>
+                  <h3>Get "Scammed"</h3>
+                  <p>Face safe simulations of real threats.</p>
+               </div>
+            </div>
+             <div className={styles.connector} />
+            <div className={styles.timelineItem}>
+               <div className={styles.stepNumber}>03</div>
+               <div className={styles.stepContent}>
+                  <h3>Build Defenses</h3>
+                  <p>Learn the red flags. Protect your family.</p>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <footer className={styles.footer}>
+         <div className={styles.footerLine} />
+         <div className={styles.footerContent}>
+            <div className={styles.brand}>
+               <Shield size={20} />
+               <span>Hackademy_v2.0</span>
+            </div>
+            <div className={styles.copyright}>© 2026 Secured.</div>
+         </div>
+      </footer>
+    </main>
   )
 }
 

@@ -2,20 +2,24 @@
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
 }
+
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #12105A, #1A1B3B);
+  background: transparent;
+  /* Let body background show through */
 }
 
 .mainContent {
   flex: 1;
-  padding: 2rem 0;
+  padding: 0;
+  /* Removed global padding to allow full-bleed layouts */
 }
 
 .pageContainer {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  /* Allow full width for landing page, other pages can constrain themselves or use a different container */
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }

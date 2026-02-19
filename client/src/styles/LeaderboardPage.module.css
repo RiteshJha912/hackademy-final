@@ -1,68 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Orbitron:wght@400..900&family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 .leaderboardPage {
   max-width: 1000px;
   margin: 2.5rem auto;
   padding: 0 1.5rem;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 400;
 }
 
 .leaderboardHeader {
   text-align: center;
   margin-bottom: 3rem;
-  background: linear-gradient(180deg, rgba(168, 85, 247, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-  padding: 1.5rem;
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .leaderboardHeader h2 {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  color: #8E24AA;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: #fff;
   margin-bottom: 0.75rem;
   font-size: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
+  letter-spacing: -0.02em;
 }
 
 .headerIcon {
   width: 2.2rem;
   height: 2.2rem;
-  color: #8E24AA;
+  color: #A78BFA;
 }
 
 .leaderboardHeader p {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.9);
+  color: #9CA3AF;
   font-size: 1.15rem;
   max-width: 600px;
   margin: 0 auto;
 }
 
 .graphContainer {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
-  padding: 1.75rem;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(17, 17, 26, 0.6);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   margin-bottom: 3rem;
   transition: box-shadow 0.4s ease-in-out;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
 .graphContainer:hover {
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .graphTitle {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 600;
   text-align: center;
-  color: #a855f7;
+  color: #fff;
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .statsContainer {
@@ -73,44 +78,46 @@
 }
 
 .statCard {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  background: rgba(255, 255, 255, 0.03);
   padding: 1.75rem;
-  border-radius: 12px;
+  border-radius: 16px;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.2s ease-in-out;
 }
 
 .statCard:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .statNumber {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
   display: block;
-  font-size: 2rem;
-  color: #a855f7;
+  font-size: 2.5rem;
+  color: #fff;
   margin-bottom: 0.5rem;
 }
 
 .statLabel {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1rem;
+  color: #9CA3AF;
+  font-size: 0.95rem;
 }
 
 .podiumContainer {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  padding: 2rem;
+  padding: 3rem 2rem;
   margin-bottom: 2.5rem;
   align-items: flex-end;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
 }
 
 .podiumItem {
@@ -118,46 +125,16 @@
   border-radius: 12px;
   text-align: center;
   min-width: 160px;
-  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(8px);
 }
 
-.podiumItem::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg,
-      transparent 30%,
-      rgba(255, 255, 255, 0.03) 50%,
-      transparent 70%);
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.4s ease-in-out;
-  animation: shine 2s ease-in-out infinite;
-}
-
-.podiumItem:hover::before {
-  opacity: 1;
-  animation: shine 2s ease-in-out infinite;
-}
-
-@keyframes shine {
-  0% {
-    transform: translateX(-100%) translateY(-100%) rotate(45deg);
-  }
-
-  100% {
-    transform: translateX(100%) translateY(100%) rotate(45deg);
-  }
-}
+/* ... keep shine animation ... */
 
 .podiumMedal {
-  font-family: 'Jura', sans-serif;
+  font-family: 'JetBrains Mono', monospace;
   font-weight: 300;
   position: relative;
   z-index: 2;
@@ -166,64 +143,60 @@
 }
 
 .podiumName {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
   position: relative;
   z-index: 2;
-  color: rgba(255, 255, 255, 0.95);
+  color: #fff;
   margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   word-break: break-word;
 }
 
 .podiumScore {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 500;
   position: relative;
   z-index: 2;
-  color: #a855f7;
-  font-size: 1.3rem;
+  color: #A78BFA;
+  font-size: 1.25rem;
 }
 
 .podiumItem:nth-child(1) {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(184, 134, 11, 0.1) 100%);
-  border: 1px solid rgba(255, 215, 0, 0.25);
-  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.08), inset 0 1px 0 rgba(255, 215, 0, 0.1);
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
 }
 
 .podiumItem:nth-child(1):hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.12), inset 0 1px 0 rgba(255, 215, 0, 0.15);
+  transform: translateY(-8px);
 }
 
 .podiumItem:nth-child(2) {
-  background: linear-gradient(135deg, rgba(192, 192, 192, 0.12) 0%, rgba(169, 169, 169, 0.08) 100%);
-  border: 1px solid rgba(192, 192, 192, 0.22);
-  box-shadow: 0 4px 12px rgba(192, 192, 192, 0.08), inset 0 1px 0 rgba(192, 192, 192, 0.1);
+  background: rgba(192, 192, 192, 0.1);
+  border: 1px solid rgba(192, 192, 192, 0.3);
 }
 
 .podiumItem:nth-child(2):hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(192, 192, 192, 0.12), inset 0 1px 0 rgba(192, 192, 192, 0.15);
+  transform: translateY(-8px);
 }
 
 .podiumItem:nth-child(3) {
-  background: linear-gradient(135deg, rgba(205, 127, 50, 0.12) 0%, rgba(184, 115, 51, 0.08) 100%);
-  border: 1px solid rgba(205, 127, 50, 0.22);
-  box-shadow: 0 4px 12px rgba(205, 127, 50, 0.08), inset 0 1px 0 rgba(205, 127, 50, 0.1);
+  background: rgba(205, 127, 50, 0.1);
+  border: 1px solid rgba(205, 127, 50, 0.3);
 }
 
 .podiumItem:nth-child(3):hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(205, 127, 50, 0.12), inset 0 1px 0 rgba(205, 127, 50, 0.15);
+  transform: translateY(-8px);
 }
 
 .leaderboardContainer {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(17, 17, 26, 0.4);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
 }
 
 .leaderboardList {
