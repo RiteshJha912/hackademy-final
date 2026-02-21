@@ -46,30 +46,32 @@ const LandingPage = () => {
 
       {/* Hero Section */}
       <section className={styles.heroSection}>
-        <div className={`${styles.badge} ${mounted ? styles.fadeDown : ''}`}>
-          <div className={styles.pulseDot} />
-          <span>The Modern Survival Guide for the Internet</span>
-        </div>
+        <div className={styles.heroContent}>
+          <div className={`${styles.badge} ${mounted ? styles.fadeDown : ''}`}>
+            <div className={styles.pulseDot} />
+            <span>The Modern Survival Guide for the Internet</span>
+          </div>
 
-        <h1 className={`${styles.heroTitle} ${mounted ? styles.fadeUp : ''}`}>
-          Don't Let A <span className={styles.gradientText}><CyberText text="Scammer" /></span>
-          <br />
-          <span className={styles.glitchText}><CyberText text="Ruin Your Day" /></span>
-        </h1>
+          <h1 className={`${styles.heroTitle} ${mounted ? styles.fadeUp : ''}`}>
+            Don't Let A <span className={styles.gradientText}><CyberText text="Scammer" /></span>
+            <br />
+            <span className={styles.glitchText}><CyberText text="Ruin Your Day" /></span>
+          </h1>
 
-        <p className={`${styles.heroSubtitle} ${mounted ? styles.fadeUpDelay : ''}`}>
-          The "CBI" is calling. Your KYC has "expired". Strangers want to pay you to like videos.
-          <br />
-          <strong>Welcome to the digital jungle. We teach you how to survive.</strong>
-        </p>
+          <p className={`${styles.heroSubtitle} ${mounted ? styles.fadeUpDelay : ''}`}>
+            The "CBI" is calling. Your KYC has "expired". Strangers want to pay you to like videos.
+            <br />
+            <strong>Welcome to the digital jungle. We teach you how to survive.</strong>
+          </p>
 
-        <div className={`${styles.ctaGroup} ${mounted ? styles.fadeUpDelay2 : ''}`}>
-          <Link to='/game' className={styles.primaryBtn}>
-            Start Training <ArrowRight size={18} />
-          </Link>
-          <button onClick={() => scrollToSection(`.${styles.bentoSection}`)} className={styles.secondaryBtn}>
-            Explore Modules
-          </button>
+          <div className={`${styles.ctaGroup} ${mounted ? styles.fadeUpDelay2 : ''}`}>
+            <Link to='/game' className={styles.primaryBtn}>
+              Start Training <ArrowRight size={18} />
+            </Link>
+            <button onClick={() => scrollToSection(`.${styles.bentoSection}`)} className={styles.secondaryBtn}>
+              Explore Modules
+            </button>
+          </div>
         </div>
 
         {/* Floating Dashboard Preview (Visual Anchor) */}
@@ -261,7 +263,7 @@ const LandingPage = () => {
          <div className={styles.footerContent}>
             <div className={styles.brand}>
                <Shield size={20} />
-               <span>Hackademy_v2.0</span>
+               <span>Hackademy</span>
             </div>
             <div className={styles.copyright}>© 2026 Secured.</div>
          </div>

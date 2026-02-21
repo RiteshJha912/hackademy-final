@@ -44,15 +44,41 @@
 /* Hero Section */
 .heroSection {
   position: relative;
-  max-width: 1280px;
+  max-width: 1200px;
+  /* Matched with Navbar */
   margin: 0 auto;
-  padding: 140px 24px 60px;
-  /* Increased top padding to clear sticky navbar comfortably */
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   z-index: 5;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+@media (min-width: 769px) {
+  .heroSection {
+    min-height: 100vh;
+    padding: 0 24px;
+    justify-content: center;
+  }
+
+  .heroContent {
+    flex: 1;
+    justify-content: center;
+    padding-top: 80px;
+    /* Spacer for sticky navbar */
+  }
+
+  .heroDashboard {
+    margin-top: auto;
+    margin-bottom: 60px;
+  }
 }
 
 /* Badge */
@@ -203,19 +229,6 @@
   backdrop-filter: blur(12px);
   perspective: 1000px;
   transform-style: preserve-3d;
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
 }
 
 .dashboardHeader {
@@ -354,30 +367,62 @@
 .bentoGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  /* 4 columns for flexible spanning */
-  grid-auto-rows: minmax(200px, auto);
+  grid-auto-rows: minmax(180px, auto);
   gap: 24px;
+}
+
+@media (max-width: 1200px) {
+  .bentoGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .bentoGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .bentoGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .colSpan2,
+  .rowSpan2 {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
 }
 
 /* Next-Level Bento Cards */
 .bentoCard {
-  background:
-    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.03) 0%, transparent 70%),
-    linear-gradient(180deg, rgba(20, 20, 25, 0.6) 0%, rgba(10, 10, 15, 0.8) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-  border-radius: 24px;
-  padding: 28px;
+  background: #12121e;
+  /* Solid background for performance */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  /* Simpler border */
+  border-radius: 20px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   position: relative;
-  backdrop-filter: blur(20px);
-  box-shadow:
-    0 4px 24px -1px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
-  /* Inner glass rim */
+  /* Removed expensive backdrop-filter and complex box-shadows */
+}
+
+/* Light accent for depth without GPU cost */
+.bentoCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+  pointer-events: none;
 }
 
 /* Accent line at the top of cards for color */
@@ -411,9 +456,7 @@
 
 .cardIcon {
   padding: 0;
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.15));
-  /* Glowy Icon */
-  transition: filter 0.3s ease;
+  color: currentColor;
 }
 
 .bentoCard h3 {
@@ -421,7 +464,6 @@
   font-weight: 600;
   color: #fff;
   letter-spacing: -0.01em;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .cardDesc {
@@ -435,20 +477,14 @@
 /* Specific Card Visuals */
 .terminalWindow {
   background: #080808;
-  /* Darker terminal */
   border-radius: 12px;
   padding: 20px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.8rem;
   flex: 1;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  /* Fainter border */
-  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
-  /* Inner depth */
   overflow-x: auto;
-  /* Allow horizontal scroll for code */
   white-space: nowrap;
-  /* Keep code lines together */
   max-width: 100%;
 }
 
@@ -641,104 +677,70 @@
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
-  .bentoGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
 @media (max-width: 768px) {
   .heroSection {
-    padding: 120px 20px 40px;
-    /* Reduced side padding */
+    padding: 100px 20px 60px;
+    min-height: auto;
+  }
+
+  .heroContent {
+    padding-top: 0;
   }
 
   .heroTitle {
-    font-size: 2.5rem;
+    font-size: 2.75rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .heroSubtitle {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 36px;
+    color: #9CA3AF;
+  }
+
+  .ctaGroup {
+    flex-direction: column;
+    width: 100%;
+    gap: 14px;
+    margin-bottom: 60px;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    width: 100%;
+    justify-content: center;
+    padding: 16px;
+    font-size: 1.05rem;
+  }
+
+  .heroDashboard {
+    transform: scale(0.95);
+    margin-top: 20px;
   }
 
   .statRow {
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: column;
+    gap: 12px;
   }
 
-  .bentoGrid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  .statItem {
+    padding: 12px;
   }
+
 
   /* Mobile Terminal Enhancements */
   .terminalWindow {
-    font-size: 0.9rem;
-    /* Larger text for mobile readability */
-    padding: 20px;
-    background: #050505;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    min-height: 200px;
-    /* Ensure sufficient vertical space */
-  }
-
-  /* Mobile Panic Button Enhancements */
-  .panicVisual {
-    margin-top: 30px;
-    padding: 20px 0;
-    background: rgba(220, 38, 38, 0.05);
-    border-radius: 16px;
-    border: 1px dashed rgba(220, 38, 38, 0.3);
-  }
-
-  .panicBtn {
-    width: 100px;
-    height: 100px;
-    /* Larger tap target */
-    font-size: 1.5rem;
-    font-weight: 800;
-    box-shadow: 0 0 20px rgba(220, 38, 38, 0.6);
-    animation: rapidPulse 1.5s infinite;
-  }
-
-  @keyframes rapidPulse {
-    0% {
-      transform: scale(1);
-      box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
-    }
-
-    50% {
-      transform: scale(1.05);
-      box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
-    }
-
-    100% {
-      transform: scale(1);
-      box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
-    }
-  }
-
-  .panicCard {
-    background: linear-gradient(135deg, rgba(60, 10, 10, 0.9) 0%, #1a0505 100%) !important;
-    border: 1px solid rgba(220, 38, 38, 0.5) !important;
-    box-shadow: 0 10px 30px -5px rgba(220, 38, 38, 0.3);
-  }
-
-  .colSpan2,
-  .rowSpan2 {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
-
-  .rowContent {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .statGroup {
-    width: 100%;
-    justify-content: space-between;
+    font-size: 0.85rem;
+    padding: 16px;
+    min-height: 180px;
   }
 
   .timeline {
     flex-direction: column;
-    gap: 40px;
+    gap: 32px;
     align-items: flex-start;
   }
 
@@ -746,64 +748,45 @@
     display: none;
   }
 
-  .ctaGroup {
-    flex-direction: column;
-    width: 100%;
-    gap: 12px;
-  }
-
-  .primaryBtn,
-  .secondaryBtn {
-    justify-content: center;
-    width: 100%;
-  }
-
   .footerContent {
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
+    text-align: center;
   }
 }
 
 /* Specific Mobile Optimizations */
 @media (max-width: 480px) {
   .heroSection {
-    padding: 110px 16px 40px;
-    /* Tighter padding for mobile */
+    padding: 90px 18px 50px;
   }
 
   .heroTitle {
-    font-size: 1.85rem;
-    /* Smaller font to prevent awkward breaks */
-    margin-bottom: 16px;
+    font-size: 2.25rem;
+    letter-spacing: -0.01em;
   }
 
   .heroSubtitle {
-    font-size: 1rem;
-    margin-bottom: 32px;
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+    padding: 0 4px;
   }
 
   .badge {
-    padding: 4px 12px;
+    padding: 6px 14px;
     font-size: 0.75rem;
     margin-bottom: 24px;
-    max-width: 100%;
-    text-align: left;
-    white-space: normal;
-    /* Allow text wrapping if needed */
+    line-height: 1.4;
   }
 
-  .statRow {
-    flex-direction: column;
-    gap: 12px;
+  .heroDashboard {
+    transform: scale(1);
+    /* Reset scale for small mobile */
+    border-radius: 12px;
   }
 
   .dashboardContent {
     padding: 16px;
-    min-height: auto;
-  }
-
-  .statItem {
-    padding: 12px;
   }
 
   .statValue {
@@ -811,11 +794,16 @@
   }
 
   .sectionHeader h2 {
-    font-size: 1.75rem;
+    font-size: 1.85rem;
+  }
+
+  .panicBtn {
+    width: 90px;
+    height: 90px;
   }
 
   .footer {
-    padding: 30px 16px;
-    margin-top: 60px;
+    padding: 32px 16px;
+    margin-top: 40px;
   }
 }
