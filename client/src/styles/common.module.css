@@ -61,7 +61,6 @@
   background: rgba(239, 68, 68, 0.2);
   border-color: rgba(239, 68, 68, 0.3);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
 }
 
 .button:active {
@@ -87,7 +86,6 @@
 .buttonPrimary:hover {
   background: #dc2626;
   border-color: transparent;
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
 
 /* Common container styles - Glass Card */

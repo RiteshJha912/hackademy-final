@@ -11,6 +11,7 @@ import {
   Loader,
   ArrowRight,
   Flag,
+  Gamepad2
 } from 'lucide-react'
 
 const MCQGamePage = ({ currentUser }) => {
@@ -183,7 +184,13 @@ const MCQGamePage = ({ currentUser }) => {
               onClick={() => navigate('/leaderboard')}
               className={styles.leaderboardButton}
             >
-              <Trophy className={styles.icon} /> View Leaderboard
+              <Trophy className={styles.icon} /> Leaderboard
+            </button>
+            <button
+              onClick={() => navigate('/games')}
+              className={styles.arcadeButton}
+            >
+              <Gamepad2 className={styles.icon} /> Arcade
             </button>
           </div>
 

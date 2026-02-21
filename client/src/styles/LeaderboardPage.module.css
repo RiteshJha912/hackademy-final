@@ -56,7 +56,6 @@
 }
 
 .graphContainer:hover {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
   border-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -107,41 +106,6 @@
   font-size: 0.95rem;
 }
 
-.activeUsersWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 0.5rem;
-}
-
-.activePulsingDot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: #10b981;
-  box-shadow: 0 0 0 rgba(16, 185, 129, 0.4);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
-  }
-
-  70% {
-    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
-  }
-
-  100% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-  }
-}
-
-.activeUsersWrapper .statNumber {
-  margin-bottom: 0;
-  color: #10b981;
-}
 
 .podiumContainer {
   display: flex;
@@ -285,7 +249,6 @@
 .retryButton:hover {
   background: rgba(168, 85, 247, 0.2);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
 }
 
 .buttonIcon {

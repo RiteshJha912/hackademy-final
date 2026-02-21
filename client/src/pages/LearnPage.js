@@ -18,6 +18,7 @@ const LearnPage = ({ currentUser }) => {
 
   return (
     <div className={styles.learnPage}>
+      <div className={styles.ambientLight}></div>
       <div className={styles.updateWrapper}>
         <div className={styles.updateBanner}>
           <div className={styles.updateLeft}>
@@ -49,6 +50,10 @@ const LearnPage = ({ currentUser }) => {
               Scammers pretend to be police or government officials and say you
               are in trouble. They ask for money or personal details.
             </p>
+            <div className={styles.readMoreCta}>
+              <span>Read Article</span>
+              <span className={styles.arrow}>&rarr;</span>
+            </div>
           </div>
         </Link>
 
@@ -60,6 +65,10 @@ const LearnPage = ({ currentUser }) => {
               Fraudsters may trick you into sending money through fake UPI apps
               or QR codes.
             </p>
+            <div className={styles.readMoreCta}>
+              <span>Read Article</span>
+              <span className={styles.arrow}>&rarr;</span>
+            </div>
           </div>
         </Link>
 
@@ -71,6 +80,10 @@ const LearnPage = ({ currentUser }) => {
               Scammers can take over your phone number and access your bank or
               messages.
             </p>
+            <div className={styles.readMoreCta}>
+              <span>Read Article</span>
+              <span className={styles.arrow}>&rarr;</span>
+            </div>
           </div>
         </Link>
 
@@ -82,6 +95,10 @@ const LearnPage = ({ currentUser }) => {
               Some offers promise easy work and high pay but ask for upfront
               fees or personal info.
             </p>
+            <div className={styles.readMoreCta}>
+              <span>Read Article</span>
+              <span className={styles.arrow}>&rarr;</span>
+            </div>
           </div>
         </Link>
 
@@ -93,6 +110,10 @@ const LearnPage = ({ currentUser }) => {
               Scammers send stock tips in WhatsApp or Telegram groups. They may
               try to get you to download fake apps or invest money.
             </p>
+            <div className={styles.readMoreCta}>
+              <span>Read Article</span>
+              <span className={styles.arrow}>&rarr;</span>
+            </div>
           </div>
         </Link>
       </div>

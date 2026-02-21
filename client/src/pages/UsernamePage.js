@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { userAPI } from '../utils/api'
-import { Loader, Gamepad2 } from 'lucide-react'
+import { Loader, ArrowRight, Terminal, ShieldAlert } from 'lucide-react'
 import styles from '../styles/UsernamePage.module.css'
 import commonStyles from '../styles/common.module.css'
 
@@ -12,7 +12,6 @@ const UsernamePage = ({ setUser }) => {
   const [forceLoginNeeded, setForceLoginNeeded] = useState(false)
   const navigate = useNavigate()
 
-  // handles username submission, validates input, creates user via API, and navigates to game
   const handleSubmit = async (e, force = false) => {
     e.preventDefault()
 
@@ -46,8 +45,6 @@ const UsernamePage = ({ setUser }) => {
       const response = await userAPI.createUser(normalizedUsername, force, storedToken)
 
       if (response.success) {
-        // We use the normalized username from the backend response to ensure full parity
-        // and safely save their new or existing secure token
         setUser(response.data.username, response.token)
         navigate('/games')
       } else {
@@ -67,19 +64,24 @@ const UsernamePage = ({ setUser }) => {
 
   return (
     <div className={styles.usernamePage}>
-      <div className={styles.particleBackground}></div>
+      <div className={styles.ambientLight} />
+
       <div className={styles.formContainer}>
+        <div className={styles.terminalDots}>
+          <span></span><span></span><span></span>
+        </div>
+
         <div className={styles.formHeader}>
-          <h2>Choose Your Username</h2>
+          <Terminal className={styles.headerIcon} />
+          <h2>Identify Yourself</h2>
           <p>
-            Please pick a simple name. This will be used to track your quiz
-            progress and scores.
+            Pick a handle. Your scores and progress live under this name.
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className={styles.usernameForm}>
           <div className={styles.inputGroup}>
-            <label htmlFor='username'>Your Name:</label>
+            <label htmlFor='username'>Handle</label>
             <div className={`${styles.inputWrapper} ${error ? styles.inputError : ''}`}>
               <span className={styles.atSymbol}>@</span>
               <input
@@ -94,15 +96,18 @@ const UsernamePage = ({ setUser }) => {
                 placeholder='player_one'
                 maxLength='30'
                 disabled={loading}
+                autoComplete='off'
+                spellCheck='false'
               />
             </div>
-            <small>Use 2-30 letters or numbers. Keep it simple.</small>
+            <small>Lowercase letters, numbers, underscores. 2–30 chars.</small>
           </div>
 
           {error && (
             <div
               className={`${commonStyles.errorMessage} ${styles.errorShake}`}
             >
+              <ShieldAlert size={14} />
               {error}
             </div>
           )}
@@ -112,15 +117,14 @@ const UsernamePage = ({ setUser }) => {
               type='button'
               onClick={(e) => handleSubmit(e, true)}
               disabled={loading}
-              className={`${styles.primaryButton} ${
+              className={`${styles.forceButton} ${
                 loading ? styles.disabledButton : ''
               }`}
-              style={{ background: 'linear-gradient(135deg, #ef4444 0%, #f97316 100%)' }}
             >
               {loading ? (
-                <><Loader className={styles.loadingIcon} /> Logging in...</>
+                <><Loader className={styles.loadingIcon} /> Connecting...</>
               ) : (
-                <><Gamepad2 className={styles.icon} /> Force Login</>
+                <><ShieldAlert className={styles.icon} /> Force Login</>
               )}
             </button>
           ) : (
@@ -132,16 +136,16 @@ const UsernamePage = ({ setUser }) => {
               }`}
             >
               {loading ? (
-                <><Loader className={styles.loadingIcon} /> Logging in...</>
+                <><Loader className={styles.loadingIcon} /> Connecting...</>
               ) : (
-                <><Gamepad2 className={styles.icon} /> Start Playing</>
+                <>Enter <ArrowRight className={styles.icon} /></>
               )}
             </button>
           )}
 
           {loading && (
             <p className={styles.loadingMessage}>
-              Hold tight! The server is waking up, so this might take a moment...
+              Hold tight — the server is waking up...
             </p>
           )}
         </form>

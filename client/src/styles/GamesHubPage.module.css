@@ -87,7 +87,6 @@
 
 .gameCard:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px -10px rgba(168, 85, 247, 0.2);
     border-color: rgba(168, 85, 247, 0.3);
 }
 
@@ -161,7 +160,6 @@
 
 .gameCard:hover .playButton {
     background: #9333ea;
-    box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
 }
 
 .playButtonIcon {
@@ -179,7 +177,6 @@
 }
 
 .gameCard.phishing:hover {
-    box-shadow: 0 20px 40px -10px rgba(239, 68, 68, 0.2);
     border-color: rgba(239, 68, 68, 0.3);
 }
 
@@ -197,7 +194,6 @@
 
 .gameCard.phishing:hover .playButton {
     background: #dc2626;
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
 
 /* Tablet */

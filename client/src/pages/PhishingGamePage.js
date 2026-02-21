@@ -13,7 +13,8 @@ import {
   ShieldCheck,
   AlertTriangle,
   Mail,
-  Smartphone
+  Smartphone,
+  Gamepad2
 } from 'lucide-react'
 
 const PhishingGamePage = ({ currentUser }) => {
@@ -163,6 +164,9 @@ const PhishingGamePage = ({ currentUser }) => {
             </button>
             <button onClick={() => navigate('/leaderboard')} className={styles.leaderboardButton}>
               <Trophy className={styles.icon} /> Leaderboard
+            </button>
+            <button onClick={() => navigate('/games')} className={styles.arcadeButton}>
+              <Gamepad2 className={styles.icon} /> Arcade
             </button>
           </div>
           {gameCompleted && (
