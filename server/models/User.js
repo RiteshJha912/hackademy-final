@@ -23,6 +23,14 @@ const userSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
+    isActive: {
+      type: Boolean,
+      default: false,
+    },
+    visitorToken: {
+      type: String,
+      default: '',
+    },
   },
   {
     timestamps: true,

@@ -159,7 +159,18 @@ const LeaderboardPage = () => {
           </div>
           <div className={styles.statCard}>
             <span className={styles.statNumber}>{stats.totalGamesPlayed}</span>
-            <span className={styles.statLabel}>Quizzes Completed</span>
+            <span className={styles.statLabel}>Simulations Played</span>
+          </div>
+          <div className={styles.statCard}>
+            <span className={styles.statNumber}>{stats.totalScore.toLocaleString()}</span>
+            <span className={styles.statLabel}>Global Points</span>
+          </div>
+          <div className={styles.statCard}>
+            <div className={styles.activeUsersWrapper}>
+                <span className={styles.activePulsingDot}></span>
+                <span className={styles.statNumber}>{stats.activeUsers}</span>
+            </div>
+            <span className={styles.statLabel}>Active Now</span>
           </div>
           <div className={styles.statCard}>
             <span className={styles.statNumber}>
@@ -185,7 +196,7 @@ const LeaderboardPage = () => {
                   <div className={styles.podiumMedal}>
                     {idx === 0 ? '🥇' : idx === 1 ? '🥈' : '🥉'}
                   </div>
-                  <div className={styles.podiumName}>{user.username}</div>
+                  <div className={styles.podiumName}>@{user.username}</div>
                   <div className={styles.podiumScore}>{user.score}</div>
                 </div>
               ))}

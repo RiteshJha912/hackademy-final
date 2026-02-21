@@ -58,10 +58,10 @@
 }
 
 .button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.3);
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
 }
 
 .button:active {
@@ -79,14 +79,15 @@
 
 /* Primary variant if needed */
 .buttonPrimary {
-  background: #fff;
-  color: #000;
+  background: #ef4444;
+  color: #fff;
   border: 1px solid transparent;
 }
 
 .buttonPrimary:hover {
-  background: #F3F4F6;
+  background: #dc2626;
   border-color: transparent;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
 
 /* Common container styles - Glass Card */
@@ -145,4 +146,32 @@
   margin: 1rem 0;
   text-align: center;
   font-size: 0.9rem;
+}
+
+/* Global Mobile Responsive Overrides */
+@media (max-width: 768px) {
+  .button {
+    padding: 0.85rem 1.75rem;
+    font-size: 1.05rem;
+    min-height: 48px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+    min-height: 52px;
+    /* Even taller for small mobile targets */
+    width: 100%;
+  }
+
+  .container {
+    padding: 16px;
+    border-radius: 12px;
+  }
 }

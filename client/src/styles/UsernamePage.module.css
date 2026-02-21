@@ -105,38 +105,6 @@
   font-size: 0.9rem;
 }
 
-.inputGroup input {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  width: 100%;
-  padding: 12px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  font-size: 1rem;
-  background: rgba(0, 0, 0, 0.2);
-  color: #fff;
-  transition: all 0.2s ease;
-  box-sizing: border-box;
-}
-
-.inputGroup input::placeholder {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.5);
-  transition: opacity 0.3s ease;
-}
-
-.inputGroup input:focus {
-  outline: none;
-  border-color: #A78BFA;
-  background: rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.1);
-}
-
-.inputGroup input:focus::placeholder {
-  opacity: 0.3;
-}
-
 .inputGroup small {
   font-family: 'Jura', sans-serif;
   font-weight: 300;
@@ -145,6 +113,54 @@
   display: block;
   margin-top: 0.5rem;
   line-height: 1.4;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.inputWrapper:focus-within {
+  border-color: #A78BFA;
+  box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.1);
+}
+
+.atSymbol {
+  padding: 12px 0 12px 16px;
+  color: #A78BFA;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 1.1rem;
+  user-select: none;
+}
+
+.inputGroup input {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 400;
+  width: 100%;
+  padding: 12px 16px 12px 8px;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 1.1rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.inputGroup input::placeholder {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.3);
+  transition: opacity 0.3s ease;
+}
+
+.inputGroup input:focus::placeholder {
+  opacity: 0.1;
 }
 
 .inputError {
@@ -201,52 +217,42 @@
 
 .primaryButton {
   font-family: 'Orbitron', sans-serif;
-  font-weight: 500;
-  background: linear-gradient(135deg, #7928ca 0%, #ff0080 100%);
-  color: #FFFFFF;
+  font-weight: 600;
+  background: #ef4444;
+  color: #ffffff;
   padding: 16px 32px;
-  border-radius: 12px;
+  border-radius: 8px;
   text-decoration: none;
   font-size: 1.1rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+  gap: 10px;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   width: 100%;
-  border: none;
+  border: 1px solid transparent;
   cursor: pointer;
   box-sizing: border-box;
   min-height: 56px;
-}
-
-.primaryButton::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
-}
-
-.primaryButton:hover::before {
-  left: 100%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .primaryButton:hover:not(:disabled) {
+  background: #dc2626;
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
 
 .primaryButton:active:not(:disabled) {
   transform: translateY(0);
+  box-shadow: none;
 }
 
 .disabledButton {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
@@ -272,8 +278,9 @@
   }
 
   .primaryButton {
-    font-size: 1rem;
-    padding: 14px 28px;
+    font-size: 1.1rem;
+    padding: 16px 32px;
+    min-height: 56px;
   }
 }
 
@@ -286,8 +293,8 @@
   }
 
   .formContainer {
-    padding: 1.5rem;
-    border-radius: 10px;
+    padding: 1.75rem;
+    border-radius: 12px;
   }
 
   .formHeader {
@@ -325,10 +332,10 @@
   }
 
   .primaryButton {
-    font-size: 0.95rem;
-    padding: 13px 24px;
+    font-size: 1.05rem;
+    padding: 14px 24px;
     border-radius: 10px;
-    min-height: 52px;
+    min-height: 54px;
   }
 
   .icon {

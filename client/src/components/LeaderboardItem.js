@@ -44,7 +44,7 @@ const LeaderboardItem = ({ user, position }) => {
       </div>
 
       <div className={styles.userSection}>
-        <span className={styles.username}>{user.username}</span>
+        <span className={styles.username}>@{user.username}</span>
         <div className={styles.userStats}>
           <span className={styles.gamesPlayed}>
             <Gamepad2 className={styles.statIcon} /> {user.gamesPlayed} game

@@ -10,14 +10,23 @@ import {
   BookOpen,
   Menu,
   X,
+  ShieldAlert,
 } from 'lucide-react'
 import styles from '../styles/Navbar.module.css'
+import { userAPI } from '../utils/api'
 
 const Navbar = ({ currentUser, setUser }) => {
   const location = useLocation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    if (currentUser) {
+      try {
+        await userAPI.logoutUser(currentUser)
+      } catch (err) {
+        console.error('Failed to log out cleanly', err)
+      }
+    }
     setUser('')
     setIsMenuOpen(false)
   }
@@ -82,16 +91,16 @@ const Navbar = ({ currentUser, setUser }) => {
                 <Trophy className={styles.navIcon} /> Leaderboard
               </Link>
               <Link
-                to='/game'
-                className={`${styles.navLink} ${isActive('/game')}`}
+                to='/games'
+                className={`${styles.navLink} ${isActive('/games')}`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                <Gamepad2 className={styles.navIcon} /> Play Game
+                <Gamepad2 className={styles.navIcon} /> Play Games
               </Link>
               <div className={styles.userInfo}>
                 <span className={styles.usernameWrapper}>
                   <span className={styles.username}>
-                    <User className={styles.userIcon} /> {currentUser}
+                    <User className={styles.userIcon} /> @{currentUser}
                   </span>
                 </span>
                 <button

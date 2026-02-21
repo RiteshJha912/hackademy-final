@@ -5,12 +5,14 @@ const {
   getLeaderboard,
   getUserByUsername,
   getStats,
+  logoutUser,
 } = require('../controllers/userController')
 
 const router = express.Router()
 
 // User routes
 router.post('/user', createUser)
+router.post('/user/logout', logoutUser)
 router.get('/user/:username', getUserByUsername)
 
 // Score routes

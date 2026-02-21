@@ -5,44 +5,92 @@ const User = require('../models/User')
 // @access  Public
 const createUser = async (req, res) => {
   try {
-    const { username } = req.body
+    const { username, forceLogin, returningToken } = req.body
 
-    if (!username) {
+    if (!username || typeof username !== 'string') {
       return res.status(400).json({
         success: false,
-        message: 'Please provide a username',
+        message: 'Please provide a valid username',
+      })
+    }
+
+    // Normalize username (trim and lowercase)
+    const normalizedUsername = username.trim().toLowerCase()
+
+    // Validate length
+    if (normalizedUsername.length < 2 || normalizedUsername.length > 30) {
+      return res.status(400).json({
+        success: false,
+        message: 'Username must be between 2 and 30 characters',
+      })
+    }
+
+    // Validate characters (letters, numbers, underscore only)
+    if (!/^[a-z0-9_]+$/.test(normalizedUsername)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Username can only contain letters, numbers, and underscores',
       })
     }
 
     // Check if user already exists
     const existingUser = await User.findOne({
-      username: username.toLowerCase(),
+      username: normalizedUsername,
     })
 
     if (existingUser) {
+      if (existingUser.isActive && !forceLogin) {
+        return res.status(409).json({
+          success: false,
+          isAlreadyActive: true,
+          message: 'Username is currently active in another session.',
+        })
+      }
+
+      // If they don't provide a matching returningToken, they are a DIFFERENT user trying to take an existing name.
+      if (!returningToken || returningToken !== existingUser.visitorToken) {
+         return res.status(403).json({
+           success: false,
+           message: 'This username is already taken. Please choose another one.',
+         })
+      }
+
+      // Valid returning user
+      existingUser.isActive = true
+      await existingUser.save()
+
       return res.status(200).json({
         success: true,
-        message: 'User already exists',
+        message: 'Welcome back!',
+        isNew: false,
+        token: existingUser.visitorToken,
         data: existingUser,
       })
     }
 
+    // Create a simple random token for the newly created user
+    const newToken = Math.random().toString(36).substring(2, 15)
+
     // Create new user
     const user = await User.create({
-      username: username.toLowerCase(),
+      username: normalizedUsername,
       score: 0,
+      isActive: true,
+      visitorToken: newToken,
     })
 
     res.status(201).json({
       success: true,
-      message: 'User created successfully',
+      message: 'Account created successfully!',
+      isNew: true,
+      token: newToken,
       data: user,
     })
   } catch (error) {
     console.error(error)
     res.status(500).json({
       success: false,
-      message: 'Server Error',
+      message: 'Server Error. Please try again.',
     })
   }
 }
@@ -152,9 +200,19 @@ const getUserByUsername = async (req, res) => {
 const getStats = async (req, res) => {
   try {
     const totalUsers = await User.countDocuments()
-    const totalGamesPlayed = await User.aggregate([
-      { $group: { _id: null, total: { $sum: '$gamesPlayed' } } },
+    
+    // Aggregate total games and total score across all users
+    const aggregates = await User.aggregate([
+      { 
+        $group: { 
+          _id: null, 
+          totalGames: { $sum: '$gamesPlayed' },
+          totalScore: { $sum: '$score' }
+        } 
+      }
     ])
+    
+    const activeUsersCount = await User.countDocuments({ isActive: true })
 
     const topPlayer = await User.findOne().sort({ score: -1 })
 
@@ -162,7 +220,9 @@ const getStats = async (req, res) => {
       success: true,
       data: {
         totalUsers,
-        totalGamesPlayed: totalGamesPlayed[0]?.total || 0,
+        totalGamesPlayed: aggregates[0]?.totalGames || 0,
+        totalScore: aggregates[0]?.totalScore || 0,
+        activeUsers: activeUsersCount,
         topPlayer: topPlayer
           ? {
               username: topPlayer.username,
@@ -180,10 +240,36 @@ const getStats = async (req, res) => {
   }
 }
 
+// @desc    Logout user
+// @route   POST /api/user/logout
+// @access  Public
+const logoutUser = async (req, res) => {
+  try {
+    const { username } = req.body
+
+    if (!username) {
+      return res.status(400).json({ success: false, message: 'Provide a username' })
+    }
+
+    const user = await User.findOne({ username: username.toLowerCase() })
+
+    if (user) {
+      user.isActive = false
+      await user.save()
+    }
+
+    res.status(200).json({ success: true, message: 'Logged out successfully' })
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ success: false, message: 'Server Error' })
+  }
+}
+
 module.exports = {
   createUser,
   updateScore,
   getLeaderboard,
   getUserByUsername,
   getStats,
+  logoutUser,
 }

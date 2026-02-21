@@ -8,6 +8,7 @@ import {
   Briefcase,
   Brain,
   Columns4,
+  Gamepad2,
 } from 'lucide-react'
 import styles from '../styles/LearnPage.module.css'
 
@@ -98,11 +99,11 @@ const LearnPage = ({ currentUser }) => {
 
       <div className={styles.ctaContainer}>
         <Link
-          to={currentUser ? '/game' : '/username'}
+          to={currentUser ? '/games' : '/username'}
           className={styles.testKnowledgeButton}
         >
-          <Brain className={styles.buttonIcon} />
-          Test Your Knowledge
+          <Gamepad2 className={styles.buttonIcon} />
+          Go to Cyber Arcade
         </Link>
       </div>
     </div>

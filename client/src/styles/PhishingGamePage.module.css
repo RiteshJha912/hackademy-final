@@ -1,0 +1,560 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Quicksand:wght@400;500;600;700&family=Jura:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+.gamePage {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Dynamic Backgrounds */
+.ambientLight {
+    position: fixed;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, rgba(239, 68, 68, 0.1) 0%, transparent 70%);
+    filter: blur(100px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.gridOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.gameContainer {
+    background: rgba(13, 13, 17, 0.7);
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.gameContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ef4444, transparent);
+    opacity: 0.5;
+}
+
+.gameHeader {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.progressInfo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #ef4444;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.progressBar {
+    background: rgba(255, 255, 255, 0.05);
+    height: 4px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progressFill {
+    background: linear-gradient(90deg, #ef4444, #f97316);
+    height: 100%;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+}
+
+/* The Phishing Message Box */
+.messageContainer {
+    padding: 2.5rem;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.3);
+    margin: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.messageHeader {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.messageSender {
+    font-family: 'Inter', sans-serif;
+    color: #D1D5DB;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.fakeLink {
+    color: #60A5FA;
+    text-decoration: underline;
+    cursor: not-allowed;
+    word-break: break-all;
+}
+
+.messageSubject {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.messageBody {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    color: #E5E7EB;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+    /* Prevent long links from breaking container */
+}
+
+.questionContainer {
+    padding: 2rem 1.75rem 0.5rem;
+}
+
+.questionText {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.questionPoints {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(239, 68, 68, 0.2);
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+/* Options */
+.optionsContainer {
+    padding: 0 1.5rem 2rem;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.optionButton {
+    flex: 1;
+    max-width: 300px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.25rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #D1D5DB;
+    font-family: 'Inter', sans-serif;
+    gap: 0.5rem;
+}
+
+.optionIcon {
+    width: 32px;
+    height: 32px;
+}
+
+.optionButton:hover:not(:disabled) {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.optionButton.phishing:hover:not(:disabled) {
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.optionButton.legit:hover:not(:disabled) {
+    border-color: #10b981;
+    color: #10b981;
+}
+
+.optionButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Feedback Panel */
+.feedbackPanel {
+    margin: 0 1.5rem 2rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    animation: slideUp 0.3s ease-out forwards;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.feedbackCorrect {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.feedbackIncorrect {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.feedbackTitle {
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.feedbackCorrect .feedbackTitle {
+    color: #34d399;
+}
+
+.feedbackIncorrect .feedbackTitle {
+    color: #f87171;
+}
+
+.feedbackText {
+    color: #D1D5DB;
+    line-height: 1.5;
+}
+
+/* Actions */
+.gameActions {
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.01);
+}
+
+.nextButton {
+    background: #ef4444;
+    color: #fff;
+    border: 1px solid transparent;
+    padding: 1rem 3rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nextButton:hover:not(:disabled) {
+    background: #dc2626;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.nextButton:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Match Results with MCQ */
+.resultContainer {
+    background: rgba(13, 13, 17, 0.8);
+    padding: 4rem 2rem;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+}
+
+.resultContainer h2 {
+    color: #fff;
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: linear-gradient(to bottom, #fff, #ef4444);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.scoreDisplay {
+    background: rgba(239, 68, 68, 0.05);
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    margin-bottom: 2.5rem;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.finalScore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.scoreLabel {
+    font-size: 1.2rem;
+    color: #D1D5DB;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+}
+
+.scoreValue {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ef4444;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.scorePercentage {
+    font-size: 1.25rem;
+    color: #34D399;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.resultMessage {
+    font-size: 1.15rem;
+    margin-bottom: 2.5rem;
+    color: #E5E7EB;
+    font-family: 'Quicksand', sans-serif;
+    line-height: 1.6;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.resultActions {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.playAgainButton,
+.leaderboardButton {
+    padding: 1.25rem 2.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.playAgainButton {
+    background: #ef4444;
+    color: #fff;
+    border: 1px solid transparent;
+}
+
+.playAgainButton:hover {
+    background: #dc2626;
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.leaderboardButton {
+    background: rgba(239, 68, 68, 0.1);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.leaderboardButton:hover {
+    background: rgba(239, 68, 68, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .gamePage {
+        margin: 1rem auto;
+        padding: 0 1rem;
+    }
+
+    .optionsContainer {
+        flex-direction: column;
+    }
+
+    .optionButton {
+        max-width: none;
+    }
+
+    .scoreValue {
+        font-size: 2.5rem;
+    }
+
+    .resultContainer h2 {
+        font-size: 1.75rem;
+    }
+
+    .resultActions {
+        flex-direction: column;
+    }
+
+    .playAgainButton,
+    .leaderboardButton {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .gamePage {
+        padding: 0 0.5rem;
+    }
+
+    .gameHeader {
+        padding: 1rem;
+    }
+
+    .progressInfo {
+        font-size: 0.8rem;
+    }
+
+    .questionContainer {
+        padding: 1.5rem 1rem 0;
+    }
+
+    .questionText {
+        font-size: 1.2rem;
+    }
+
+    .messageContainer {
+        padding: 1.25rem;
+        margin: 1rem;
+    }
+
+    .messageSubject {
+        font-size: 1.1rem;
+    }
+
+    .messageBody {
+        font-size: 0.95rem;
+    }
+
+    .optionsContainer {
+        padding: 0 1rem 1.5rem;
+    }
+
+    .optionButton {
+        padding: 1rem;
+    }
+
+    .nextButton {
+        width: 100%;
+        padding: 1rem;
+        min-height: 56px;
+        justify-content: center;
+    }
+
+    .scoreValue {
+        font-size: 2rem;
+    }
+
+    .scoreLabel {
+        font-size: 1rem;
+    }
+
+    .resultContainer {
+        padding: 2.5rem 1.25rem;
+    }
+
+    .resultContainer h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .resultContainer h2 .icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .scoreDisplay {
+        padding: 1.5rem 1rem;
+    }
+
+    .resultMessage {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+    }
+
+    .playAgainButton,
+    .leaderboardButton {
+        padding: 1rem 1.25rem;
+        font-size: 0.95rem;
+        min-height: 56px;
+    }
+}

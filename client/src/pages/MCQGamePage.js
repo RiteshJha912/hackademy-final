@@ -156,7 +156,9 @@ const MCQGamePage = ({ currentUser }) => {
 
   if (showResult) {
     return (
-      <div className={`${appStyles.pageContainer} ${styles.gamePage}`}>
+      <div className={styles.gamePage}>
+        <div className={styles.ambientLight} />
+        <div className={styles.gridOverlay} />
         <div className={styles.resultContainer}>
           <h2>
             <Award className={styles.icon} /> Game Complete!
@@ -199,7 +201,9 @@ const MCQGamePage = ({ currentUser }) => {
   const question = questions[currentQuestion]
 
   return (
-    <div className={`${appStyles.pageContainer} ${styles.gamePage}`}>
+    <div className={styles.gamePage}>
+      <div className={styles.ambientLight} />
+      <div className={styles.gridOverlay} />
       <div className={styles.gameContainer}>
         <div className={styles.gameHeader}>
           <div className={styles.progressInfo}>

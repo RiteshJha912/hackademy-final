@@ -16,9 +16,19 @@ const api = axios.create({
 // User API functions
 export const userAPI = {
   // Create new user
-  createUser: async (username) => {
+  createUser: async (username, forceLogin = false, returningToken = '') => {
     try {
-      const response = await api.post('/api/user', { username })
+      const response = await api.post('/api/user', { username, forceLogin, returningToken })
+      return response.data
+    } catch (error) {
+      throw error.response?.data || { message: 'Network error' }
+    }
+  },
+
+  // Logout user
+  logoutUser: async (username) => {
+    try {
+      const response = await api.post('/api/user/logout', { username })
       return response.data
     } catch (error) {
       throw error.response?.data || { message: 'Network error' }
