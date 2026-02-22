@@ -1,5 +1,5 @@
 /* =============================================================
-   DefenseProtocol.module.css — Premium SaaS Product Preview
+   DefenseProtocol.module.css - Premium SaaS Product Preview
    ─────────────────────────────────────────────────────────────
    Visual upgrades:
    • Multi-layer shadow system (ambient + contact + spread)
@@ -30,7 +30,7 @@
     border-radius: 14px;
     overflow: hidden;
 
-    /* Surface — dark glass with slight translucency */
+    /* Surface - dark glass with slight translucency */
     background: rgba(12, 12, 22, 0.82);
     backdrop-filter: blur(28px) saturate(1.2);
     -webkit-backdrop-filter: blur(28px) saturate(1.2);
@@ -49,7 +49,7 @@
         0 0 80px -20px rgba(167, 139, 250, 0.06);
     /* soft accent bleed */
 
-    /* Product-mockup tilt — intentionally very subtle */
+    /* Product-mockup tilt - intentionally very subtle */
     transform: rotateX(1.5deg);
     transform-origin: center top;
     transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
@@ -67,7 +67,7 @@
         0 0 100px -20px rgba(167, 139, 250, 0.08);
 }
 
-/* Top-edge highlight — simulates light hitting the bezel */
+/* Top-edge highlight - simulates light hitting the bezel */
 .productFrame::before {
     content: '';
     position: absolute;
@@ -85,7 +85,7 @@
     pointer-events: none;
 }
 
-/* Outer ambient glow — gives the frame a soft "floating" halo */
+/* Outer ambient glow - gives the frame a soft "floating" halo */
 .productFrame::after {
     content: '';
     position: absolute;
@@ -103,7 +103,7 @@
 }
 
 /* ═══════════════════════════════════════════════════════
-   WINDOW CHROME — Authentic macOS Toolbar
+   WINDOW CHROME - Authentic macOS Toolbar
    Frosted glass toolbar with proper hierarchy.
 ════════════════════════════════════════════════════════ */
 .windowChrome {
@@ -150,7 +150,7 @@
     background: #28C840;
 }
 
-/* Slight dim when not hovered — feels more authentic */
+/* Slight dim when not hovered - feels more authentic */
 .windowChrome:not(:hover) .dot {
     opacity: 0.75;
 }
@@ -159,7 +159,7 @@
     opacity: 1;
 }
 
-/* Address bar — inset pill with subtle depth */
+/* Address bar - inset pill with subtle depth */
 .addressBar {
     flex: 1;
     background: rgba(0, 0, 0, 0.28);
@@ -177,7 +177,7 @@
     letter-spacing: 0.02em;
 }
 
-/* Lock icon shimmer — optional extra authenticity */
+/* Lock icon shimmer - optional extra authenticity */
 .lockIcon {
     color: rgba(255, 255, 255, 0.25);
     flex-shrink: 0;
@@ -185,7 +185,7 @@
 }
 
 /* ═══════════════════════════════════════════════════════
-   LIVE BADGE — Premium status indicator
+   LIVE BADGE - Premium status indicator
    Double-ring pulse + glow for authenticity.
 ════════════════════════════════════════════════════════ */
 .liveBadge {
@@ -237,7 +237,7 @@
 }
 
 /* ═══════════════════════════════════════════════════════
-   DASHBOARD BODY — Content area
+   DASHBOARD BODY - Content area
 ════════════════════════════════════════════════════════ */
 .dashboardBody {
     padding: 20px 22px 24px;
@@ -246,7 +246,7 @@
 }
 
 /* ═══════════════════════════════════════════════════════
-   STAT CARDS — Premium data display
+   STAT CARDS - Premium data display
    Each card has:
    • Accent-tinted top glow (via --stat-accent)
    • Inset shadow for depth
@@ -293,7 +293,7 @@
         0 4px 12px -4px rgba(0, 0, 0, 0.3);
 }
 
-/* Top-edge accent glow — colour set per card via CSS variable */
+/* Top-edge accent glow - colour set per card via CSS variable */
 .statCard::after {
     content: '';
     position: absolute;
@@ -328,7 +328,7 @@
     margin-bottom: 1px;
 }
 
-/* Icon circle — tinted background for visual weight */
+/* Icon circle - tinted background for visual weight */
 .statLabelIcon {
     display: flex;
     align-items: center;
@@ -356,7 +356,7 @@
     font-family: 'Space Grotesk', sans-serif;
 }
 
-/* Danger value — red status colour */
+/* Danger value - red status colour */
 .valueDanger {
     color: #f87171 !important;
 }
@@ -384,7 +384,7 @@
 }
 
 /* ═══════════════════════════════════════════════════════
-   BOTTOM SCAN GRID — Subtle depth visual
+   BOTTOM SCAN GRID - Subtle depth visual
    Finer grid lines with softer gradient bleed.
 ════════════════════════════════════════════════════════ */
 .scanOverlay {
@@ -435,7 +435,7 @@
 }
 
 /* ═══════════════════════════════════════════════════════
-   RESPONSIVE — Mobile adjustments
+   RESPONSIVE - Mobile adjustments
    No tilt on mobile. Single-column stat cards.
 ════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {

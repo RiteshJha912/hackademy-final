@@ -21,7 +21,7 @@ const UsernamePage = ({ setUser }) => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [forceLoginNeeded, setForceLoginNeeded] = useState(false)
-  const [loadingMessage, setLoadingMessage] = useState('Hold tight — the server is waking up...')
+  const [loadingMessage, setLoadingMessage] = useState('Hold tight - the server is waking up...')
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -34,7 +34,7 @@ const UsernamePage = ({ setUser }) => {
         setLoadingMessage(funnyTexts[index]);
       }, 3000);
     } else {
-      setLoadingMessage('Hold tight — the server is waking up...'); // Reset
+      setLoadingMessage('Hold tight - the server is waking up...'); // Reset
     }
     return () => clearInterval(interval);
   }, [loading]);

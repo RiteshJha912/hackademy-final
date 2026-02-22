@@ -5,7 +5,6 @@ import { Trophy } from 'lucide-react'
 import { userAPI } from '../utils/api'
 import LeaderboardItem from '../components/LeaderboardItem'
 import styles from '../styles/LeaderboardPage.module.css'
-import appStyles from '../styles/App.module.css'
 import {
   BarChart,
   Bar,
@@ -83,7 +82,7 @@ const LeaderboardPage = ({ currentUser }) => {
 
   if (loading) {
     return (
-      <div className={`${appStyles.pageContainer} ${styles.leaderboardPage}`}>
+      <div className={styles.leaderboardPage}>
         <div className={styles.loadingContainer}>
           <div className={styles.loadingSpinner}></div>
           <p>Loading the leaderboard… please wait a moment.</p>
@@ -94,7 +93,7 @@ const LeaderboardPage = ({ currentUser }) => {
 
   if (error) {
     return (
-      <div className={`${appStyles.pageContainer} ${styles.leaderboardPage}`}>
+      <div className={styles.leaderboardPage}>
         <div className={styles.errorContainer}>
           <p className={styles.errorMessage}>{error}</p>
           <button onClick={fetchData} className={styles.retryButton}>
@@ -106,7 +105,7 @@ const LeaderboardPage = ({ currentUser }) => {
   }
 
   return (
-    <div className={`${appStyles.pageContainer} ${styles.leaderboardPage}`}>
+    <div className={styles.leaderboardPage}>
       <div className={styles.leaderboardHeader}>
         <h2>
           <Trophy className={styles.headerIcon} /> Our Learning Leaders

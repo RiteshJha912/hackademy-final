@@ -8,7 +8,7 @@ import {
 import styles from '../styles/DefenseProtocol.module.css'
 
 // ─────────────────────────────────────────────────────────────
-// Stats data — each stat gets its own accent colour for the
+// Stats data - each stat gets its own accent colour for the
 // top-edge glow AND the icon background tint.
 // ─────────────────────────────────────────────────────────────
 const PROTOCOL_STATS = [
@@ -45,7 +45,7 @@ const PROTOCOL_STATS = [
 ]
 
 // ─────────────────────────────────────────────────────────────
-// META_CLASS — maps metaType → CSS module class
+// META_CLASS - maps metaType → CSS module class
 // ─────────────────────────────────────────────────────────────
 const META_CLASS = {
   up: styles.metaUp,
@@ -54,7 +54,7 @@ const META_CLASS = {
 }
 
 // ─────────────────────────────────────────────────────────────
-// DefenseProtocol — YC-startup quality product preview
+// DefenseProtocol - YC-startup quality product preview
 //
 // Visual architecture:
 //  ┌─ productFrame ─────────────────────────────────────────┐
@@ -77,20 +77,20 @@ const DefenseProtocol = () => (
           Frosted-glass toolbar with traffic-light dots,
           inset address bar with lock icon, and LIVE badge. */}
       <div className={styles.windowChrome}>
-        {/* Traffic light dots — dim when toolbar isn't hovered */}
+        {/* Traffic light dots - dim when toolbar isn't hovered */}
         <div className={styles.windowDots} aria-hidden="true">
           <span className={styles.dot} />
           <span className={styles.dot} />
           <span className={styles.dot} />
         </div>
 
-        {/* Address bar — inset pill with lock icon for authenticity */}
+        {/* Address bar - inset pill with lock icon for authenticity */}
         <div className={styles.addressBar}>
           <Lock size={9} className={styles.lockIcon} aria-hidden="true" />
           hackademy://defense_protocols/active
         </div>
 
-        {/* LIVE badge — double-ring pulse dot */}
+        {/* LIVE badge - double-ring pulse dot */}
         <div className={styles.liveBadge} aria-label="Live status">
           <span className={styles.liveDot} aria-hidden="true" />
           LIVE
@@ -110,7 +110,7 @@ const DefenseProtocol = () => (
                 '--icon-bg': iconBg,
               }}
             >
-              {/* Label row — icon in tinted circle + uppercase label */}
+              {/* Label row - icon in tinted circle + uppercase label */}
               <span className={styles.statLabel}>
                 <span className={styles.statLabelIcon}>
                   <Icon size={10} aria-hidden="true" />
@@ -118,14 +118,14 @@ const DefenseProtocol = () => (
                 {label}
               </span>
 
-              {/* Value — large bold number, red for danger */}
+              {/* Value - large bold number, red for danger */}
               <span
                 className={`${styles.statValue} ${metaType === 'danger' ? styles.valueDanger : ''}`}
               >
                 {value}
               </span>
 
-              {/* Meta — small trend indicator */}
+              {/* Meta - small trend indicator */}
               <span className={`${styles.statMeta} ${META_CLASS[metaType] || styles.metaNeutral}`}>
                 <Icon size={9} aria-hidden="true" />
                 {meta}
@@ -134,14 +134,14 @@ const DefenseProtocol = () => (
           ))}
         </div>
 
-        {/* Subtle scan grid at the bottom — visual depth */}
+        {/* Subtle scan grid at the bottom - visual depth */}
         <div className={styles.scanOverlay} aria-hidden="true">
           <div className={styles.perspectiveGrid} />
         </div>
       </div>
     </div>
 
-    {/* Reflection — grounding shadow beneath the frame */}
+    {/* Reflection - grounding shadow beneath the frame */}
     <div className={styles.reflection} aria-hidden="true" />
   </div>
 )

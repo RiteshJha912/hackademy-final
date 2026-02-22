@@ -27,7 +27,7 @@ const STATS = {
 
 // ---------------------------------------------------------------------
 // IMPROVEMENT: Reusable BentoCard component for consistent hover/focus
-// behaviour — eliminates repeated inline style blocks.
+// behaviour - eliminates repeated inline style blocks.
 // ---------------------------------------------------------------------
 const BentoCard = ({ children, className = '', as: Tag = 'div', ...props }) => (
   <Tag className={`${styles.bentoCard} ${className}`} {...props}>
@@ -108,7 +108,7 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════════════
-          BENTO GRID — Defense Protocols
+          BENTO GRID - Defense Protocols
           IMPROVEMENT: Cards use the shared BentoCard component;
           Link cards get textDecoration via CSS class (not inline style).
       ════════════════════════════════════════════════════════ */}
@@ -229,7 +229,7 @@ const LandingPage = () => {
             as={Link}
             to="/learn"
             className={`${styles.rowSpan2} ${styles.panicCard} ${styles.cardLink}`}
-            aria-label="Panic Button — real-time recovery guide"
+            aria-label="Panic Button - real-time recovery guide"
           >
             <div className={styles.cardHeader}>
               <span className={styles.cardIconWrap} style={{ '--icon-color': '#fbbf24' }}>
@@ -238,7 +238,7 @@ const LandingPage = () => {
               <h3>Panic Button</h3>
               <ChevronRight size={16} className={styles.cardChevron} aria-hidden="true" />
             </div>
-            <p className={styles.cardDesc}>Real-time steps to take when you realise you've been compromised. Act fast — every minute matters.</p>
+            <p className={styles.cardDesc}>Real-time steps to take when you realise you've been compromised. Act fast - every minute matters.</p>
             <div className={styles.panicVisual} aria-hidden="true">
               <div className={styles.panicRings}>
                 <div className={styles.panicRing} />
@@ -282,7 +282,7 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════════════
-          HOW IT WORKS — Step Timeline
+          HOW IT WORKS - Step Timeline
           IMPROVEMENT: Numbered steps now have connecting line via
           CSS pseudo-element instead of a separate .connector div,
           which also fixes the mobile layout break.
@@ -309,7 +309,7 @@ const LandingPage = () => {
                 </div>
               </div>
               {/* IMPROVEMENT: connector is now rendered in JSX only between items,
-                  not after the last — easier than CSS nth-child tricks */}
+                  not after the last - easier than CSS nth-child tricks */}
               {i < arr.length - 1 && (
                 <div className={styles.connector} aria-hidden="true" />
               )}

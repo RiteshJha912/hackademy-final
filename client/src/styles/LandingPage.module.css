@@ -1,5 +1,5 @@
 /* =============================================================
-   LandingPage.module.css — Enhanced
+   LandingPage.module.css - Enhanced
    Improvements summary:
    • CSS custom properties (design tokens) for consistency
    • Refined typographic scale & spacing rhythm (8px grid)
@@ -8,12 +8,12 @@
    • cardIconWrap: unified icon container with per-card accent colour
    • Live pill, coming-soon pill, mini stat divider, chevron reveal
    • Threat nodes use class-based animation delays (no inline style)
-   • Better responsive behaviour — flex wraps gracefully on mobile
+   • Better responsive behaviour - flex wraps gracefully on mobile
    • Reduced motion media query for accessibility
    ============================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
-/* IMPROVEMENT: Swapped Inter → Space Grotesk — slightly more characterful
+/* IMPROVEMENT: Swapped Inter → Space Grotesk - slightly more characterful
    while staying legible; weight range is identical so no rework needed. */
 
 /* ── Design Tokens ─────────────────────────────────────────── */
@@ -142,7 +142,7 @@
     line-height: 1.4;
   }
 
-  /* Remove forced line break on desktop — let text reflow naturally */
+  /* Remove forced line break on desktop - let text reflow naturally */
   .heroSubtitle br {
     display: none;
   }
@@ -239,7 +239,7 @@
   justify-content: center;
 }
 
-/* IMPROVEMENT: Arrow slides right on hover via transform — no JS needed */
+/* IMPROVEMENT: Arrow slides right on hover via transform - no JS needed */
 .btnArrow {
   transition: transform var(--transition-base);
   flex-shrink: 0;
@@ -639,7 +639,7 @@
   margin-bottom: 12px;
 }
 
-/* IMPROVEMENT: Unified icon wrapper — colour set via CSS custom property
+/* IMPROVEMENT: Unified icon wrapper - colour set via CSS custom property
    on each card, avoiding scattered inline style props. */
 .cardIconWrap {
   width: 36px;
@@ -655,7 +655,7 @@
   transition: background var(--transition-base);
 }
 
-/* Fallback — colour token applied via the style prop in JSX */
+/* Fallback - colour token applied via the style prop in JSX */
 .cardIconWrap svg {
   display: block;
 }
@@ -892,7 +892,7 @@
 }
 
 /* ═══════════════════════════════════════════════════════
-   TIMELINE — The Protocol
+   TIMELINE - The Protocol
 ════════════════════════════════════════════════════════ */
 .timelineSection {
   max-width: 960px;
@@ -921,7 +921,7 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 2.5rem;
   font-weight: 700;
-  /* IMPROVEMENT: gradient instead of flat opacity — more depth */
+  /* IMPROVEMENT: gradient instead of flat opacity - more depth */
   background: linear-gradient(135deg, rgba(167, 139, 250, 0.25) 0%, rgba(255, 255, 255, 0.06) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1060,7 +1060,7 @@
     flex: none;
     /* Taller on mobile to fit wrapped lines */
     white-space: normal;
-    /* Allow wrap — prevents horizontal scroll */
+    /* Allow wrap - prevents horizontal scroll */
     overflow: hidden;
   }
 
