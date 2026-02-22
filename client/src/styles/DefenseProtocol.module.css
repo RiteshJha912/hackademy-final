@@ -1,0 +1,523 @@
+/* =============================================================
+   DefenseProtocol.module.css — Premium SaaS Product Preview
+   ─────────────────────────────────────────────────────────────
+   Visual upgrades:
+   • Multi-layer shadow system (ambient + contact + spread)
+   • Subtle outer glow bleed via ::after pseudo for depth
+   • Authentic macOS-style chrome with frosted-glass toolbar
+   • Stat cards: inset shadow + accent-tinted icon backgrounds
+   • LIVE badge: double-ring pulse animation for authenticity
+   • Micro-interactions: card lift on hover, badge pulse, frame tilt
+   • Background: finer grid, softer gradient bleed
+   • Typography: tighter tracking, refined weight hierarchy
+   ============================================================= */
+
+/* ── Outer Wrapper ────────────────────────────────────────── */
+.wrapper {
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+    perspective: 1400px;
+    /* deeper perspective for subtler tilt */
+}
+
+/* ── Product Frame ────────────────────────────────────────── */
+/* The main container mimics a realistic floating desktop window.
+   Multiple shadow layers create the illusion of physical elevation. */
+.productFrame {
+    position: relative;
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+
+    /* Surface — dark glass with slight translucency */
+    background: rgba(12, 12, 22, 0.82);
+    backdrop-filter: blur(28px) saturate(1.2);
+    -webkit-backdrop-filter: blur(28px) saturate(1.2);
+
+    /* Multi-layer shadow: ambient glow → mid spread → contact shadow */
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.04),
+        /* inner ring */
+        0 1px 2px rgba(0, 0, 0, 0.25),
+        /* contact */
+        0 8px 24px -4px rgba(0, 0, 0, 0.45),
+        /* mid spread */
+        0 24px 64px -12px rgba(0, 0, 0, 0.5),
+        /* ambient */
+        0 0 80px -20px rgba(167, 139, 250, 0.06);
+    /* soft accent bleed */
+
+    /* Product-mockup tilt — intentionally very subtle */
+    transform: rotateX(1.5deg);
+    transform-origin: center top;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Hover: flatten tilt and brighten shadows slightly */
+.productFrame:hover {
+    transform: rotateX(0deg);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 1px 2px rgba(0, 0, 0, 0.2),
+        0 12px 32px -4px rgba(0, 0, 0, 0.4),
+        0 32px 80px -16px rgba(0, 0, 0, 0.45),
+        0 0 100px -20px rgba(167, 139, 250, 0.08);
+}
+
+/* Top-edge highlight — simulates light hitting the bezel */
+.productFrame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 6%;
+    right: 6%;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(167, 139, 250, 0.25) 20%,
+            rgba(255, 255, 255, 0.15) 50%,
+            rgba(167, 139, 250, 0.25) 80%,
+            transparent 100%);
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Outer ambient glow — gives the frame a soft "floating" halo */
+.productFrame::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 15px;
+    background: transparent;
+    box-shadow: 0 0 60px -15px rgba(167, 139, 250, 0.06);
+    pointer-events: none;
+    z-index: -1;
+    transition: box-shadow 0.6s ease;
+}
+
+.productFrame:hover::after {
+    box-shadow: 0 0 80px -15px rgba(167, 139, 250, 0.09);
+}
+
+/* ═══════════════════════════════════════════════════════
+   WINDOW CHROME — Authentic macOS Toolbar
+   Frosted glass toolbar with proper hierarchy.
+════════════════════════════════════════════════════════ */
+.windowChrome {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    /* Frosted glass effect on the toolbar */
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.028) 0%,
+            rgba(255, 255, 255, 0.012) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    gap: 12px;
+    user-select: none;
+    position: relative;
+    z-index: 2;
+}
+
+/* Traffic light dots */
+.windowDots {
+    display: flex;
+    gap: 7px;
+    flex-shrink: 0;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    /* Default fallback */
+    background: rgba(255, 255, 255, 0.1);
+    transition: opacity 0.2s ease;
+}
+
+/* macOS traffic light colours */
+.dot:nth-child(1) {
+    background: #FF5F57;
+}
+
+.dot:nth-child(2) {
+    background: #FEBC2E;
+}
+
+.dot:nth-child(3) {
+    background: #28C840;
+}
+
+/* Slight dim when not hovered — feels more authentic */
+.windowChrome:not(:hover) .dot {
+    opacity: 0.75;
+}
+
+.windowChrome:hover .dot {
+    opacity: 1;
+}
+
+/* Address bar — inset pill with subtle depth */
+.addressBar {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    padding: 5px 14px;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0.02em;
+}
+
+/* Lock icon shimmer — optional extra authenticity */
+.lockIcon {
+    color: rgba(255, 255, 255, 0.25);
+    flex-shrink: 0;
+    margin-right: 6px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   LIVE BADGE — Premium status indicator
+   Double-ring pulse + glow for authenticity.
+════════════════════════════════════════════════════════ */
+.liveBadge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.18);
+    border-radius: 999px;
+    padding: 3px 10px 3px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.56rem;
+    font-weight: 700;
+    color: #f87171;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.liveBadge:hover {
+    background: rgba(239, 68, 68, 0.12);
+    border-color: rgba(239, 68, 68, 0.28);
+}
+
+/* Pulsing dot with outer ring glow */
+.liveDot {
+    position: relative;
+    width: 6px;
+    height: 6px;
+    background: #ef4444;
+    border-radius: 50%;
+    /* Double-ring glow */
+    box-shadow: 0 0 4px 1px rgba(239, 68, 68, 0.4);
+    animation: livePulse 2s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 4px 1px rgba(239, 68, 68, 0.4);
+    }
+
+    50% {
+        opacity: 0.5;
+        box-shadow: 0 0 8px 2px rgba(239, 68, 68, 0.2);
+    }
+}
+
+/* ═══════════════════════════════════════════════════════
+   DASHBOARD BODY — Content area
+════════════════════════════════════════════════════════ */
+.dashboardBody {
+    padding: 20px 22px 24px;
+    position: relative;
+    min-height: 180px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   STAT CARDS — Premium data display
+   Each card has:
+   • Accent-tinted top glow (via --stat-accent)
+   • Inset shadow for depth
+   • Hover lift with elevated shadow
+   • Icon background circle for visual weight
+════════════════════════════════════════════════════════ */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 1;
+}
+
+.statCard {
+    position: relative;
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid rgba(255, 255, 255, 0.055);
+    border-radius: 10px;
+    padding: 14px 14px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+
+    /* Inset shadow creates "pressed into surface" depth */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease,
+        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.3s ease;
+    will-change: transform;
+}
+
+/* Hover: subtle lift with elevated shadow */
+.statCard:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.025);
+    transform: translateY(-1px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 4px 12px -4px rgba(0, 0, 0, 0.3);
+}
+
+/* Top-edge accent glow — colour set per card via CSS variable */
+.statCard::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent,
+            var(--stat-accent, rgba(167, 139, 250, 0.25)),
+            transparent);
+    pointer-events: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.statCard:hover::after {
+    opacity: 1;
+}
+
+/* ── Stat Typography ──────────────────────────────────────── */
+.statLabel {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 1px;
+}
+
+/* Icon circle — tinted background for visual weight */
+.statLabelIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    background: var(--icon-bg, rgba(167, 139, 250, 0.1));
+    flex-shrink: 0;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.statCard:hover .statLabelIcon {
+    opacity: 1;
+}
+
+.statValue {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.025em;
+    line-height: 1.35;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Danger value — red status colour */
+.valueDanger {
+    color: #f87171 !important;
+}
+
+.statMeta {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.62rem;
+    font-family: 'JetBrains Mono', monospace;
+    margin-top: 1px;
+    letter-spacing: 0.01em;
+}
+
+.metaUp {
+    color: #34d399;
+}
+
+.metaDanger {
+    color: #f87171;
+}
+
+.metaNeutral {
+    color: rgba(255, 255, 255, 0.28);
+}
+
+/* ═══════════════════════════════════════════════════════
+   BOTTOM SCAN GRID — Subtle depth visual
+   Finer grid lines with softer gradient bleed.
+════════════════════════════════════════════════════════ */
+.scanOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    overflow: hidden;
+    pointer-events: none;
+    background: linear-gradient(to top,
+            rgba(167, 139, 250, 0.03),
+            transparent);
+}
+
+.perspectiveGrid {
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(0deg,
+            transparent 24%,
+            rgba(167, 139, 250, 0.045) 25%,
+            rgba(167, 139, 250, 0.045) 26%,
+            transparent 27%),
+        linear-gradient(90deg,
+            transparent 24%,
+            rgba(167, 139, 250, 0.045) 25%,
+            rgba(167, 139, 250, 0.045) 26%,
+            transparent 27%);
+    background-size: 22px 22px;
+    /* finer grid for premium feel */
+    transform: perspective(200px) rotateX(46deg);
+    transform-origin: bottom center;
+    opacity: 0.8;
+}
+
+/* ── Reflection Shadow (beneath frame) ────────────────────── */
+/* Soft radial glow that grounds the frame to its background */
+.reflection {
+    width: 60%;
+    height: 24px;
+    margin: 0 auto;
+    background: radial-gradient(ellipse at center,
+            rgba(167, 139, 250, 0.05) 0%,
+            transparent 70%);
+    filter: blur(10px);
+    pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE — Mobile adjustments
+   No tilt on mobile. Single-column stat cards.
+════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .wrapper {
+        max-width: 100%;
+    }
+
+    .productFrame {
+        border-radius: 12px;
+        transform: none;
+    }
+
+    .productFrame:hover {
+        transform: none;
+    }
+
+    .statsGrid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .dashboardBody {
+        padding: 16px 16px 20px;
+    }
+
+    .statCard {
+        padding: 14px;
+        border-radius: 10px;
+    }
+
+    .statValue {
+        font-size: 1.1rem;
+    }
+
+    .reflection {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .windowChrome {
+        padding: 8px 12px;
+    }
+
+    .dot {
+        width: 9px;
+        height: 9px;
+    }
+
+    .addressBar {
+        font-size: 0.58rem;
+        padding: 4px 10px;
+    }
+
+    .dashboardBody {
+        padding: 14px 12px 18px;
+        min-height: 150px;
+    }
+
+    .statCard {
+        padding: 12px;
+    }
+
+    .statValue {
+        font-size: 1rem;
+    }
+}
+
+/* ── Reduced Motion ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+
+    .productFrame,
+    .statCard {
+        transform: none !important;
+        transition: none !important;
+    }
+
+    .productFrame:hover {
+        transform: none !important;
+    }
+
+    .liveDot {
+        animation: none !important;
+    }
+}

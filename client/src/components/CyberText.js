@@ -1,13 +1,18 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'; // Restricted to alphanumeric for width stability
+
 const CyberText = ({ text, className = '' }) => {
-  const [displayText, setDisplayText] = useState('');
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*'; // Cyber char pool
+  // Scramble once immediately to reserve layout space and prevent "broken" flash
+  const [displayText, setDisplayText] = useState(() => 
+    text.split('').map(l => l === ' ' ? ' ' : chars[Math.floor(Math.random() * chars.length)]).join('')
+  );
   const intervalRef = useRef(null);
 
   useEffect(() => {
-    let iteration = 0;
+    let count = 0;
+    const maxGlitches = 10; // Number of scramble cycles
     
     clearInterval(intervalRef.current);
 
@@ -15,21 +20,20 @@ const CyberText = ({ text, className = '' }) => {
       setDisplayText(
         text
           .split('')
-          .map((letter, index) => {
-            if (index < iteration) {
-              return text[index];
-            }
+          .map((letter) => {
+            if (letter === ' ') return ' ';
             return chars[Math.floor(Math.random() * chars.length)];
           })
           .join('')
       );
 
-      if (iteration >= text.length) {
-        clearInterval(intervalRef.current);
-      }
+      count += 1;
 
-      iteration += 1 / 3; // Speed of reveal
-    }, 30);
+      if (count >= maxGlitches) {
+        clearInterval(intervalRef.current);
+        setDisplayText(text);
+      }
+    }, 40);
 
     return () => clearInterval(intervalRef.current);
   }, [text]);
@@ -38,8 +42,14 @@ const CyberText = ({ text, className = '' }) => {
     <motion.span 
       className={className}
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      animate={{ 
+        opacity: 1, 
+        x: [0, -2, 2, -1, 1, 0],
+      }}
+      transition={{ 
+        duration: 0.4,
+        ease: "easeInOut"
+      }}
     >
       {displayText}
     </motion.span>

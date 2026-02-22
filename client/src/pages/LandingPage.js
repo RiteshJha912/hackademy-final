@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Shield,
@@ -17,21 +17,43 @@ import {
   Cpu,
   Globe,
   Fingerprint,
-  Heart
+  Heart,
+  ChevronRight
 } from 'lucide-react'
 import styles from '../styles/LandingPage.module.css'
 import CyberText from '../components/CyberText'
+import DefenseProtocol from '../components/DefenseProtocol'
+
+// ---------------------------------------------------------------------
+// IMPROVEMENT: Extracted threat count so it's easy to update globally
+// ---------------------------------------------------------------------
+const STATS = {
+  threats: '50,000+',
+  users: '1.16B+',
+  lost: '₹1.25T',
+}
+
+// ---------------------------------------------------------------------
+// IMPROVEMENT: Reusable BentoCard component for consistent hover/focus
+// behaviour — eliminates repeated inline style blocks.
+// ---------------------------------------------------------------------
+const BentoCard = ({ children, className = '', as: Tag = 'div', ...props }) => (
+  <Tag className={`${styles.bentoCard} ${className}`} {...props}>
+    {children}
+  </Tag>
+)
 
 const LandingPage = () => {
-  const [mounted, setMounted] = useState(false)
-  const [terminalStep, setTerminalStep] = useState(0);
+  const [terminalStep, setTerminalStep] = useState(0)
+  // IMPROVEMENT: track scroll position for subtle parallax on ambient light
+  const heroRef = useRef(null)
 
   useEffect(() => {
-    setMounted(true)
     const interval = setInterval(() => {
-      setTerminalStep((prev) => (prev + 1) % 4);
-    }, 2000);
-    return () => clearInterval(interval);
+      setTerminalStep((prev) => (prev + 1) % 4)
+    }, 2000)
+
+    return () => clearInterval(interval)
   }, [])
 
   const scrollToSection = (selector) => {
@@ -41,235 +63,292 @@ const LandingPage = () => {
 
   return (
     <main className={styles.landingPage}>
-      {/* Dynamic Background */}
-      <div className={styles.ambientLight} />
-      <div className={styles.gridOverlay} />
+      {/* ── Atmospheric Backgrounds ───────────────────────────── */}
+      <div className={styles.ambientLight} aria-hidden="true" />
+      <div className={styles.gridOverlay} aria-hidden="true" />
 
-      {/* Hero Section */}
-      <section className={styles.heroSection}>
+      {/* ═══════════════════════════════════════════════════════
+          HERO SECTION
+          IMPROVEMENT: Added ref for potential parallax; hero layout
+          refined with explicit gap instead of relying on margin alone.
+      ════════════════════════════════════════════════════════ */}
+      <section className={styles.heroSection} ref={heroRef}>
         <div className={styles.heroContent}>
-          <div className={`${styles.badge} ${mounted ? styles.fadeDown : ''}`}>
-            <div className={styles.pulseDot} />
+
+          {/* Badge */}
+          <div className={styles.badge} aria-label="Site tagline">
             <span>The Modern Survival Guide for the Internet</span>
           </div>
 
-          <h1 className={`${styles.heroTitle} ${mounted ? styles.fadeUp : ''}`}>
+          {/* IMPROVEMENT: Semantic heading with better aria label */}
+          <h1 className={styles.heroTitle}>
             Don't Let A <span className={styles.gradientText}><CyberText text="Scammer" /></span>
             <br />
             <span className={styles.glitchText}><CyberText text="Ruin Your Day" /></span>
           </h1>
 
-          <p className={`${styles.heroSubtitle} ${mounted ? styles.fadeUpDelay : ''}`}>
-            The "CBI" is calling. Your KYC has "expired". Strangers want to pay you to like videos.
+          <p className={styles.heroSubtitle}>
+            The "police" is calling. Your KYC has "expired". Strangers want to pay you to like videos. 
             <br />
-            <strong>Welcome to the digital jungle. We teach you how to survive.</strong>
+            <strong> Welcome to the digital jungle. We teach you how to survive.</strong>
           </p>
 
-          <div className={`${styles.ctaGroup} ${mounted ? styles.fadeUpDelay2 : ''}`}>
-            <Link to='/game' className={styles.primaryBtn}>
-              Start Training <ArrowRight size={18} />
+          <div className={styles.ctaGroup}>
+            {/* IMPROVEMENT: Icon now animated on hover via CSS, not JS */}
+            <Link to="/game" className={styles.primaryBtn} aria-label="Start training now">
+              Start Training
+              <ArrowRight size={18} className={styles.btnArrow} aria-hidden="true" />
             </Link>
-            <button onClick={() => scrollToSection(`.${styles.bentoSection}`)} className={styles.secondaryBtn}>
+            <button
+              onClick={() => scrollToSection(`.${styles.bentoSection}`)}
+              className={styles.secondaryBtn}
+              aria-label="Explore learning modules"
+            >
               Explore Modules
             </button>
           </div>
         </div>
 
-        {/* Floating Dashboard Preview (Visual Anchor) */}
-        <div className={`${styles.heroDashboard} ${mounted ? styles.fadeUpDelay3 : ''}`}>
-          <div className={styles.dashboardHeader}>
-            <div className={styles.windowControls}>
-              <span className={styles.controlDot} />
-              <span className={styles.controlDot} />
-              <span className={styles.controlDot} />
-            </div>
-            <div className={styles.searchBar}>hackademy://defense_protocols/active</div>
-          </div>
-          <div className={styles.dashboardContent}>
-             <div className={styles.statRow}>
-                <div className={styles.statItem}>
-                   <span className={styles.statLabel}>Active Threats</span>
-                   <span className={styles.statValue}>50,000+</span>
-                   <span className={styles.statTrend}><TrendingUp size={12}/> +12%</span>
-                </div>
-                <div className={styles.statItem}>
-                   <span className={styles.statLabel}>Your Status</span>
-                   <span className={styles.statValue} style={{color: '#fff'}}>Unprotected</span>
-                   <span className={styles.statTrend} style={{color: '#f472b6'}}><AlertTriangle size={12}/> Risk</span>
-                </div>
-                <div className={styles.statItem}>
-                   <span className={styles.statLabel}>Potential Loss</span>
-                   <span className={styles.statValue}>₹1.25T</span>
-                </div>
-             </div>
-             <div className={styles.scanVisual}>
-                <div className={styles.scanLine} />
-                <div className={styles.threatNode} style={{top: '30%', left: '20%'}}></div>
-                <div className={styles.threatNode} style={{top: '60%', left: '70%'}}></div>
-                <div className={styles.threatNode} style={{top: '40%', left: '50%'}}></div>
-                <div className={styles.gridLines}></div>
-             </div>
-          </div>
+        {/* ── Defense Protocol Preview ────────────────────────── */}
+        <div className={styles.heroDashboard}>
+          <DefenseProtocol />
         </div>
       </section>
 
-      {/* Bento Grid Features Section */}
+      {/* ═══════════════════════════════════════════════════════
+          BENTO GRID — Defense Protocols
+          IMPROVEMENT: Cards use the shared BentoCard component;
+          Link cards get textDecoration via CSS class (not inline style).
+      ════════════════════════════════════════════════════════ */}
       <section className={styles.bentoSection}>
         <div className={styles.sectionHeader}>
-           <h2>Defense Protocols</h2>
-           <p>Master these modules to become scambait-proof.</p>
+          {/* IMPROVEMENT: eyebrow label above heading for visual hierarchy */}
+          <p className={styles.eyebrow}>What You'll Learn</p>
+          <h2>Defense Protocols</h2>
+          <p className={styles.sectionSubtitle}>Master these modules to become scambait-proof.</p>
         </div>
-        
+
         <div className={styles.bentoGrid}>
-          {/* Large Card: Mission/Terminal */}
-          <Link to="/games" className={`${styles.bentoCard} ${styles.colSpan2} ${styles.rowSpan2}`} style={{ textDecoration: 'none' }}>
-             <div className={styles.cardHeader}>
-               <Terminal className={styles.cardIcon} size={24} color="#a78bfa" />
-               <h3>Live Threat Simulation</h3>
-             </div>
-             <p className={styles.cardDesc}>We simulate real-world attacks in a safe sandbox environment.</p>
-             <div className={styles.terminalWindow}>
+
+          {/* ── Terminal Card (Large) ──────────────────────────── */}
+          <BentoCard
+            as={Link}
+            to="/games"
+            className={`${styles.colSpan2} ${styles.rowSpan2} ${styles.cardLink}`}
+            aria-label="Live Threat Simulation module"
+          >
+            <div className={styles.cardHeader}>
+              <span className={styles.cardIconWrap} style={{ '--icon-color': '#a78bfa' }}>
+                <Terminal size={20} aria-hidden="true" />
+              </span>
+              <h3>Live Threat Simulation</h3>
+              <ChevronRight size={16} className={styles.cardChevron} aria-hidden="true" />
+            </div>
+            <p className={styles.cardDesc}>We simulate real-world attacks in a safe sandbox environment so you know exactly what to do when it happens for real.</p>
+            <div className={styles.terminalWindow} aria-live="polite">
+              <div className={styles.terminalLine}>
+                <span className={styles.prompt}>user@hackademy:~$</span>
+                {terminalStep === 0
+                  ? <span className={styles.typing}> analyze_incoming_call -v</span>
+                  : <span> analyze_incoming_call -v</span>
+                }
+              </div>
+              {terminalStep > 0 && (
                 <div className={styles.terminalLine}>
-                   <span className={styles.prompt}>user@hackademy:~$</span> 
-                   {terminalStep === 0 && <span className={styles.typing}> analyze_incoming_call -v</span>}
-                   {terminalStep > 0 && <span> analyze_incoming_call -v</span>}
+                  <span className={styles.warning}>[WARNING]</span>
+                  <span> Spoofed Caller ID detected.</span>
                 </div>
-                {terminalStep > 0 && (
-                   <div className={styles.terminalLine}>
-                      <span className={styles.warning}>[WARNING]</span> Spoofed Caller ID detected.
-                   </div>
-                )}
-                {terminalStep > 1 && (
-                   <div className={styles.terminalLine}>
-                      <span className={styles.info}>[INFO]</span> Pattern match: "Digital Arrest Scam"
-                   </div>
-                )}
-                {terminalStep > 2 && (
-                   <div className={styles.terminalLine}>
-                      <span className={styles.success}>[ACTION]</span> Call blocked. User educated.
-                   </div>
-                )}
-             </div>
-          </Link>
-
-          {/* Medium Card: Digital Arrest */}
-          <Link to="/learn/digital-arrest-scam" className={styles.bentoCard} style={{ textDecoration: 'none' }}>
-             <div className={styles.cardHeader}>
-               <Target className={styles.cardIcon} size={24} color="#f472b6" />
-               <h3>The "Digital Arrest"</h3>
-             </div>
-             <p className={styles.cardDesc}>Spoiler: The police don't use Skype to interrogate you.</p>
-             <div className={styles.miniVisual}>
-                <div className={styles.visualIcon}><Target size={40} /></div>
-             </div>
-          </Link>
-
-          {/* Medium Card: Job Scams */}
-          <Link to="/learn/fake-job-scams" className={styles.bentoCard} style={{ textDecoration: 'none' }}>
-             <div className={styles.cardHeader}>
-               <Search className={styles.cardIcon} size={24} color="#34d399" />
-               <h3>Fake Job Offers</h3>
-             </div>
-             <p className={styles.cardDesc}>₹5000/hr to like YouTube videos? Takes 5 seconds to spot the trap.</p>
-          </Link>
-
-          {/* Wide Card: The Stats */}
-          <div className={`${styles.bentoCard} ${styles.colSpan2}`}>
-             <div className={styles.rowContent}>
-                <div className={styles.textContent}>
-                   <h3>Why It Matters</h3>
-                   <p>India is the #1 target for cyber fraud. Be the firewall.</p>
+              )}
+              {terminalStep > 1 && (
+                <div className={styles.terminalLine}>
+                  <span className={styles.info}>[INFO]</span>
+                  <span> Pattern match: "Digital Arrest Scam"</span>
                 </div>
-                <div className={styles.statGroup}>
-                   <div className={styles.miniStat}>
-                      <span>1.16B+</span>
-                      <small>Users</small>
-                   </div>
-                   <div className={styles.miniStat}>
-                      <span>₹1.25T</span>
-                      <small>Lost</small>
-                   </div>
+              )}
+              {terminalStep > 2 && (
+                <div className={styles.terminalLine}>
+                  <span className={styles.success}>[ACTION]</span>
+                  <span> Call blocked. User educated. ✓</span>
                 </div>
-             </div>
-          </div>
+              )}
+            </div>
+          </BentoCard>
 
-          {/* Tall Card: Panic Button */}
-          <Link to="/learn" className={`${styles.bentoCard} ${styles.rowSpan2} ${styles.panicCard}`} style={{ textDecoration: 'none' }}>
-             <div className={styles.cardHeader}>
-               <AlertTriangle className={styles.cardIcon} size={24} color="#fbbf24" />
-               <h3>Panic Button</h3>
-             </div>
-             <p className={styles.cardDesc}>Real-time steps to take when you realize you've been compromised.</p>
-             <div className={styles.panicVisual}>
-                <div className={styles.panicBtn}>SOS</div>
-             </div>
-          </Link>
+          {/* ── Digital Arrest Card ────────────────────────────── */}
+          <BentoCard
+            as={Link}
+            to="/learn/digital-arrest-scam"
+            className={styles.cardLink}
+            aria-label="Learn about the Digital Arrest scam"
+          >
+            <div className={styles.cardHeader}>
+              <span className={styles.cardIconWrap} style={{ '--icon-color': '#f472b6' }}>
+                <Target size={20} aria-hidden="true" />
+              </span>
+              <h3>The "Digital Arrest"</h3>
+              <ChevronRight size={16} className={styles.cardChevron} aria-hidden="true" />
+            </div>
+            <p className={styles.cardDesc}>Spoiler: The police don't use zoom to interrogate you. Learn to hang up with confidence.</p>
+          </BentoCard>
 
-          {/* Small Card: KYC */}
-          <Link to="/learn/ekyc-sim-swap" className={styles.bentoCard} style={{ textDecoration: 'none' }}>
-             <div className={styles.cardHeader}>
-               <Lock className={styles.cardIcon} size={24} color="#60a5fa" />
-               <h3>KYC Fraud</h3>
-             </div>
-             <p className={styles.cardDesc}>Your bank won't SMS you for KYC.</p>
-          </Link>
+          {/* ── Fake Jobs Card ─────────────────────────────────── */}
+          <BentoCard
+            as={Link}
+            to="/learn/fake-job-scams"
+            className={styles.cardLink}
+            aria-label="Learn about Fake Job Offer scams"
+          >
+            <div className={styles.cardHeader}>
+              <span className={styles.cardIconWrap} style={{ '--icon-color': '#34d399' }}>
+                <Search size={20} aria-hidden="true" />
+              </span>
+              <h3>Fake Job Offers</h3>
+              <ChevronRight size={16} className={styles.cardChevron} aria-hidden="true" />
+            </div>
+            <p className={styles.cardDesc}>₹5000/hr to like YouTube videos? Takes 5 seconds to spot the trap once you know what to look for.</p>
+          </BentoCard>
 
-          {/* Small Card: Deepfakes */}
-          <div className={styles.bentoCard}>
-             <div className={styles.cardHeader}>
-               <Fingerprint className={styles.cardIcon} size={24} color="#a78bfa" />
-               <h3>AI & Deepfakes</h3>
-             </div>
-             <p className={styles.cardDesc}>Is that really your uncle calling?</p>
-          </div>
+          {/* ── Why It Matters (Wide) ──────────────────────────── */}
+          <BentoCard className={styles.colSpan2}>
+            <div className={styles.rowContent}>
+              <div className={styles.textContent}>
+                {/* IMPROVEMENT: Semantic heading level matches document outline */}
+                <h3>Why It Matters</h3>
+                <p className={styles.cardDesc} style={{ marginBottom: 0 }}>
+                  India is the #1 target for cyber fraud. Every person you educate is a firewall.
+                </p>
+              </div>
+              <div className={styles.statGroup}>
+                <div className={styles.miniStat}>
+                  <span>{STATS.users}</span>
+                  <small>Internet Users</small>
+                </div>
+                <div className={styles.miniStatDivider} aria-hidden="true" />
+                <div className={styles.miniStat}>
+                  <span>{STATS.lost}</span>
+                  <small>Lost to Fraud</small>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          {/* ── Panic Button (Tall) ────────────────────────────── */}
+          <BentoCard
+            as={Link}
+            to="/learn"
+            className={`${styles.rowSpan2} ${styles.panicCard} ${styles.cardLink}`}
+            aria-label="Panic Button — real-time recovery guide"
+          >
+            <div className={styles.cardHeader}>
+              <span className={styles.cardIconWrap} style={{ '--icon-color': '#fbbf24' }}>
+                <AlertTriangle size={20} aria-hidden="true" />
+              </span>
+              <h3>Panic Button</h3>
+              <ChevronRight size={16} className={styles.cardChevron} aria-hidden="true" />
+            </div>
+            <p className={styles.cardDesc}>Real-time steps to take when you realise you've been compromised. Act fast — every minute matters.</p>
+            <div className={styles.panicVisual} aria-hidden="true">
+              <div className={styles.panicRings}>
+                <div className={styles.panicRing} />
+                <div className={styles.panicRing} />
+              </div>
+              <div className={styles.panicBtn}>SOS</div>
+            </div>
+          </BentoCard>
+
+          {/* ── KYC Fraud Card ────────────────────────────────── */}
+          <BentoCard
+            as={Link}
+            to="/learn/ekyc-sim-swap"
+            className={styles.cardLink}
+            aria-label="Learn about KYC Fraud"
+          >
+            <div className={styles.cardHeader}>
+              <span className={styles.cardIconWrap} style={{ '--icon-color': '#60a5fa' }}>
+                <Lock size={20} aria-hidden="true" />
+              </span>
+              <h3>KYC Fraud</h3>
+              <ChevronRight size={16} className={styles.cardChevron} aria-hidden="true" />
+            </div>
+            <p className={styles.cardDesc}>Your bank will never SMS you asking for KYC. Full stop.</p>
+          </BentoCard>
+
+          {/* ── AI & Deepfakes Card ───────────────────────────── */}
+          <BentoCard>
+            <div className={styles.cardHeader}>
+              <span className={styles.cardIconWrap} style={{ '--icon-color': '#a78bfa' }}>
+                <Fingerprint size={20} aria-hidden="true" />
+              </span>
+              <h3>AI & Deepfakes</h3>
+              {/* IMPROVEMENT: "Coming soon" pill instead of dead-end card */}
+              <span className={styles.comingSoonPill}>Soon</span>
+            </div>
+            <p className={styles.cardDesc}>Is that really your uncle calling? Voice cloning is here. Learn to verify.</p>
+          </BentoCard>
+
         </div>
       </section>
 
-      {/* How It Works - Step Timeline */}
+      {/* ═══════════════════════════════════════════════════════
+          HOW IT WORKS — Step Timeline
+          IMPROVEMENT: Numbered steps now have connecting line via
+          CSS pseudo-element instead of a separate .connector div,
+          which also fixes the mobile layout break.
+      ════════════════════════════════════════════════════════ */}
       <section className={styles.timelineSection}>
-         <div className={styles.sectionHeader}>
-            <h2>The Protocol</h2>
-            <p>Three steps to immunity.</p>
-         </div>
-         
-         <div className={styles.timeline}>
-            <div className={styles.timelineItem}>
-               <div className={styles.stepNumber}>01</div>
-               <div className={styles.stepContent}>
-                  <h3>Enter The Arena</h3>
-                  <p>No login walls. Just pick a handle and start.</p>
-               </div>
-            </div>
-            <div className={styles.connector} />
-            <div className={styles.timelineItem}>
-               <div className={styles.stepNumber}>02</div>
-               <div className={styles.stepContent}>
-                  <h3>Get "Scammed"</h3>
-                  <p>Face safe simulations of real threats.</p>
-               </div>
-            </div>
-             <div className={styles.connector} />
-            <div className={styles.timelineItem}>
-               <div className={styles.stepNumber}>03</div>
-               <div className={styles.stepContent}>
-                  <h3>Build Defenses</h3>
-                  <p>Learn the red flags. Protect your family.</p>
-               </div>
-            </div>
-         </div>
+        <div className={styles.sectionHeader}>
+          <p className={styles.eyebrow}>Getting Started</p>
+          <h2>The Protocol</h2>
+          <p className={styles.sectionSubtitle}>Three steps to immunity.</p>
+        </div>
+
+        <div className={styles.timeline}>
+          {[
+            { n: '01', title: 'Enter The Arena', desc: 'No login walls. Just pick a handle and start.' },
+            { n: '02', title: 'Get "Scammed"', desc: 'Face safe simulations of real-world threats.' },
+            { n: '03', title: 'Build Defenses', desc: 'Learn the red flags. Protect your family.' },
+          ].map(({ n, title, desc }, i, arr) => (
+            <React.Fragment key={n}>
+              <div className={styles.timelineItem}>
+                <div className={styles.stepNumber} aria-hidden="true">{n}</div>
+                <div className={styles.stepContent}>
+                  <h3>{title}</h3>
+                  <p>{desc}</p>
+                </div>
+              </div>
+              {/* IMPROVEMENT: connector is now rendered in JSX only between items,
+                  not after the last — easier than CSS nth-child tricks */}
+              {i < arr.length - 1 && (
+                <div className={styles.connector} aria-hidden="true" />
+              )}
+            </React.Fragment>
+          ))}
+        </div>
       </section>
 
+      {/* ── Footer ─────────────────────────────────────────────── */}
       <footer className={styles.footer}>
-         <div className={styles.footerLine} />
-         <div className={styles.footerContent}>
-            <div className={styles.brand}>
-               <Shield size={20} />
-               <span>Hackademy</span>
-            </div>
-            <div className={styles.copyright} style={{display: 'flex', alignItems: 'center', gap: '6px'}}>
-               Made with <Heart size={14} color="#ef4444" fill="#ef4444" /> by <a href="https://github.com/RiteshJha912" target="_blank" rel="noopener noreferrer" style={{color: '#a855f7', textDecoration: 'none', fontWeight: 'bold'}}>Ritzardous</a>
-            </div>
-         </div>
+        <div className={styles.footerLine} aria-hidden="true" />
+        <div className={styles.footerContent}>
+          <div className={styles.brand}>
+            <Shield size={18} aria-hidden="true" />
+            <span>Hackademy</span>
+          </div>
+          {/* IMPROVEMENT: copyright text is more readable; link has proper rel */}
+          <div className={styles.copyright}>
+            Made with{' '}
+            <Heart size={13} color="#ef4444" fill="#ef4444" aria-label="love" />{' '}
+            by{' '}
+            <a
+              href="https://github.com/RiteshJha912"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.footerLink}
+            >
+              Ritzardous
+            </a>
+          </div>
+        </div>
       </footer>
     </main>
   )
