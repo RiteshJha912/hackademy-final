@@ -14,12 +14,27 @@ connectDB()
 const app = express()
 
 // Middleware
+const allowedOrigins = [
+  'https://hackademy-in.onrender.com', // Original Render URL
+  'http://localhost:3000',           // Local Development
+  process.env.CLIENT_URL,            // Dynamic URL from Env
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: [
-      'https://hackademy-in.onrender.com', // Your frontend URL
-      'http://localhost:3000', // For local development
-    ],
+    origin: function (origin, callback) {
+      // allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      
+      const isAllowed = allowedOrigins.includes(origin) || 
+                       origin.endsWith('.vercel.app'); // Allow all Vercel previews/deployments
+      
+      if (isAllowed) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
   })
 )
