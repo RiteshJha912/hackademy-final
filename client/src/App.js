@@ -33,19 +33,21 @@ function ScrollToTop() {
 }
 
 function App() {
+  // sessionStorage = clears when browser closes (fixes persistent login)
+  // visitorToken stays in localStorage so returning users can reclaim their handle
   const [currentUser, setCurrentUser] = useState(
-    localStorage.getItem('currentUser') || ''
+    sessionStorage.getItem('currentUser') || ''
   )
 
   const setUser = (username, token = null) => {
     setCurrentUser(username)
     if (username) {
-      localStorage.setItem('currentUser', username)
+      sessionStorage.setItem('currentUser', username)
       if (token) {
         localStorage.setItem(`visitorToken_${username}`, token)
       }
     } else {
-      localStorage.removeItem('currentUser')
+      sessionStorage.removeItem('currentUser')
     }
   }
 
