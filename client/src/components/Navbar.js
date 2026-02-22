@@ -61,6 +61,8 @@ const Navbar = ({ currentUser, setUser }) => {
           )}
         </button>
 
+        <div className={`${styles.mobileOverlay} ${isMenuOpen ? styles.mobileOverlayOpen : ''}`} onClick={() => setIsMenuOpen(false)}></div>
+
         <div
           className={`${styles.navMenu} ${
             isMenuOpen ? styles.navMenuOpen : ''

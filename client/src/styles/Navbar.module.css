@@ -224,77 +224,96 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1002;
+    position: relative;
+  }
+
+  .mobileOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .mobileOverlayOpen {
+    opacity: 1;
+    visibility: visible;
   }
 
   .navMenu {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     align-items: stretch;
-    width: 100%;
-    background: rgba(16, 16, 26, 0.95);
-    /* Updated to match theme */
-    backdrop-filter: blur(12px);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    padding: 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    /* Added border */
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: rgba(18, 18, 28, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    padding: 5rem 1.5rem 2rem 1.5rem;
     z-index: 1000;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
   }
 
   .navMenu.navMenuOpen {
-    max-height: 100vh;
-    /* Allow full height if needed */
-    padding: 1rem 0;
+    right: 0;
   }
 
   .navLink {
     width: 100%;
-    padding: 1.1rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 0;
-    text-align: left;
-    display: flex;
-    align-items: center;
+    padding: 1rem;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+    background: transparent;
+    border: 1px solid transparent;
     opacity: 0;
-    transform: translateY(-10px);
-    transition: background 0.2s ease, color 0.2s ease, opacity 0.3s ease, transform 0.3s ease;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
   }
 
   .navMenuOpen .navLink {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 
   .navMenuOpen .navLink:nth-child(1) {
-    transition-delay: 0.05s;
-  }
-
-  .navMenuOpen .navLink:nth-child(2) {
     transition-delay: 0.1s;
   }
 
-  .navMenuOpen .navLink:nth-child(3) {
+  .navMenuOpen .navLink:nth-child(2) {
     transition-delay: 0.15s;
   }
 
-  .navMenuOpen .navLink:nth-child(4) {
+  .navMenuOpen .navLink:nth-child(3) {
     transition-delay: 0.2s;
+  }
+
+  .navMenuOpen .navLink:nth-child(4) {
+    transition-delay: 0.25s;
   }
 
   .navLink:hover {
     background: rgba(168, 85, 247, 0.15);
-    transform: translateY(0) translateX(5px);
+    transform: translateX(5px);
   }
 
   .navLink.active {
     background: rgba(168, 85, 247, 0.2);
-    border-left: 3px solid #a855f7;
+    border-color: rgba(168, 85, 247, 0.3);
   }
 
   .userInfo {
@@ -302,46 +321,48 @@
     flex-direction: column;
     align-items: stretch;
     gap: 0.75rem;
-    padding: 0.75rem 1.5rem;
+    padding-top: 1.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
   }
 
   .navMenuOpen .userInfo {
     opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.25s;
+    transform: translateX(0);
+    transition-delay: 0.3s;
   }
 
   .usernameWrapper {
     width: 100%;
-    padding: 0.75rem 1rem;
+    padding: 0.85rem 1rem;
     justify-content: flex-start;
+    border-radius: 12px;
   }
 
   .username {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   .logoutButton {
     width: 100%;
     text-align: left;
-    padding: 0.75rem 1rem;
+    padding: 0.85rem 1rem;
     justify-content: flex-start;
+    border-radius: 12px;
   }
 
   .navIcon {
-    width: 1.15rem;
-    height: 1.15rem;
-    margin-right: 0.6rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.75rem;
   }
 
   .userIcon {
-    width: 1.15rem;
-    height: 1.15rem;
+    width: 1.25rem;
+    height: 1.25rem;
   }
 }
 
