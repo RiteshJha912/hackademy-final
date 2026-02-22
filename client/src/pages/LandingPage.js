@@ -2,20 +2,12 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Shield,
-  Users,
-  Zap,
-  Ghost,
   ArrowRight,
-  TrendingUp,
   Target,
   Search,
   Lock,
   AlertTriangle,
   Terminal,
-  Activity,
-  CheckCircle2,
-  Cpu,
-  Globe,
   Fingerprint,
   Heart,
   ChevronRight

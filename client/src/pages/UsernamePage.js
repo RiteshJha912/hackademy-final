@@ -5,6 +5,17 @@ import { Loader, ArrowRight, Terminal, ShieldAlert } from 'lucide-react'
 import styles from '../styles/UsernamePage.module.css'
 import commonStyles from '../styles/common.module.css'
 
+const funnyTexts = [
+  "Knocking on the backend's front door...",
+  "Bribing the firewall with virtual cookies...",
+  "Searching for a free tier slot on the cloud...",
+  "Sending carrier pigeons to the database...",
+  "Untangling the server's spaghetti code...",
+  "Looking for the 'Any' key...",
+  "Feeding the server hamsters...",
+  "Polishing the loading bars..."
+]
+
 const UsernamePage = ({ setUser }) => {
   const [username, setUsername] = useState('')
   const [loading, setLoading] = useState(false)
@@ -13,17 +24,6 @@ const UsernamePage = ({ setUser }) => {
   const [loadingMessage, setLoadingMessage] = useState('Hold tight — the server is waking up...')
   const navigate = useNavigate()
   const location = useLocation()
-
-  const funnyTexts = [
-    "Knocking on the backend's front door...",
-    "Bribing the firewall with virtual cookies...",
-    "Searching for a free tier slot on the cloud...",
-    "Sending carrier pigeons to the database...",
-    "Untangling the server's spaghetti code...",
-    "Looking for the 'Any' key...",
-    "Feeding the server hamsters...",
-    "Polishing the loading bars..."
-  ]
 
   useEffect(() => {
     let index = 0;

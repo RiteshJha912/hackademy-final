@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { gameAPI } from '../utils/api'
 import styles from '../styles/MCQGamePage.module.css'
-import appStyles from '../styles/App.module.css'
 import {
   Award,
   RefreshCw,
@@ -14,7 +13,6 @@ import {
   Gamepad2,
   ShieldAlert,
   Clock,
-  XCircle,
   ArrowLeft
 } from 'lucide-react'
 
@@ -41,16 +39,7 @@ const MCQGamePage = ({ currentUser }) => {
   const timerRef = useRef()
   const navigate = useNavigate()
 
-  // redirects to username page if no user is logged in
-  useEffect(() => {
-    if (!currentUser) {
-      navigate('/username')
-    } else if (questions.length === 0 && !showResult) {
-      startNewGame()
-    }
-  }, [currentUser, navigate])
-
-  const startNewGame = async () => {
+  const startNewGame = useCallback(async () => {
     setLoading(true)
     try {
       const resp = await gameAPI.startGame(currentUser, 'mcq')
@@ -74,7 +63,23 @@ const MCQGamePage = ({ currentUser }) => {
     } finally {
       setLoading(false)
     }
-  }
+  }, [currentUser])
+
+  // redirects to username page if no user is logged in
+  useEffect(() => {
+    if (!currentUser) {
+      navigate('/username')
+    } else if (questions.length === 0 && !showResult) {
+      startNewGame()
+    }
+  }, [currentUser, navigate, questions.length, showResult, startNewGame])
+
+
+
+  const handleTimeOut = useCallback(() => {
+    // Auto-submit with empty/timeout selectedAnswer
+    handleAnswerSubmit('__TIMEOUT__', questions[currentQuestion].timeLimit)
+  }, [handleAnswerSubmit, questions, currentQuestion])
 
   // Timer logic
   useEffect(() => {
@@ -96,15 +101,10 @@ const MCQGamePage = ({ currentUser }) => {
     }, 1000)
 
     return () => clearInterval(timerRef.current)
-  }, [loading, showResult, showFeedback, questions, currentQuestion])
-
-  const handleTimeOut = () => {
-    // Auto-submit with empty/timeout selectedAnswer
-    handleAnswerSubmit('__TIMEOUT__', questions[currentQuestion].timeLimit)
-  }
+  }, [loading, showResult, showFeedback, questions, currentQuestion, handleTimeOut])
 
   // handles moving to the next question or finishing game
-  const handleAnswerSubmit = async (answerOption, finalTimeTaken) => {
+  const handleAnswerSubmit = useCallback(async (answerOption, finalTimeTaken) => {
     if (showFeedback || submitting) return // Prevent duplicate clicking
 
     setSelectedAnswer(answerOption)
@@ -133,7 +133,7 @@ const MCQGamePage = ({ currentUser }) => {
     } finally {
       setSubmitting(false)
     }
-  }
+  }, [showFeedback, submitting, sessionId, questions, currentQuestion])
 
   // handles moving to the next question or finishing game
   const handleNextQuestion = async () => {

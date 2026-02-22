@@ -6,7 +6,6 @@ import {
   CreditCard,
   Smartphone,
   Briefcase,
-  Brain,
   Columns4,
   Gamepad2,
 } from 'lucide-react'

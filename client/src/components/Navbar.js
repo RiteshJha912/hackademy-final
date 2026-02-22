@@ -10,7 +10,6 @@ import {
   BookOpen,
   Menu,
   X,
-  ShieldAlert,
   Github,
   Star,
 } from 'lucide-react'
