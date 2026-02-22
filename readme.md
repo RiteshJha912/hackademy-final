@@ -1,35 +1,6 @@
 # Hackademy      
 
 A comprehensive cybersecurity education platform that transforms learning into an engaging game experience. Learn about real-world cyber threats through interactive quizzes, detailed scam guides and compete on a global leaderboard.
----
-
-##  Key Features
-
-###  **Interactive Learning Experience**
-- **Real-world Scenarios** - Learn through actual cyber threat examples
-- **Diverse Game Modules** - Multi-format games including Phishing simulation and Link Decoding
-- **Gamified Quizzes** - Earn points and climb the global leaderboard
-- **Instant Feedback** - Learn from mistakes with high-performance animations and explanations
-- **Progress Tracking** - Monitor your cybersecurity knowledge across different modules
-
-###  **Comprehensive Scam Education**
-- **Digital Arrest Scams** - Learn to identify and avoid fake police calls
-- **UPI Payment Scams** - Understand common UPI fraud techniques
-- **E-KYC SIM Swap** - Protect yourself from identity theft
-- **Fake Job Scams** - Recognize fraudulent employment offers
-- **WhatsApp Stock Scams** - Avoid investment fraud on messaging platforms
-
-###  **Competitive Elements**
-- **Global Leaderboard** - Compete with players worldwide
-- **Real-time Scoring** - Points awarded instantly for correct answers
-- **User Statistics** - Track your performance and improvement
-- **No Registration Required** - Just enter a username and start playing
-
-###  **Modern User Experience**
-- **Responsive Design** - Fixed-viewport mobile layout with zero horizontal overflow
-- **Minimalist UI** - SaaS-style minimalist Navbar with contextual mobile actions
-- **High Performance** - Optimized animations using Framer Motion and smooth transitions
-- **Accessibility** - Designed with clear visual hierarchy and intuitive hit targets
 
 ---
 
