@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { userAPI } from '../utils/api'
 import { Loader, ArrowRight, Terminal, ShieldAlert } from 'lucide-react'
 import styles from '../styles/UsernamePage.module.css'
@@ -11,6 +11,9 @@ const UsernamePage = ({ setUser }) => {
   const [error, setError] = useState('')
   const [forceLoginNeeded, setForceLoginNeeded] = useState(false)
   const navigate = useNavigate()
+  const location = useLocation()
+
+  const from = location.state?.from || '/games'
 
   const handleSubmit = async (e, force = false) => {
     e.preventDefault()
@@ -46,7 +49,7 @@ const UsernamePage = ({ setUser }) => {
 
       if (response.success) {
         setUser(response.data.username, response.token)
-        navigate('/games')
+        navigate(from, { replace: true })
       } else {
         setError(response.message || 'Failed to create user')
       }

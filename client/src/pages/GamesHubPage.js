@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Gamepad2, ShieldAlert, Play, BookOpen } from 'lucide-react'
+import { Gamepad2, ShieldAlert, Play, BookOpen, Link as LinkIcon } from 'lucide-react'
 import styles from '../styles/GamesHubPage.module.css'
 
 const GamesHubPage = ({ currentUser }) => {
@@ -51,6 +51,20 @@ const GamesHubPage = ({ currentUser }) => {
           </p>
           <div className={styles.playButton}>
             <Play className={styles.playButtonIcon} /> Start Training
+          </div>
+        </Link>
+
+        {/* Game 3: Link Decoder */}
+        <Link to="/link-decoder" className={`${styles.gameCard} ${styles.linkDecoder}`}>
+          <div className={styles.iconWrapper}>
+            <LinkIcon className={styles.gameIcon} />
+          </div>
+          <h2 className={styles.gameTitle}>The Link Decoder</h2>
+          <p className={styles.gameDescription}>
+            Hone your visual literacy. Spot the tiny differences between a safe website and a scammer's trap.
+          </p>
+          <div className={styles.playButton}>
+            <Play className={styles.playButtonIcon} /> Analyze Links
           </div>
         </Link>
         

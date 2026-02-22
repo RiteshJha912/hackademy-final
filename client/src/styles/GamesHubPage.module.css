@@ -196,6 +196,35 @@
     background: #dc2626;
 }
 
+/* Third card styling for variation */
+.gameCard.linkDecoder {
+    border-color: rgba(59, 130, 246, 0.1);
+}
+
+.gameCard.linkDecoder::before {
+    background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+}
+
+.gameCard.linkDecoder:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+.gameCard.linkDecoder:hover .iconWrapper {
+    background: rgba(59, 130, 246, 0.2);
+}
+
+.gameCard.linkDecoder:hover .gameIcon {
+    color: #60a5fa;
+}
+
+.gameCard.linkDecoder .playButton {
+    background: #3b82f6;
+}
+
+.gameCard.linkDecoder:hover .playButton {
+    background: #2563eb;
+}
+
 /* Tablet */
 @media (max-width: 768px) {
     .hubPage {

@@ -30,53 +30,83 @@ const PhishingGamePage = ({ currentUser }) => {
   const scenarios = [
     {
       id: 1,
-      type: 'email',
-      sender: 'Support@pay-pal-security.com',
-      subject: 'Urgent: Account Suspended',
-      content: 'Dear User,\n\nWe have detected unusual activity on your account. Please click the link below to verify your identity or your account will be permanently locked.\n\nhttp://paypal.verify-update-info.com\n\nRegards,\nPayPal Team',
-      isPhishing: true,
-      explanation: 'The sender email address uses a fake domain (-security.com), creates a false sense of urgency, and includes a highly suspicious link.',
-      points: 15
+      type: 'sms',
+      sender: 'HDFCBK-T',
+      subject: 'Credit Card Alert',
+      content: 'HDFC Bank: INR 12,845.00 debited from Credit Card XX9021 at AMAZON on 21-Feb-26. Avl Credit Limit: INR 87,155. If not you, call 1800-1600 or visit hdfcbank.com/fraud.',
+      isPhishing: false,
+      explanation: "This is a legitimate HDFC Bank transaction alert. The sender ID follows TRAI's registered format (HDFCBK-T, where 'T' means Transactional). It uses the last 4 digits of the card - not the full number - and directs you to the official hdfcbank.com domain rather than a link. Real bank alerts never ask you to click anything.",
+      points: 10
     },
     {
       id: 2,
       type: 'sms',
-      sender: 'VD-KOTAKB',
-      subject: 'Bank Alert',
-      content: 'Dear Customer, your Kotak Bank account ending in 4321 has been credited with Rs 5000.00 on 24-Oct. Avl Bal Rs 52,430.00. Pls check Kotak App for details.',
-      isPhishing: false,
-      explanation: 'This is a standard bank alert. It uses a verified sender ID, does not ask for any personal information, and does not contain any suspicious links.',
-      points: 10
+      sender: 'HDFCBK-T',
+      subject: 'Reward Points Alert',
+      content: 'HDFC Bank: Your 18,500 reward points worth INR 4,625 will expire on 28-Feb-26. Redeem now before expiry: https://hdfc-rewardz.in/redeem?cust=TX9021',
+      isPhishing: true,
+      explanation: "The sender ID 'HDFCBK-T' looks exactly like the real HDFC format - scammers can spoof registered-looking sender IDs. The giveaway is the link: HDFC's official rewards portal is SmartBuy at smartbuy.hdfcbank.com. The domain 'hdfc-rewardz.in' is not owned by HDFC Bank. Also note the urgency tactic and a personalised-looking token in the URL designed to build false trust.",
+      points: 20
     },
     {
       id: 3,
-      type: 'sms',
-      sender: '+91 9876543210',
-      subject: 'Delivery Alert',
-      content: 'Your IndiaPost package is waiting for delivery. Please update your address and pay the Rs 5.00 redelivery fee here: https://indiapost-update-tracking.info',
-      isPhishing: true,
-      explanation: 'Official services rarely use a generic 10-digit mobile number for automated alerts. The link is clearly fake and points to a credential harvesting site.',
-      points: 15
+      type: 'email',
+      sender: 'noreply@irctc.co.in',
+      subject: 'Your Train Ticket - PNR 4156789023',
+      content: 'Dear Passenger,\n\nYour booking is confirmed.\nPNR: 4156789023 | Train: 12952 Rajdhani Express\nFrom: NDLS (New Delhi) → BCT (Mumbai Central)\nDate: 26-Feb-2026 | Dep: 16:55\nClass: 3A | Passengers: 1\n\nDownload your e-ticket from the IRCTC app or at irctc.co.in/nget/train-search.\n\nRegards,\nIRCTC e-Ticketing',
+      isPhishing: false,
+      explanation: "This is a genuine IRCTC booking confirmation. It contains verifiable booking specifics (valid PNR format, real train number and route, correct IRCTC domain), and it does not ask you to click any link to 'confirm' or 'secure' the booking. Real IRCTC emails direct you to the official irctc.co.in domain and are specific about the journey details.",
+      points: 10
     },
     {
       id: 4,
-      type: 'email',
-      sender: 'HR_Department@your-company.com',
-      subject: 'Mandatory Policy Update - Action Required',
-      content: 'Hello Team,\n\nPlease review the attached updated Work From Home policy document for Q4. You must sign in with your corporate Microsoft account to view the document.\n\nClick here: https://login.microsoft-corp-portal.com/auth\n\nThanks,\nHuman Resources',
+      type: 'sms',
+      sender: '+91 9311042587',
+      subject: 'UPI Payment Request',
+      content: 'You have received a payment request of Rs 1.00 from PhonePe Support (phonepesupport@ybl). Accept to receive Rs 5,000 cashback credited instantly to your UPI. Tap: upi://pay?pa=phonepesupport@ybl&pn=PhonePe&am=1',
       isPhishing: true,
-      explanation: 'A classic "spear phishing" attempt. The link points to a fake Microsoft login page designed to steal your corporate credentials.',
+      explanation: "This is a classic UPI collect-request scam. The message comes from a random 10-digit mobile number - legitimate payment apps never send transactional alerts this way. Crucially, the logic is inverted: you are asked to PAY Re 1 to RECEIVE Rs 5,000. In UPI, you never need to enter your PIN or pay anything to receive money. The UPI deep-link is designed to silently initiate a payment from your account.",
       points: 20
     },
     {
       id: 5,
       type: 'email',
-      sender: 'no-reply@netflix.com',
-      subject: 'New sign-in to your account',
-      content: 'Hi there,\n\nWe noticed a new sign-in to your Netflix account from a new device (Smart TV in Mumbai).\nIf this was you, you can ignore this email. If you don\'t recognize this activity, please change your password by visiting netflix.com directly.',
+      sender: 'support@accounts-google.com',
+      subject: 'Security alert: New sign-in on your Google Account',
+      content: 'Hi,\n\nA new sign-in to your Google Account was detected.\n\nDevice: Android (Xiaomi Redmi Note 12)\nLocation: Pune, Maharashtra, India\nTime: Mon, 21 Feb 2026, 11:43 PM\n\nIf this was you, no further action is needed. If you don\'t recognize this activity, your account may be compromised.\n\nSecure your account now: https://accounts-google.com/security/review',
+      isPhishing: true,
+      explanation: "The sender domain 'accounts-google.com' is not owned by Google - Google's real domain is google.com, and security emails come from no-reply@accounts.google.com. This is a lookalike domain registration, a common trick. The device and location details (a popular phone model, a major Indian city) are added to seem personalized and credible. The link points to the same fake domain. Real Google alerts link to myaccount.google.com.",
+      points: 20
+    },
+    {
+      id: 6,
+      type: 'sms',
+      sender: 'MYGOVT-G',
+      subject: 'PM Kisan Beneficiary Alert',
+      content: 'PM-KISAN: Your 16th installment of Rs 2,000 could not be processed due to Aadhaar-bank seeding mismatch. Update your records at pmkisan.gov.in or visit your nearest CSC. Helpline: 155261.',
       isPhishing: false,
-      explanation: 'This is a genuine security alert. The sender address is correct, and it safely advises you to visit the website directly rather than providing a masked link.',
-      points: 10
+      explanation: "This is a legitimate PM-KISAN scheme alert. The sender ID uses the 'G' suffix (Government-type message per TRAI regulations) and references the real official portal pmkisan.gov.in. It mentions the real PM-KISAN helpline number (155261) and does not include a suspicious link asking for credentials. Aadhaar-bank seeding failures are a genuine, documented reason for delayed PM-KISAN installments.",
+      points: 15
+    },
+    {
+      id: 7,
+      type: 'email',
+      sender: 'hr@tcs-joinings.com',
+      subject: 'TCS Offer Letter - Joining Date Confirmation Required',
+      content: 'Dear Candidate,\n\nCongratulations! Your TCS Offer Letter (Ref: TCS/2026/NQT/084721) is ready.\n\nPlease log in to the Candidate Portal to confirm your joining date and submit your documents before 28-Feb-2026 to avoid offer withdrawal.\n\nPortal: https://tcs-joinings.com/candidate-login\nOffer Reference: TCS/2026/NQT/084721\n\nHR Operations | Tata Consultancy Services',
+      isPhishing: true,
+      explanation: "TCS's official joining and onboarding portal is iBegin, accessible via the official tcs.com domain - not 'tcs-joinings.com', which is a separately registered fraud domain. This type of scam specifically targets NQT/campus hire candidates who are anxiously awaiting results, making them more likely to act without verifying. The urgent deadline ('offer withdrawal') is a pressure tactic. Always verify offer letters by contacting TCS HR via tcs.com directly.",
+      points: 25
+    },
+    {
+      id: 8,
+      type: 'sms',
+      sender: 'VM-LOANOK',
+      subject: 'Pre-approved Loan',
+      content: 'Congratulations! You have a pre-approved personal loan of Rs 3,50,000 at 10.5% p.a. from LoanOK NBFC. No documentation needed. To accept, share your Aadhaar & PAN on WhatsApp: +91 8527013490. Offer valid 24 hrs.',
+      isPhishing: true,
+      explanation: "Multiple red flags here. Legitimate NBFCs registered with the RBI never request Aadhaar and PAN over WhatsApp - document submission always happens through a secure, official app or branch. The sender ID 'VM-LOANOK' is not associated with any RBI-registered NBFC. The '24-hour' pressure tactic and 'no documentation' promise are hallmarks of loan fraud. Such scams often lead to identity theft using the submitted documents.",
+      points: 20
     }
   ]
 

@@ -13,6 +13,7 @@ import LearnPage from './pages/LearnPage'
 import DigitalArrestScamPage from './pages/DigitalArrestScamPage'
 import UPIScamPage from './pages/UPIScamPage'
 import PhishingGamePage from './pages/PhishingGamePage'
+import LinkDecoderGamePage from './pages/LinkDecoderGamePage'
 import GamesHubPage from './pages/GamesHubPage'
 import EKYCPage from './pages/EKYCPage'
 import FakeJobScamPage from './pages/FakeJobScamPage'
@@ -95,6 +96,10 @@ function App() {
               <Route
                 path='/phishing-game'
                 element={<PhishingGamePage currentUser={currentUser} />}
+              />
+              <Route
+                path='/link-decoder'
+                element={<LinkDecoderGamePage currentUser={currentUser} />}
               />
               <Route path='/leaderboard' element={<LeaderboardPage />} />
               <Route
