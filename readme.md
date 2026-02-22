@@ -86,7 +86,7 @@ hackademyfinal/
 
 ---
 
-##  Prerequisites
+##  Pre-requisites
 
 Before you begin, ensure you have the following installed:
 - **Node.js** (v16 or higher) - [Download here](https://nodejs.org)  
