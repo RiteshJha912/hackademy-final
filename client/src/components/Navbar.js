@@ -158,7 +158,7 @@ const Navbar = ({ currentUser, setUser }) => {
             <>
               <Link
                 to='/username'
-                className={`${styles.navLink} ${isActive('/username')}`}
+                className={`${styles.navLink} ${styles.loginBtn} ${isActive('/username')}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 <User className={styles.navIcon} /> Login
