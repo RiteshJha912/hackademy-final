@@ -11,7 +11,8 @@ import {
   Loader,
   ArrowRight,
   Flag,
-  Gamepad2
+  Gamepad2,
+  ShieldAlert
 } from 'lucide-react'
 
 const MCQGamePage = ({ currentUser }) => {
@@ -177,6 +178,13 @@ const MCQGamePage = ({ currentUser }) => {
           <div className={styles.resultMessage}>{getScoreMessage()}</div>
 
           <div className={styles.resultActions}>
+            <button
+              onClick={() => navigate('/phishing-game')}
+              className={styles.playAgainButton}
+              style={{ background: '#ef4444', color: 'white', border: 'none' }}
+            >
+              <ShieldAlert className={styles.icon} /> Spot them in the wild
+            </button>
             <button onClick={resetGame} className={styles.playAgainButton}>
               <RefreshCw className={styles.icon} /> Play Again
             </button>

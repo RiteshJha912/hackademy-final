@@ -366,3 +366,64 @@
     border-radius: 0.4rem;
   }
 }
+
+.combatReadiness {
+  grid-column: span 4;
+  margin-top: 1rem;
+  background: linear-gradient(145deg, #1f1f26, #141419);
+  text-align: center;
+  border-left: 4px solid #a855f7;
+}
+
+.combatButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.primaryBtn {
+  background: #a855f7;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.primaryBtn:hover {
+  background: #9333ea;
+  transform: translateY(-2px);
+}
+
+.secondaryBtn {
+  background: transparent;
+  color: #a855f7;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  border: 1px solid #a855f7;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.secondaryBtn:hover {
+  background: rgba(168, 85, 247, 0.1);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .combatReadiness {
+    grid-column: span 1;
+  }
+}

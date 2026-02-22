@@ -163,7 +163,7 @@ const PhishingGamePage = ({ currentUser }) => {
               <RefreshCw className={styles.icon} /> Play Again
             </button>
             <button onClick={() => navigate('/leaderboard')} className={styles.leaderboardButton}>
-              <Trophy className={styles.icon} /> Leaderboard
+              <Trophy className={styles.icon} /> See where you rank
             </button>
             <button onClick={() => navigate('/games')} className={styles.arcadeButton}>
               <Gamepad2 className={styles.icon} /> Arcade

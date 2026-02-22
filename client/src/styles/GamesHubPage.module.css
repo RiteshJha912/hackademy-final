@@ -259,3 +259,76 @@
         font-size: 1rem;
     }
 }
+
+.newBadge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ef4444;
+    color: white;
+    font-size: 0.75rem;
+    font-family: 'Orbitron', sans-serif;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+    animation: pulseBadge 2s infinite;
+}
+
+@keyframes pulseBadge {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.refresherContainer {
+    margin-top: 4rem;
+    text-align: center;
+    background: linear-gradient(145deg, rgba(20, 20, 25, 0.8), rgba(20, 20, 25, 0.4));
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    padding: 2.5rem;
+    border-radius: 20px;
+}
+
+.refresherContainer h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.refresherContainer p {
+    color: #9CA3AF;
+    margin-bottom: 1.5rem;
+}
+
+.refresherBtn {
+    background: transparent;
+    border: 2px solid #a855f7;
+    color: #a855f7;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+}
+
+.refresherBtn:hover {
+    background: rgba(168, 85, 247, 0.1);
+    transform: translateY(-2px);
+}

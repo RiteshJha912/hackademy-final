@@ -121,7 +121,7 @@ const LandingPage = () => {
         
         <div className={styles.bentoGrid}>
           {/* Large Card: Mission/Terminal */}
-          <div className={`${styles.bentoCard} ${styles.colSpan2} ${styles.rowSpan2}`}>
+          <Link to="/games" className={`${styles.bentoCard} ${styles.colSpan2} ${styles.rowSpan2}`} style={{ textDecoration: 'none' }}>
              <div className={styles.cardHeader}>
                <Terminal className={styles.cardIcon} size={24} color="#a78bfa" />
                <h3>Live Threat Simulation</h3>
@@ -149,10 +149,10 @@ const LandingPage = () => {
                    </div>
                 )}
              </div>
-          </div>
+          </Link>
 
           {/* Medium Card: Digital Arrest */}
-          <div className={styles.bentoCard}>
+          <Link to="/learn/digital-arrest-scam" className={styles.bentoCard} style={{ textDecoration: 'none' }}>
              <div className={styles.cardHeader}>
                <Target className={styles.cardIcon} size={24} color="#f472b6" />
                <h3>The "Digital Arrest"</h3>
@@ -161,16 +161,16 @@ const LandingPage = () => {
              <div className={styles.miniVisual}>
                 <div className={styles.visualIcon}><Target size={40} /></div>
              </div>
-          </div>
+          </Link>
 
           {/* Medium Card: Job Scams */}
-          <div className={styles.bentoCard}>
+          <Link to="/learn/fake-job-scams" className={styles.bentoCard} style={{ textDecoration: 'none' }}>
              <div className={styles.cardHeader}>
                <Search className={styles.cardIcon} size={24} color="#34d399" />
                <h3>Fake Job Offers</h3>
              </div>
              <p className={styles.cardDesc}>₹5000/hr to like YouTube videos? Takes 5 seconds to spot the trap.</p>
-          </div>
+          </Link>
 
           {/* Wide Card: The Stats */}
           <div className={`${styles.bentoCard} ${styles.colSpan2}`}>
@@ -193,7 +193,7 @@ const LandingPage = () => {
           </div>
 
           {/* Tall Card: Panic Button */}
-          <div className={`${styles.bentoCard} ${styles.rowSpan2} ${styles.panicCard}`}>
+          <Link to="/learn" className={`${styles.bentoCard} ${styles.rowSpan2} ${styles.panicCard}`} style={{ textDecoration: 'none' }}>
              <div className={styles.cardHeader}>
                <AlertTriangle className={styles.cardIcon} size={24} color="#fbbf24" />
                <h3>Panic Button</h3>
@@ -202,16 +202,16 @@ const LandingPage = () => {
              <div className={styles.panicVisual}>
                 <div className={styles.panicBtn}>SOS</div>
              </div>
-          </div>
+          </Link>
 
           {/* Small Card: KYC */}
-          <div className={styles.bentoCard}>
+          <Link to="/learn/ekyc-sim-swap" className={styles.bentoCard} style={{ textDecoration: 'none' }}>
              <div className={styles.cardHeader}>
                <Lock className={styles.cardIcon} size={24} color="#60a5fa" />
                <h3>KYC Fraud</h3>
              </div>
              <p className={styles.cardDesc}>Your bank won't SMS you for KYC.</p>
-          </div>
+          </Link>
 
           {/* Small Card: Deepfakes */}
           <div className={styles.bentoCard}>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { RefreshCw, Gamepad2 } from 'lucide-react'
 import { Trophy } from 'lucide-react'
 import { userAPI } from '../utils/api'
@@ -213,6 +214,13 @@ const LeaderboardPage = () => {
             )}
           </>
         )}
+      </div>
+
+      <div className={styles.boostContainer}>
+        <h3 className={styles.boostTitle}>Ready to climb the ranks?</h3>
+        <Link to="/games" className={styles.boostBtn}>
+          <Gamepad2 size={24} /> Boost Your Score
+        </Link>
       </div>
     </div>
   )

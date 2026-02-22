@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Gamepad2, ShieldAlert, Play } from 'lucide-react'
+import { Gamepad2, ShieldAlert, Play, BookOpen } from 'lucide-react'
 import styles from '../styles/GamesHubPage.module.css'
 
 const GamesHubPage = ({ currentUser }) => {
@@ -41,6 +41,7 @@ const GamesHubPage = ({ currentUser }) => {
 
         {/* Game 2: Phishing Simulator */}
         <Link to="/phishing-game" className={`${styles.gameCard} ${styles.phishing}`}>
+          <span className={styles.newBadge}>New Challenge</span>
           <div className={styles.iconWrapper}>
             <ShieldAlert className={styles.gameIcon} />
           </div>
@@ -49,11 +50,20 @@ const GamesHubPage = ({ currentUser }) => {
             Analyze real-world emails and text messages to determine if they are legitimate communications or dangerous scams.
           </p>
           <div className={styles.playButton}>
-            <Play className={styles.playButtonIcon} /> Start Sim
+            <Play className={styles.playButtonIcon} /> Start Training
           </div>
         </Link>
         
       </div>
+
+      <div className={styles.refresherContainer}>
+        <h2>Need a Refresher?</h2>
+        <p>Before jumping into the arena, you can review our defense modules to learn about the latest scams.</p>
+        <Link to="/learn" className={styles.refresherBtn}>
+          <BookOpen size={20} /> Read the Survival Guide
+        </Link>
+      </div>
+
     </div>
   )
 }

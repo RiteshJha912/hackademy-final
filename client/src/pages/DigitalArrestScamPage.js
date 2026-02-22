@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Shield, Play, Pause } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Shield, Play, Pause, Gamepad2, ArrowRight } from 'lucide-react'
 import styles from '../styles/ArticlePage.module.css'
 
 const DigitalArrestScamPage = () => {
@@ -167,6 +168,20 @@ const DigitalArrestScamPage = () => {
               patches
             </li>
           </ul>
+        </section>
+
+        {/* Combat Readiness Section */}
+        <section className={`${styles.bentoCard} ${styles.combatReadiness}`}>
+          <h2>Combat Readiness</h2>
+          <p>Mastered this module? Put your skills to the test or move to the next threat.</p>
+          <div className={styles.combatButtons}>
+            <Link to="/game" className={styles.primaryBtn}>
+              <Gamepad2 size={20} /> Test Your Knowledge
+            </Link>
+            <Link to="/learn/upi-payment-scams" className={styles.secondaryBtn}>
+              Next Module: UPI Scams <ArrowRight size={20} />
+            </Link>
+          </div>
         </section>
       </div>
     </div>

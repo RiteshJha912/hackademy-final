@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Smartphone, Play, Pause } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Smartphone, Play, Pause, Gamepad2, ArrowRight } from 'lucide-react'
 import styles from '../styles/ArticlePage.module.css'
 
 const UPIScamPage = () => {
@@ -182,6 +183,20 @@ const UPIScamPage = () => {
             via official channels, and consider filing a police report. Preserve
             chat logs and transaction IDs for investigation.
           </p>
+        </section>
+
+        {/* Combat Readiness Section */}
+        <section className={`${styles.bentoCard} ${styles.combatReadiness}`}>
+          <h2>Combat Readiness</h2>
+          <p>Mastered this module? Put your skills to the test or move to the next threat.</p>
+          <div className={styles.combatButtons}>
+            <Link to="/game" className={styles.primaryBtn}>
+              <Gamepad2 size={20} /> Test Your Knowledge
+            </Link>
+            <Link to="/learn/ekyc-sim-swap" className={styles.secondaryBtn}>
+              Next Module: e-KYC <ArrowRight size={20} />
+            </Link>
+          </div>
         </section>
       </div>
     </div>

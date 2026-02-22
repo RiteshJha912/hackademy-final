@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { AlertTriangle, Play, Pause } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { AlertTriangle, Play, Pause, Gamepad2, ArrowRight } from 'lucide-react'
 import styles from '../styles/ArticlePage.module.css'
 
 const WhatsAppStockScamPage = () => {
@@ -162,6 +163,20 @@ const WhatsAppStockScamPage = () => {
             Verify sources with SEBI, avoid group shared apps or links, and
             report suspicious invites to cybercrime.gov.in or 1930 immediately.
           </p>
+        </section>
+
+        {/* Combat Readiness Section */}
+        <section className={`${styles.bentoCard} ${styles.combatReadiness}`}>
+          <h2>Combat Readiness</h2>
+          <p>Mastered this module? Put your skills to the test or explore more threats.</p>
+          <div className={styles.combatButtons}>
+            <Link to="/game" className={styles.primaryBtn}>
+              <Gamepad2 size={20} /> Test Your Knowledge
+            </Link>
+            <Link to="/learn" className={styles.secondaryBtn}>
+              Back to Modules <ArrowRight size={20} />
+            </Link>
+          </div>
         </section>
       </div>
     </div>

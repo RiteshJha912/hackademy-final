@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Briefcase, Play, Pause } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Briefcase, Play, Pause, Gamepad2, ArrowRight } from 'lucide-react'
 import styles from '../styles/ArticlePage.module.css'
 
 const FakeJobScamPage = () => {
@@ -188,6 +189,20 @@ const FakeJobScamPage = () => {
               Contact local police or report to cybercrime.gov.in if suspicious.
             </li>
           </ul>
+        </section>
+
+        {/* Combat Readiness Section */}
+        <section className={`${styles.bentoCard} ${styles.combatReadiness}`}>
+          <h2>Combat Readiness</h2>
+          <p>Mastered this module? Put your skills to the test or move to the next threat.</p>
+          <div className={styles.combatButtons}>
+            <Link to="/game" className={styles.primaryBtn}>
+              <Gamepad2 size={20} /> Test Your Knowledge
+            </Link>
+            <Link to="/learn/whatsapp-stock-scam" className={styles.secondaryBtn}>
+              Next Module: Stock Scams <ArrowRight size={20} />
+            </Link>
+          </div>
         </section>
       </div>
     </div>
