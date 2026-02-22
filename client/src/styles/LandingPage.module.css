@@ -700,10 +700,10 @@
   padding: 18px 20px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.775rem;
-  height: 110px;
-  /* Fixed height — card never expands */
-  overflow: hidden;
+  flex: 1;
+  min-height: 110px;
   /* Hide any overflow, lines fill pre-allocated space */
+  overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.07);
   white-space: nowrap;
   scrollbar-width: thin;
@@ -1056,7 +1056,8 @@
   .terminalWindow {
     font-size: 0.62rem;
     padding: 12px 14px;
-    height: 120px;
+    height: 122px;
+    flex: none;
     /* Taller on mobile to fit wrapped lines */
     white-space: normal;
     /* Allow wrap — prevents horizontal scroll */
