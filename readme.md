@@ -7,9 +7,10 @@ A comprehensive cybersecurity education platform that transforms learning into a
 
 ###  **Interactive Learning Experience**
 - **Real-world Scenarios** - Learn through actual cyber threat examples
-- **Gamified Quizzes** - Earn points and climb the leaderboard
-- **Instant Feedback** - Learn from mistakes with detailed explanations
-- **Progress Tracking** - Monitor your cybersecurity knowledge growth
+- **Diverse Game Modules** - Multi-format games including Phishing simulation and Link Decoding
+- **Gamified Quizzes** - Earn points and climb the global leaderboard
+- **Instant Feedback** - Learn from mistakes with high-performance animations and explanations
+- **Progress Tracking** - Monitor your cybersecurity knowledge across different modules
 
 ###  **Comprehensive Scam Education**
 - **Digital Arrest Scams** - Learn to identify and avoid fake police calls
@@ -25,18 +26,68 @@ A comprehensive cybersecurity education platform that transforms learning into a
 - **No Registration Required** - Just enter a username and start playing
 
 ###  **Modern User Experience**
-- **Responsive Design** - Works perfectly on desktop, tablet and mobile
-- **Intuitive Navigation** - Clean, user-friendly interface
-- **Fast Performance** - Optimized for quick loading and smooth interactions
-- **Accessibility** - Designed with all users in mind
+- **Responsive Design** - Fixed-viewport mobile layout with zero horizontal overflow
+- **Minimalist UI** - SaaS-style minimalist Navbar with contextual mobile actions
+- **High Performance** - Optimized animations using Framer Motion and smooth transitions
+- **Accessibility** - Designed with clear visual hierarchy and intuitive hit targets
 
 ---
 
 ##  Technical Architecture
 
-**Frontend (React)** → **Backend (Express)** → **Database (MongoDB Atlas)**  
-- **Development**: localhost:3000 → localhost:5000 → MongoDB Atlas
-- **Production**: Render Static Site → Render Web Service → MongoDB Atlas
+### **System Architecture Flow**
+```mermaid
+graph TD
+    subgraph Client_Layer [Frontend - React]
+        UI[User Interface]
+        subgraph Game_Engines
+            MCQ[MCQ Engine]
+            PHI[Phishing Simulator]
+            LNK[Link Decoder]
+        end
+        State[State Management]
+        Axios[API Client - Axios]
+    end
+
+    subgraph API_Layer [Backend - Node/Express]
+        Routes[API Router]
+        subgraph Middleware
+            Auth[Auth Shield - JWT]
+            Security[Security Headers - Helmet/CORS]
+        end
+        Controllers[Logic Controllers]
+        DBConfig[Database Config]
+    end
+
+    subgraph Data_Layer [Storage - MongoDB Atlas]
+        Users[(Users Collection)]
+        Scores[(Scores & Stats)]
+    end
+
+    UI --> State
+    State --> Game_Engines
+    Game_Engines --> Axios
+    Axios -- REST Requests --> Routes
+    Routes --> Security
+    Security --> Auth
+    Auth --> Controllers
+    Controllers --> DBConfig
+    DBConfig -- Mongoose ODM --> Data_Layer
+```
+
+
+### **Core Stack**
+- **Frontend**: React 18, CSS Modules, Framer Motion, Lucide Icons
+- **Backend**: Node.js, Express.js (RESTful API)
+- **Database**: MongoDB Atlas (Cloud)
+- **Security**: JWT-based session persistence, Bcrypt password hashing
+- **Deployment**: Render (Static Site + Web Service)
+
+### **Implementation Details**
+- **Zero-Overflow Responsive Engine**: Specialized CSS architecture using relative units and transform-based animations to eliminate horizontal scroll bugs on mobile.
+- **Stateless Authentication**: Uses non-sensitive local storage identifiers synced with server-side validation for a seamless "just-in username" login experience.
+- **Dynamic Content Loading**: Modular page architecture allowing for instant switching between interactive simulations (MCQ, Phishing, Link Decoding) without full page reloads.
+
 
 ---
 
@@ -56,6 +107,9 @@ hackademyfinal/
 │   │   │   ├── LandingPage.js
 │   │   │   ├── UsernamePage.js
 │   │   │   ├── MCQGamePage.js
+│   │   │   ├── PhishingGamePage.js
+│   │   │   ├── LinkDecoderGamePage.js
+│   │   │   ├── GamesHubPage.js
 │   │   │   ├── LeaderboardPage.js
 │   │   │   ├── LearnPage.js
 │   │   │   ├── DigitalArrestScamPage.js
@@ -63,9 +117,9 @@ hackademyfinal/
 │   │   │   ├── EKYCPage.js
 │   │   │   ├── FakeJobScamPage.js
 │   │   │   └── WhatsAppStockScam.js
-│   │   ├── styles/          # CSS modules
-│   │   ├── utils/           # API utilities
-│   │   └── App.js           # Main App component
+│   │   ├── styles/          # CSS modules (optimized for zero-overflow)
+│   │   ├── utils/           # API and security utilities
+│   │   └── App.js           # Main Entry Point with Route-based navigation
 │   └── package.json
 ├── server/                   # Express Backend
 │   ├── config/
@@ -164,34 +218,26 @@ NODE_ENV=development
 - **mongoose** (^8.18.0) - MongoDB object modeling for Node.js  
 - **cors** (^2.8.5) - Enables cross-origin resource sharing  
 - **dotenv** (^17.2.2) - Loads environment variables from a `.env` file  
-- **colors** (^1.4.0) - Adds colors to console output for better readability  
+- **bcryptjs** (^3.0.2) - Secure password hashing  
+- **jsonwebtoken** (^9.0.2) - Token-based authentication  
+- **colors** (^1.4.0) - Adds colors to console output  
 
 **Dev Dependencies:**  
 - **nodemon** (^3.1.10) - Automatically restarts the server during development  
 
 ### Frontend Dependencies
-- **react** (^18.2.0) - Core React library for building user interfaces  
-- **react-dom** (^18.2.0) - Renders React components to the DOM  
-- **react-router-dom** (^6.8.0) - Handles client-side routing in React apps  
-- **axios** (^1.3.0) - HTTP client for making API requests  
-- **chart.js** (^4.5.1) - Charting library for data visualization  
+- **react** (^18.2.0) - Core React library  
+- **react-dom** (^18.2.0) - Renders React components  
+- **react-router-dom** (^6.8.0) - Client-side routing  
+- **axios** (^1.3.0) - HTTP client for API requests  
+- **framer-motion** (^12.34.2) - Production-ready motion library  
+- **react-simple-typewriter** (^5.0.1) - Typewriter effect for cyber aesthetics  
+- **chart.js** (^4.5.1) - Data visualization  
 - **react-chartjs-2** (^5.3.0) - React wrapper for Chart.js  
-- **recharts** (^3.3.0) - Library for creating responsive charts and graphs  
-- **lucide-react** (^0.546.0) - Icon library for modern UI elements  
-- **react-scripts** (5.0.1) - Configuration and scripts for Create React App  
+- **lucide-react** (^0.546.0) - Icon library  
+- **react-scripts** (5.0.1) - Configuration and scripts for CRA  
 
 ---
-
-##  Contributing
-
-We welcome contributions! Here's how you can help:
-
-1. **Fork the repository**
-2. **Create a feature branch** (`git checkout -b feature/amazing-feature`)
-3. **Commit your changes** (`git commit -m 'Add some amazing feature'`)
-4. **Push to the branch** (`git push origin feature/amazing-feature`)
-5. **Open a Pull Request**
-
 
 ###  Server : [https://hackademy.onrender.com](https://hackademy.onrender.com)
 
