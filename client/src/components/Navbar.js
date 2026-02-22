@@ -11,6 +11,8 @@ import {
   Menu,
   X,
   ShieldAlert,
+  Github,
+  Star,
 } from 'lucide-react'
 import styles from '../styles/Navbar.module.css'
 import { userAPI } from '../utils/api'
@@ -48,18 +50,7 @@ const Navbar = ({ currentUser, setUser }) => {
           <ShieldUser className={styles.logoIcon} /> Hackademy
         </Link>
 
-        <button
-          className={styles.hamburger}
-          onClick={toggleMenu}
-          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-          data-testid='hamburger-button'
-        >
-          {isMenuOpen ? (
-            <X className={styles.navIcon} />
-          ) : (
-            <Menu className={styles.navIcon} />
-          )}
-        </button>
+
 
         <div className={`${styles.mobileOverlay} ${isMenuOpen ? styles.mobileOverlayOpen : ''}`} onClick={() => setIsMenuOpen(false)}></div>
 
@@ -85,6 +76,8 @@ const Navbar = ({ currentUser, setUser }) => {
             <BookOpen className={styles.navIcon} /> Learn
           </Link>
 
+
+
           {currentUser ? (
             <>
               <Link
@@ -101,6 +94,19 @@ const Navbar = ({ currentUser, setUser }) => {
               >
                 <Gamepad2 className={styles.navIcon} /> Play Games
               </Link>
+              <a
+                href='https://github.com/RiteshJha912/hackademy-final'
+                target='_blank'
+                rel='noopener noreferrer'
+                className={styles.githubMobilePill}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <div className={styles.ghMobileContent}>
+                  <Star size={18} fill="#fbbf24" color="#fbbf24" />
+                  <span>on</span>
+                  <Github size={20} />
+                </div>
+              </a>
               <div className={styles.userInfo}>
                 <span className={styles.usernameWrapper}>
                   <span className={styles.username}>
@@ -117,15 +123,43 @@ const Navbar = ({ currentUser, setUser }) => {
               </div>
             </>
           ) : (
-            <Link
-              to='/username'
-              className={`${styles.navLink} ${isActive('/username')}`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <User className={styles.navIcon} /> Login
-            </Link>
+            <>
+              <Link
+                to='/username'
+                className={`${styles.navLink} ${isActive('/username')}`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <User className={styles.navIcon} /> Login
+              </Link>
+              <a
+                href='https://github.com/RiteshJha912/hackademy-final'
+                target='_blank'
+                rel='noopener noreferrer'
+                className={styles.githubMobilePill}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <div className={styles.ghMobileContent}>
+                  <Star size={18} fill="#fbbf24" color="#fbbf24" />
+                  <span>on</span>
+                  <Github size={20} />
+                </div>
+              </a>
+            </>
           )}
         </div>
+
+        <button
+          className={styles.hamburger}
+          onClick={toggleMenu}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          data-testid='hamburger-button'
+        >
+          {isMenuOpen ? (
+            <X className={styles.navIcon} />
+          ) : (
+            <Menu className={styles.navIcon} />
+          )}
+        </button>
       </div>
     </nav>
   )

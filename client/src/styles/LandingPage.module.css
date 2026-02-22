@@ -19,7 +19,7 @@
   top: -20%;
   left: 50%;
   transform: translateX(-50%);
-  width: 80vw;
+  width: 100%;
   height: 80vh;
   background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 60%);
   filter: blur(80px);

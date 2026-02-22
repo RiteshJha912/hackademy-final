@@ -16,7 +16,8 @@ import {
   CheckCircle2,
   Cpu,
   Globe,
-  Fingerprint
+  Fingerprint,
+  Heart
 } from 'lucide-react'
 import styles from '../styles/LandingPage.module.css'
 import CyberText from '../components/CyberText'
@@ -265,7 +266,9 @@ const LandingPage = () => {
                <Shield size={20} />
                <span>Hackademy</span>
             </div>
-            <div className={styles.copyright}>© 2026 Secured.</div>
+            <div className={styles.copyright} style={{display: 'flex', alignItems: 'center', gap: '6px'}}>
+               Made with <Heart size={14} color="#ef4444" fill="#ef4444" /> by <a href="https://github.com/RiteshJha912" target="_blank" rel="noopener noreferrer" style={{color: '#a855f7', textDecoration: 'none', fontWeight: 'bold'}}>Ritzardous</a>
+            </div>
          </div>
       </footer>
     </main>
