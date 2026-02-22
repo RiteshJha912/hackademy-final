@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import {
   ShieldUser,
   Home,
@@ -17,6 +17,7 @@ import { userAPI } from '../utils/api'
 
 const Navbar = ({ currentUser, setUser }) => {
   const location = useLocation()
+  const navigate = useNavigate()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const handleLogout = async () => {
@@ -29,6 +30,7 @@ const Navbar = ({ currentUser, setUser }) => {
     }
     setUser('')
     setIsMenuOpen(false)
+    navigate('/')
   }
 
   const toggleMenu = () => {

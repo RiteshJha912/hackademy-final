@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { userAPI } from '../utils/api'
 import { Loader, ArrowRight, Terminal, ShieldAlert } from 'lucide-react'
@@ -10,8 +10,34 @@ const UsernamePage = ({ setUser }) => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [forceLoginNeeded, setForceLoginNeeded] = useState(false)
+  const [loadingMessage, setLoadingMessage] = useState('Hold tight — the server is waking up...')
   const navigate = useNavigate()
   const location = useLocation()
+
+  const funnyTexts = [
+    "Knocking on the backend's front door...",
+    "Bribing the firewall with virtual cookies...",
+    "Searching for a free tier slot on the cloud...",
+    "Sending carrier pigeons to the database...",
+    "Untangling the server's spaghetti code...",
+    "Looking for the 'Any' key...",
+    "Feeding the server hamsters...",
+    "Polishing the loading bars..."
+  ]
+
+  useEffect(() => {
+    let index = 0;
+    let interval;
+    if (loading) {
+      interval = setInterval(() => {
+        index = (index + 1) % funnyTexts.length;
+        setLoadingMessage(funnyTexts[index]);
+      }, 3000);
+    } else {
+      setLoadingMessage('Hold tight — the server is waking up...'); // Reset
+    }
+    return () => clearInterval(interval);
+  }, [loading]);
 
   const from = location.state?.from || '/games'
 
@@ -148,7 +174,7 @@ const UsernamePage = ({ setUser }) => {
 
           {loading && (
             <p className={styles.loadingMessage}>
-              Hold tight — the server is waking up...
+              {loadingMessage}
             </p>
           )}
         </form>

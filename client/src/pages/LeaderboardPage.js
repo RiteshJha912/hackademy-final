@@ -74,6 +74,13 @@ const LeaderboardPage = ({ currentUser }) => {
     return months.map((m) => ({ month: m, games: monthlyGames[m] }))
   }, [leaderboard])
 
+  const topPlayersData = useMemo(() => {
+    return leaderboard.slice(0, 5).map(user => ({
+      username: `@${user.username}`,
+      score: user.score
+    }))
+  }, [leaderboard])
+
   if (loading) {
     return (
       <div className={`${appStyles.pageContainer} ${styles.leaderboardPage}`}>
@@ -106,51 +113,88 @@ const LeaderboardPage = ({ currentUser }) => {
         </h2>
         <p>See who is doing well and get inspired to improve your skills!</p>
       </div>
-      <div className={styles.graphContainer}>
-        <h3 className={styles.graphTitle}>Games Played Per Month</h3>
-        <ResponsiveContainer width='100%' height={300}>
-          <BarChart
-            data={graphData}
-            margin={{ top: 20, right: 30, left: 0, bottom: 5 }}
-          >
-            <defs>
-              <linearGradient id='colorGames' x1='0' y1='0' x2='0' y2='1'>
-                <stop offset='5%' stopColor='#a855f7' stopOpacity={0.8} />
-                <stop offset='95%' stopColor='#a855f7' stopOpacity={0.2} />
-              </linearGradient>
-            </defs>
-            <CartesianGrid
-              strokeDasharray='3 3'
-              stroke='rgba(255, 255, 255, 0.1)'
-            />
-            <XAxis dataKey='month' stroke='rgba(255, 255, 255, 0.7)' />
-            <YAxis stroke='rgba(255, 255, 255, 0.7)' />
-            <Tooltip
-              contentStyle={{
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                borderRadius: '8px',
-                color: '#fff',
-                padding: '10px',
-                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
-              }}
-              cursor={{ fill: 'rgba(255, 255, 255, 0.05)' }}
-            />
-            <Legend wrapperStyle={{ color: 'rgba(255, 255, 255, 0.8)' }} />
-            <Bar
-              dataKey='games'
-              fill='url(#colorGames)'
-              radius={[10, 10, 0, 0]}
-              barSize={40}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
+        <div className={styles.graphContainer} style={{ marginBottom: 0 }}>
+          <h3 className={styles.graphTitle}>Games Played Per Month</h3>
+          <ResponsiveContainer width='100%' height={300}>
+            <BarChart
+              data={graphData}
+              margin={{ top: 20, right: 30, left: 0, bottom: 5 }}
             >
-              <LabelList
-                dataKey='games'
-                position='top'
-                fill='rgba(255, 255, 255, 0.8)'
+              <defs>
+                <linearGradient id='colorGames' x1='0' y1='0' x2='0' y2='1'>
+                  <stop offset='5%' stopColor='#a855f7' stopOpacity={0.8} />
+                  <stop offset='95%' stopColor='#a855f7' stopOpacity={0.2} />
+                </linearGradient>
+              </defs>
+              <CartesianGrid
+                strokeDasharray='3 3'
+                stroke='rgba(255, 255, 255, 0.1)'
               />
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
+              <XAxis dataKey='month' stroke='rgba(255, 255, 255, 0.7)' />
+              <YAxis stroke='rgba(255, 255, 255, 0.7)' />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: 'rgba(30, 30, 40, 0.95)',
+                  border: '1px solid rgba(168, 85, 247, 0.3)',
+                  borderRadius: '12px',
+                  color: '#fff',
+                  padding: '12px',
+                  boxShadow: '0 8px 30px rgba(0, 0, 0, 0.4)',
+                }}
+                cursor={{ fill: 'rgba(255, 255, 255, 0.05)' }}
+              />
+              <Legend wrapperStyle={{ color: 'rgba(255, 255, 255, 0.8)' }} />
+              <Bar
+                dataKey='games'
+                fill='url(#colorGames)'
+                radius={[10, 10, 0, 0]}
+                barSize={40}
+              >
+                <LabelList
+                  dataKey='games'
+                  position='top'
+                  fill='rgba(255, 255, 255, 0.8)'
+                />
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+
+        <div className={styles.graphContainer} style={{ marginBottom: 0 }}>
+          <h3 className={styles.graphTitle}>Top 5 Hacker Scores</h3>
+          <ResponsiveContainer width='100%' height={300}>
+            <BarChart
+              data={topPlayersData}
+              layout="vertical"
+              margin={{ top: 20, right: 30, left: 10, bottom: 5 }}
+            >
+              <defs>
+                <linearGradient id='colorScores' x1='0' y1='0' x2='1' y2='0'>
+                  <stop offset='5%' stopColor='#a855f7' stopOpacity={0.8} />
+                  <stop offset='95%' stopColor='#fb923c' stopOpacity={0.8} />
+                </linearGradient>
+              </defs>
+              <CartesianGrid strokeDasharray='3 3' horizontal={true} vertical={false} stroke='rgba(255, 255, 255, 0.1)' />
+              <XAxis type="number" stroke='rgba(255, 255, 255, 0.7)' />
+              <YAxis dataKey='username' type="category" stroke='rgba(255, 255, 255, 0.7)' width={80} style={{fontSize: '0.85rem'}} />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: 'rgba(30, 30, 40, 0.95)',
+                  border: '1px solid rgba(251, 146, 60, 0.3)',
+                  borderRadius: '12px',
+                  color: '#fff',
+                  padding: '12px',
+                  boxShadow: '0 8px 30px rgba(0, 0, 0, 0.4)',
+                }}
+                cursor={{ fill: 'rgba(255, 255, 255, 0.05)' }}
+              />
+              <Bar dataKey='score' fill='url(#colorScores)' radius={[0, 8, 8, 0]} barSize={25}>
+                <LabelList dataKey='score' position='right' fill='rgba(255, 255, 255, 0.8)' style={{fontFamily: 'Orbitron', fontWeight: 'bold'}}/>
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
       </div>
       {stats && (
         <div className={styles.statsContainer} style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
