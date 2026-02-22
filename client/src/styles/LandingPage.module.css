@@ -682,11 +682,12 @@
   padding: 18px 20px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.775rem;
-  flex: 1;
+  height: 110px;
+  /* Fixed height — card never expands */
+  overflow: hidden;
+  /* Hide any overflow, lines fill pre-allocated space */
   border: 1px solid rgba(255, 255, 255, 0.07);
-  overflow-x: auto;
   white-space: nowrap;
-  /* IMPROVEMENT: custom scrollbar matches dark theme */
   scrollbar-width: thin;
   scrollbar-color: #2a2a3a transparent;
 }
@@ -1035,8 +1036,13 @@
   }
 
   .terminalWindow {
-    font-size: 0.75rem;
-    padding: 14px 16px;
+    font-size: 0.62rem;
+    padding: 12px 14px;
+    height: 120px;
+    /* Taller on mobile to fit wrapped lines */
+    white-space: normal;
+    /* Allow wrap — prevents horizontal scroll */
+    overflow: hidden;
   }
 
   /* Timeline stacks vertically on mobile */
