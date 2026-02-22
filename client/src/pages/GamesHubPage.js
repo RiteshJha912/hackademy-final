@@ -41,7 +41,6 @@ const GamesHubPage = ({ currentUser }) => {
 
         {/* Game 2: Phishing Simulator */}
         <Link to="/phishing-game" className={`${styles.gameCard} ${styles.phishing}`}>
-          <span className={styles.newBadge}>New Challenge</span>
           <div className={styles.iconWrapper}>
             <ShieldAlert className={styles.gameIcon} />
           </div>

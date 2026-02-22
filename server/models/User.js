@@ -19,6 +19,36 @@ const userSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    // Track best completed score per game type to prevent cumulative abuse
+    bestScores: {
+      mcq: { type: Number, default: 0 },
+      phishing: { type: Number, default: 0 },
+      linkDecoder: { type: Number, default: 0 }
+    },
+    totalQuestionsAttempted: {
+      type: Number,
+      default: 0,
+    },
+    correctAnswers: {
+      type: Number,
+      default: 0,
+    },
+    incorrectAnswers: {
+      type: Number,
+      default: 0,
+    },
+    totalResponseTime: {
+      type: Number,
+      default: 0, // In seconds
+    },
+    longestStreak: {
+      type: Number,
+      default: 0,
+    },
+    totalQuizDuration: {
+      type: Number,
+      default: 0, // In seconds
+    },
     lastPlayed: {
       type: Date,
       default: Date.now,

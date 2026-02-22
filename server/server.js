@@ -6,6 +6,7 @@ require('dotenv').config()
 
 const connectDB = require('./config/db')
 const userRoutes = require('./routes/userRoutes')
+const gameRoutes = require('./routes/gameRoutes')
 
 // Connect to database
 connectDB()
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: false }))
 
 // Routes
 app.use('/api', userRoutes)
+app.use('/api/game', gameRoutes)
 
 // Health check route
 app.get('/', (req, res) => {

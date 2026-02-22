@@ -100,7 +100,7 @@ const createUser = async (req, res) => {
 // @access  Public
 const updateScore = async (req, res) => {
   try {
-    const { username, scoreToAdd } = req.body
+    const { username, scoreToAdd, gameId } = req.body
 
     if (!username || scoreToAdd === undefined) {
       return res.status(400).json({
@@ -118,11 +118,20 @@ const updateScore = async (req, res) => {
       })
     }
 
-    // Update score and increment games played
-    user.score += parseInt(scoreToAdd)
-    user.gamesPlayed += 1
-    user.lastPlayed = new Date()
+    if (gameId && user.bestScores && user.bestScores[gameId] !== undefined) {
+      if (scoreToAdd > user.bestScores[gameId]) {
+         user.bestScores[gameId] = scoreToAdd;
+      }
+      user.gamesPlayed += 1;
+      user.score = (user.bestScores.mcq || 0) + 
+                   (user.bestScores.phishing || 0) + 
+                   (user.bestScores.linkDecoder || 0);
+    } else {
+      user.score += parseInt(scoreToAdd)
+      user.gamesPlayed += 1
+    }
 
+    user.lastPlayed = new Date()
     await user.save()
 
     res.status(200).json({
@@ -207,7 +216,10 @@ const getStats = async (req, res) => {
         $group: { 
           _id: null, 
           totalGames: { $sum: '$gamesPlayed' },
-          totalScore: { $sum: '$score' }
+          totalScore: { $sum: '$score' },
+          totalQuestions: { $sum: '$totalQuestionsAttempted' },
+          correctAnswers: { $sum: '$correctAnswers' },
+          totalQuizDuration: { $sum: '$totalQuizDuration' },
         } 
       }
     ])
@@ -222,6 +234,9 @@ const getStats = async (req, res) => {
         totalUsers,
         totalGamesPlayed: aggregates[0]?.totalGames || 0,
         totalScore: aggregates[0]?.totalScore || 0,
+        totalQuestions: aggregates[0]?.totalQuestions || 0,
+        correctAnswers: aggregates[0]?.correctAnswers || 0,
+        totalQuizDuration: aggregates[0]?.totalQuizDuration || 0,
         activeUsers: activeUsersCount,
         topPlayer: topPlayer
           ? {

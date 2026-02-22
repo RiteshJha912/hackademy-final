@@ -12,7 +12,8 @@ import {
   ShieldCheck,
   AlertTriangle,
   Link as LinkIcon,
-  Gamepad2
+  Gamepad2,
+  ArrowLeft
 } from 'lucide-react'
 
 const LinkDecoderGamePage = ({ currentUser }) => {
@@ -21,8 +22,11 @@ const LinkDecoderGamePage = ({ currentUser }) => {
   const [showResult, setShowResult] = useState(false)
   const [selectedLink, setSelectedLink] = useState(null)
   const [showFeedback, setShowFeedback] = useState(false)
+  const [streak, setStreak] = useState(0)
+  const [bonusPoints, setBonusPoints] = useState(0)
   const [gameCompleted, setGameCompleted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [showQuitConfirm, setShowQuitConfirm] = useState(false)
   const navigate = useNavigate()
 
   const scenarios = [
@@ -114,7 +118,19 @@ const LinkDecoderGamePage = ({ currentUser }) => {
 
     const isCorrect = scenarios[currentScenario].options[index].isLegit
     if (isCorrect) {
-      setScore(score + scenarios[currentScenario].points)
+      let earnedPoints = scenarios[currentScenario].points
+      let bonus = 0
+
+      if (streak >= 1 && Math.random() > 0.70) {
+        bonus = Math.floor(Math.random() * 10) + 5
+        setBonusPoints(bonus)
+      }
+
+      setScore(score + earnedPoints + bonus)
+      setStreak(prev => prev + 1)
+    } else {
+      setStreak(0)
+      setBonusPoints(0)
     }
   }
 
@@ -123,11 +139,12 @@ const LinkDecoderGamePage = ({ currentUser }) => {
       setCurrentScenario(currentScenario + 1)
       setSelectedLink(null)
       setShowFeedback(false)
+      setBonusPoints(0)
     } else {
       setLoading(true)
       try {
         if (score > 0) {
-          await userAPI.updateScore(currentUser, score)
+          await userAPI.updateScore(currentUser, score, 'linkDecoder')
         }
         setGameCompleted(true)
         setShowResult(true)
@@ -147,6 +164,8 @@ const LinkDecoderGamePage = ({ currentUser }) => {
     setShowResult(false)
     setSelectedLink(null)
     setShowFeedback(false)
+    setStreak(0)
+    setBonusPoints(0)
     setGameCompleted(false)
   }
 
@@ -206,12 +225,50 @@ const LinkDecoderGamePage = ({ currentUser }) => {
     <div className={styles.gamePage}>
       <div className={styles.ambientLight} />
       <div className={styles.gridOverlay} />
+
+      {showQuitConfirm && (
+        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.85)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(5px)' }}>
+          <div style={{ background: '#121218', border: '1px solid rgba(168, 85, 247, 0.3)', padding: '2rem', borderRadius: '16px', maxWidth: '400px', width: '90%', textAlign: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
+            <h3 style={{ color: '#fff', fontSize: '1.4rem', marginBottom: '1rem', fontFamily: 'Orbitron, sans-serif' }}>Abandon Training?</h3>
+            <p style={{ color: '#a1a1aa', fontSize: '1rem', marginBottom: '8px' }}>Your progress will be lost and no score will be saved.</p>
+            <p style={{ color: '#a855f7', fontSize: '0.9rem', marginBottom: '2rem' }}>This strictly will not affect your ranking.</p>
+            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+              <button 
+                onClick={() => setShowQuitConfirm(false)} 
+                style={{ flex: 1, padding: '12px', background: 'transparent', border: '1px solid #52525b', color: '#e4e4e7', borderRadius: '8px', cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontSize: '1rem' }}
+              >Cancel</button>
+              <button 
+                onClick={() => { setShowQuitConfirm(false); navigate('/games'); }} 
+                style={{ flex: 1, padding: '12px', background: '#ef4444', border: 'none', color: '#fff', borderRadius: '8px', cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontSize: '1rem', fontWeight: '500' }}
+              >Quit</button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className={styles.gameContainer}>
-        
+        {!showResult && (
+          <button 
+            onClick={() => setShowQuitConfirm(true)} 
+            style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'transparent', border: 'none', color: '#9ca3af', cursor: 'pointer', fontFamily: 'Orbitron, sans-serif', fontSize: '1rem', transition: 'color 0.2s', padding: 0, marginBottom: '20px' }}
+            onMouseEnter={(e) => e.currentTarget.style.color = '#ef4444'}
+            onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
+          >
+            <ArrowLeft size={20} /> Back
+          </button>
+        )}
+
         <div className={styles.gameHeader}>
           <div className={styles.progressInfo}>
             <span>Case {currentScenario + 1} of {scenarios.length}</span>
-            <span>Score: {score}</span>
+            <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+              {streak >= 2 && (
+                <span style={{ color: '#3b82f6', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '5px', animation: 'slideUp 0.3s ease-out' }}>
+                  🔥 {streak} Streak!
+                </span>
+              )}
+              <span>Score: {score}</span>
+            </div>
           </div>
           <div className={styles.progressBar}>
             <div 
@@ -250,6 +307,11 @@ const LinkDecoderGamePage = ({ currentUser }) => {
             <div className={styles.feedbackTitle}>
               {isCorrect ? <ShieldCheck size={24} /> : <AlertTriangle size={24} />}
               {isCorrect ? 'Correct! Safe Link Identified.' : 'Danger! That was a Trap.'}
+              {isCorrect && bonusPoints > 0 && (
+                <span className={styles.bonusBadge} style={{marginLeft: '10px', background: '#3b82f6', color: 'white', padding: '2px 8px', borderRadius: '12px', fontSize: '0.85rem'}}>
+                  +{bonusPoints} Bonus! 🎁
+                </span>
+              )}
             </div>
             <p className={styles.feedbackText}>{scenario.explanation}</p>
           </div>

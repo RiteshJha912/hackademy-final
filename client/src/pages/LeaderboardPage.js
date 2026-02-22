@@ -18,7 +18,7 @@ import {
   LabelList,
 } from 'recharts'
 
-const LeaderboardPage = () => {
+const LeaderboardPage = ({ currentUser }) => {
   const [leaderboard, setLeaderboard] = useState([])
   const [stats, setStats] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -153,7 +153,7 @@ const LeaderboardPage = () => {
         </ResponsiveContainer>
       </div>
       {stats && (
-        <div className={styles.statsContainer}>
+        <div className={styles.statsContainer} style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
           <div className={styles.statCard}>
             <span className={styles.statNumber}>{stats.totalUsers}</span>
             <span className={styles.statLabel}>Total Learners</span>
@@ -161,6 +161,16 @@ const LeaderboardPage = () => {
           <div className={styles.statCard}>
             <span className={styles.statNumber}>{stats.totalGamesPlayed}</span>
             <span className={styles.statLabel}>Simulations Played</span>
+          </div>
+          <div className={styles.statCard}>
+            <span className={styles.statNumber}>{stats.totalQuestions}</span>
+            <span className={styles.statLabel}>Threats Analyzed</span>
+          </div>
+          <div className={styles.statCard}>
+            <span className={styles.statNumber}>
+              {stats.totalQuestions > 0 ? Math.round((stats.correctAnswers / stats.totalQuestions) * 100) : 0}%
+            </span>
+            <span className={styles.statLabel}>Global Accuracy</span>
           </div>
           <div className={styles.statCard}>
             <span className={styles.statNumber}>{stats.totalScore.toLocaleString()}</span>
@@ -172,6 +182,19 @@ const LeaderboardPage = () => {
             </span>
             <span className={styles.statLabel}>Highest Score</span>
           </div>
+        </div>
+      )}
+
+      {currentUser && (
+        <div className={styles.userRankBanner} style={{background: 'rgba(168, 85, 247, 0.1)', border: '1px solid rgba(168, 85, 247, 0.3)', padding: '20px', borderRadius: '12px', textAlign: 'center', marginBottom: '30px'}}>
+           <h3 style={{color: '#fff', fontSize: '1.2rem', fontFamily: 'Orbitron, sans-serif', margin: 0}}>
+              Your Current Rank:{' '}
+              {(() => {
+                 const myRank = leaderboard.findIndex(u => u.username === currentUser.toLowerCase()) + 1;
+                 if (myRank > 0) return <span style={{color: '#a855f7', fontSize: '1.6rem', marginLeft: '10px'}}>#{myRank}</span>
+                 return <span style={{color: '#a855f7', fontSize: '1.4rem', marginLeft: '10px'}}>Unranked</span>
+              })()}
+           </h3>
         </div>
       )}
       <div className={styles.leaderboardContainer}>

@@ -201,19 +201,21 @@
     height: 32px;
 }
 
-.optionButton:hover:not(:disabled) {
-    transform: translateY(-4px);
-    background: rgba(255, 255, 255, 0.08);
-}
+@media (hover: hover) and (pointer: fine) {
+    .optionButton:hover:not(:disabled) {
+        transform: translateY(-4px);
+        background: rgba(255, 255, 255, 0.08);
+    }
 
-.optionButton.phishing:hover:not(:disabled) {
-    border-color: #ef4444;
-    color: #ef4444;
-}
+    .optionButton.phishing:hover:not(:disabled) {
+        border-color: #ef4444;
+        color: #ef4444;
+    }
 
-.optionButton.legit:hover:not(:disabled) {
-    border-color: #10b981;
-    color: #10b981;
+    .optionButton.legit:hover:not(:disabled) {
+        border-color: #10b981;
+        color: #10b981;
+    }
 }
 
 .optionButton:disabled {
@@ -296,9 +298,11 @@
     transition: all 0.2s ease;
 }
 
-.nextButton:hover:not(:disabled) {
-    background: #dc2626;
-    transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+    .nextButton:hover:not(:disabled) {
+        background: #dc2626;
+        transform: translateY(-2px);
+    }
 }
 
 .nextButton:disabled {
@@ -398,18 +402,10 @@
     color: white;
 }
 
-.playAgainButton:hover {
-    background: #dc2626;
-}
-
 .leaderboardButton {
     background: rgba(239, 68, 68, 0.1);
     color: #f87171;
     border: 1px solid rgba(239, 68, 68, 0.3);
-}
-
-.leaderboardButton:hover {
-    background: rgba(239, 68, 68, 0.2);
 }
 
 .arcadeButton {
@@ -418,8 +414,28 @@
     border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-.arcadeButton:hover {
-    background: rgba(255, 255, 255, 0.1);
+@media (hover: hover) and (pointer: fine) {
+    .playAgainButton:hover {
+        background: #dc2626;
+    }
+
+    .leaderboardButton:hover {
+        background: rgba(239, 68, 68, 0.2);
+    }
+
+    .arcadeButton:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Tactile Click Feedback */
+.optionButton:active,
+.nextButton:active,
+.playAgainButton:active,
+.leaderboardButton:active,
+.arcadeButton:active {
+    transform: scale(0.96) !important;
+    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .completionNote {
@@ -480,52 +496,80 @@
         padding: 0 0.5rem;
     }
 
+    .gameContainer {
+        padding: 1.25rem;
+    }
+
     .gameHeader {
-        padding: 1rem;
+        margin-bottom: 1rem;
     }
 
     .progressInfo {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
+        margin-bottom: 0.75rem;
     }
 
     .questionContainer {
-        padding: 1.5rem 1rem 0;
+        padding: 1.25rem 1rem;
+        margin-bottom: 1rem;
     }
 
     .questionText {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
+        margin-bottom: 0.75rem;
     }
 
     .messageContainer {
-        padding: 1.25rem;
-        margin: 1rem;
+        padding: 1rem;
+        margin: 0 0 1rem 0;
     }
 
     .messageSubject {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     .messageBody {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
     }
 
     .optionsContainer {
-        padding: 0 1rem 1.5rem;
+        padding: 0;
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
     }
 
     .optionButton {
+        padding: 0.8rem;
+    }
+
+    .optionIcon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .feedbackPanel {
         padding: 1rem;
+        margin: 0 0 1rem 0;
+    }
+
+    .feedbackTitle {
+        font-size: 1.05rem;
+    }
+
+    .feedbackText {
+        font-size: 0.9rem;
     }
 
     .nextButton {
         width: 100%;
-        padding: 1rem;
-        min-height: 56px;
+        padding: 0.8rem;
+        font-size: 1rem;
+        min-height: auto;
         justify-content: center;
     }
 
     .scoreValue {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .scoreLabel {
@@ -533,7 +577,7 @@
     }
 
     .resultContainer {
-        padding: 2.5rem 1.25rem;
+        padding: 2rem 1.25rem;
     }
 
     .resultContainer h2 {
@@ -542,23 +586,25 @@
     }
 
     .resultContainer h2 .icon {
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        height: 28px;
     }
 
     .scoreDisplay {
         padding: 1.5rem 1rem;
+        margin-bottom: 1.5rem;
     }
 
     .resultMessage {
         font-size: 0.95rem;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
     }
 
     .playAgainButton,
-    .leaderboardButton {
-        padding: 1rem 1.25rem;
+    .leaderboardButton,
+    .arcadeButton {
+        padding: 1rem;
         font-size: 0.95rem;
-        min-height: 56px;
+        min-height: auto;
     }
 }

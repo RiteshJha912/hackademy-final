@@ -46,9 +46,9 @@ export const userAPI = {
   },
 
   // Update user score
-  updateScore: async (username, scoreToAdd) => {
+  updateScore: async (username, scoreToAdd, gameId) => {
     try {
-      const response = await api.post('/api/score', { username, scoreToAdd })
+      const response = await api.post('/api/score', { username, scoreToAdd, gameId })
       return response.data
     } catch (error) {
       throw error.response?.data || { message: 'Network error' }
@@ -74,6 +74,33 @@ export const userAPI = {
       throw error.response?.data || { message: 'Network error' }
     }
   },
+}
+
+export const gameAPI = {
+  startGame: async (username, gameType) => {
+    try {
+      const response = await api.post('/api/game/start', { username, gameType })
+      return response.data
+    } catch (error) {
+       throw error.response?.data || { message: 'Network error' }
+    }
+  },
+  submitAnswer: async (sessionId, questionId, selectedOption, timeTaken) => {
+    try {
+       const response = await api.post('/api/game/submit', { sessionId, questionId, selectedOption, timeTaken })
+       return response.data
+    } catch (error) {
+       throw error.response?.data || { message: 'Network error' }
+    }
+  },
+  finishGame: async (sessionId, isQuit) => {
+    try {
+      const response = await api.post('/api/game/finish', { sessionId, isQuit })
+      return response.data
+    } catch (error) {
+       throw error.response?.data || { message: 'Network error' }
+    }
+  }
 }
 
 export default api

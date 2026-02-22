@@ -85,13 +85,15 @@
     transition: opacity 0.3s ease;
 }
 
-.gameCard:hover {
-    transform: translateY(-8px);
-    border-color: rgba(168, 85, 247, 0.3);
-}
+@media (hover: hover) and (pointer: fine) {
+    .gameCard:hover {
+        transform: translateY(-8px);
+        border-color: rgba(168, 85, 247, 0.3);
+    }
 
-.gameCard:hover::before {
-    opacity: 1;
+    .gameCard:hover::before {
+        opacity: 1;
+    }
 }
 
 .iconWrapper {
@@ -112,13 +114,15 @@
     color: #fff;
 }
 
-.gameCard:hover .iconWrapper {
-    transform: scale(1.1);
-    background: rgba(168, 85, 247, 0.2);
-}
+@media (hover: hover) and (pointer: fine) {
+    .gameCard:hover .iconWrapper {
+        transform: scale(1.1);
+        background: rgba(168, 85, 247, 0.2);
+    }
 
-.gameCard:hover .gameIcon {
-    color: #c084fc;
+    .gameCard:hover .gameIcon {
+        color: #c084fc;
+    }
 }
 
 .gameTitle {
@@ -158,8 +162,10 @@
     width: 100%;
 }
 
-.gameCard:hover .playButton {
-    background: #9333ea;
+@media (hover: hover) and (pointer: fine) {
+    .gameCard:hover .playButton {
+        background: #9333ea;
+    }
 }
 
 .playButtonIcon {
@@ -176,24 +182,26 @@
     background: linear-gradient(90deg, transparent, #ef4444, transparent);
 }
 
-.gameCard.phishing:hover {
-    border-color: rgba(239, 68, 68, 0.3);
-}
+@media (hover: hover) and (pointer: fine) {
+    .gameCard.phishing:hover {
+        border-color: rgba(239, 68, 68, 0.3);
+    }
 
-.gameCard.phishing:hover .iconWrapper {
-    background: rgba(239, 68, 68, 0.2);
-}
+    .gameCard.phishing:hover .iconWrapper {
+        background: rgba(239, 68, 68, 0.2);
+    }
 
-.gameCard.phishing:hover .gameIcon {
-    color: #f87171;
+    .gameCard.phishing:hover .gameIcon {
+        color: #f87171;
+    }
+
+    .gameCard.phishing:hover .playButton {
+        background: #dc2626;
+    }
 }
 
 .gameCard.phishing .playButton {
     background: #ef4444;
-}
-
-.gameCard.phishing:hover .playButton {
-    background: #dc2626;
 }
 
 /* Third card styling for variation */
@@ -205,24 +213,26 @@
     background: linear-gradient(90deg, transparent, #3b82f6, transparent);
 }
 
-.gameCard.linkDecoder:hover {
-    border-color: rgba(59, 130, 246, 0.3);
-}
+@media (hover: hover) and (pointer: fine) {
+    .gameCard.linkDecoder:hover {
+        border-color: rgba(59, 130, 246, 0.3);
+    }
 
-.gameCard.linkDecoder:hover .iconWrapper {
-    background: rgba(59, 130, 246, 0.2);
-}
+    .gameCard.linkDecoder:hover .iconWrapper {
+        background: rgba(59, 130, 246, 0.2);
+    }
 
-.gameCard.linkDecoder:hover .gameIcon {
-    color: #60a5fa;
+    .gameCard.linkDecoder:hover .gameIcon {
+        color: #60a5fa;
+    }
+
+    .gameCard.linkDecoder:hover .playButton {
+        background: #2563eb;
+    }
 }
 
 .gameCard.linkDecoder .playButton {
     background: #3b82f6;
-}
-
-.gameCard.linkDecoder:hover .playButton {
-    background: #2563eb;
 }
 
 /* Tablet */
@@ -357,7 +367,17 @@
     transition: all 0.2s ease;
 }
 
-.refresherBtn:hover {
-    background: rgba(168, 85, 247, 0.1);
-    transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+    .refresherBtn:hover {
+        background: rgba(168, 85, 247, 0.1);
+        transform: translateY(-2px);
+    }
+}
+
+/* Tactile Click Feedback */
+.gameCard:active,
+.playButton:active,
+.refresherBtn:active {
+    transform: scale(0.96) !important;
+    transition: transform 0.15s ease !important;
 }

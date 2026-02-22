@@ -101,7 +101,7 @@ function App() {
                 path='/link-decoder'
                 element={<LinkDecoderGamePage currentUser={currentUser} />}
               />
-              <Route path='/leaderboard' element={<LeaderboardPage />} />
+              <Route path='/leaderboard' element={<LeaderboardPage currentUser={currentUser} />} />
               <Route
                 path='/learn'
                 element={<LearnPage currentUser={currentUser} />}

@@ -131,10 +131,12 @@
     word-break: break-all;
 }
 
-.linkOption:hover:not(:disabled) {
-    border-color: #60a5fa;
-    transform: translateX(5px);
-    background: #2a2a3e;
+@media (hover: hover) and (pointer: fine) {
+    .linkOption:hover:not(:disabled) {
+        border-color: #60a5fa;
+        transform: translateX(5px);
+        background: #2a2a3e;
+    }
 }
 
 .linkOption.selected {
@@ -216,9 +218,11 @@
     transition: all 0.2s ease;
 }
 
-.nextButton:hover:not(:disabled) {
-    background: #2563eb;
-    transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+    .nextButton:hover:not(:disabled) {
+        background: #2563eb;
+        transform: translateY(-2px);
+    }
 }
 
 .nextButton:disabled {
@@ -344,17 +348,9 @@
     color: white;
 }
 
-.playAgainButton:hover {
-    background: #2563eb;
-}
-
 .leaderboardButton {
     background: #10b981;
     color: white;
-}
-
-.leaderboardButton:hover {
-    background: #059669;
 }
 
 .arcadeButton {
@@ -363,8 +359,28 @@
     border: 2px solid #a78bfa;
 }
 
-.arcadeButton:hover {
-    background: rgba(167, 139, 250, 0.1);
+@media (hover: hover) and (pointer: fine) {
+    .playAgainButton:hover {
+        background: #2563eb;
+    }
+
+    .leaderboardButton:hover {
+        background: #059669;
+    }
+
+    .arcadeButton:hover {
+        background: rgba(167, 139, 250, 0.1);
+    }
+}
+
+/* Tactile Click Feedback */
+.linkOption:active,
+.nextButton:active,
+.playAgainButton:active,
+.leaderboardButton:active,
+.arcadeButton:active {
+    transform: scale(0.96) !important;
+    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .completionNote {
@@ -375,4 +391,116 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
+}
+
+@media (max-width: 480px) {
+    .gamePage {
+        padding: 0 0.5rem;
+    }
+
+    .gameContainer {
+        padding: 1.25rem;
+    }
+
+    .gameHeader {
+        margin-bottom: 1rem;
+    }
+
+    .progressInfo {
+        font-size: 0.85rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .scenarioContainer {
+        padding: 1.25rem 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .scenarioTitle {
+        font-size: 1.15rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .challengeContainer {
+        padding: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .challengeTitle {
+        font-size: 1.05rem;
+        margin-bottom: 1rem;
+    }
+
+    .linksList {
+        gap: 0.75rem;
+    }
+
+    .linkOption {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .linkIcon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .feedbackPanel {
+        padding: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .feedbackTitle {
+        font-size: 1.05rem;
+    }
+
+    .feedbackText {
+        font-size: 0.9rem;
+    }
+
+    .nextButton {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 1rem;
+        justify-content: center;
+    }
+
+    .scoreValue {
+        font-size: 2.2rem;
+    }
+
+    .scoreLabel {
+        font-size: 1rem;
+    }
+
+    .resultContainer {
+        padding: 2rem 1.25rem;
+    }
+
+    .resultContainer h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .resultContainer h2 .icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .scoreDisplay {
+        padding: 1.5rem 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .resultMessage {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .playAgainButton,
+    .leaderboardButton,
+    .arcadeButton {
+        padding: 1rem;
+        font-size: 0.95rem;
+    }
 }
