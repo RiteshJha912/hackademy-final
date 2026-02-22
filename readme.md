@@ -37,43 +37,21 @@ A comprehensive cybersecurity education platform that transforms learning into a
 
 ### **System Architecture Flow**
 ```mermaid
-graph TD
-    subgraph Client_Layer [Frontend - React]
-        UI[User Interface]
-        subgraph Game_Engines
-            MCQ[MCQ Engine]
-            PHI[Phishing Simulator]
-            LNK[Link Decoder]
-        end
-        State[State Management]
-        Axios[API Client - Axios]
+graph LR
+    subgraph Client [Client: React]
+        UI[UX/UI] --> Games{Game Engines}
+        Games --> Axios[Axios Client]
     end
 
-    subgraph API_Layer [Backend - Node/Express]
-        Routes[API Router]
-        subgraph Middleware
-            Auth[Auth Shield - JWT]
-            Security[Security Headers - Helmet/CORS]
-        end
-        Controllers[Logic Controllers]
-        DBConfig[Database Config]
+    subgraph Server [Server: Node/Express]
+        Axios -- REST --> API[Express Router]
+        API --> Guard[JWT & Security]
+        Guard --> Logic[Controllers/Mongoose]
     end
 
-    subgraph Data_Layer [Storage - MongoDB Atlas]
-        Users[(Users Collection)]
-        Scores[(Scores & Stats)]
-    end
-
-    UI --> State
-    State --> Game_Engines
-    Game_Engines --> Axios
-    Axios -- REST Requests --> Routes
-    Routes --> Security
-    Security --> Auth
-    Auth --> Controllers
-    Controllers --> DBConfig
-    DBConfig -- Mongoose ODM --> Data_Layer
+    Logic --> DB[(MongoDB Atlas)]
 ```
+
 
 
 ### **Core Stack**
