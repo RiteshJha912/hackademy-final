@@ -76,33 +76,6 @@ const MCQGamePage = ({ currentUser }) => {
 
 
 
-  const handleTimeOut = useCallback(() => {
-    // Auto-submit with empty/timeout selectedAnswer
-    handleAnswerSubmit('__TIMEOUT__', questions[currentQuestion].timeLimit)
-  }, [handleAnswerSubmit, questions, currentQuestion])
-
-  // Timer logic
-  useEffect(() => {
-    if (loading || showResult || showFeedback || !questions.length) {
-      clearInterval(timerRef.current)
-      return
-    }
-
-    timerRef.current = setInterval(() => {
-      setTimeRemaining((prev) => {
-        if (prev <= 1) {
-          clearInterval(timerRef.current)
-          handleTimeOut()
-          return 0
-        }
-        return prev - 1
-      })
-      setTimeTakenForQuestion((prev) => prev + 1)
-    }, 1000)
-
-    return () => clearInterval(timerRef.current)
-  }, [loading, showResult, showFeedback, questions, currentQuestion, handleTimeOut])
-
   // handles moving to the next question or finishing game
   const handleAnswerSubmit = useCallback(async (answerOption, finalTimeTaken) => {
     if (showFeedback || submitting) return // Prevent duplicate clicking
@@ -134,6 +107,33 @@ const MCQGamePage = ({ currentUser }) => {
       setSubmitting(false)
     }
   }, [showFeedback, submitting, sessionId, questions, currentQuestion])
+
+  const handleTimeOut = useCallback(() => {
+    // Auto-submit with empty/timeout selectedAnswer
+    handleAnswerSubmit('__TIMEOUT__', questions[currentQuestion].timeLimit)
+  }, [handleAnswerSubmit, questions, currentQuestion])
+
+  // Timer logic
+  useEffect(() => {
+    if (loading || showResult || showFeedback || !questions.length) {
+      clearInterval(timerRef.current)
+      return
+    }
+
+    timerRef.current = setInterval(() => {
+      setTimeRemaining((prev) => {
+        if (prev <= 1) {
+          clearInterval(timerRef.current)
+          handleTimeOut()
+          return 0
+        }
+        return prev - 1
+      })
+      setTimeTakenForQuestion((prev) => prev + 1)
+    }, 1000)
+
+    return () => clearInterval(timerRef.current)
+  }, [loading, showResult, showFeedback, questions, currentQuestion, handleTimeOut])
 
   // handles moving to the next question or finishing game
   const handleNextQuestion = async () => {
