@@ -17,7 +17,7 @@ const app = express()
 const allowedOrigins = [
   'https://hackademy-in.onrender.com', // Original Render URL
   'http://localhost:3000',           // Local Development
-  process.env.CLIENT_URL,            // Dynamic URL from Env
+  process.env.FRONTEND_URL?.replace(/\/$/, ''), // Match Render dashboard + remove trailing slash
 ].filter(Boolean);
 
 app.use(
