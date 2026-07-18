@@ -4,7 +4,6 @@ Hackademy is a full-stack cybersecurity learning platform that teaches common di
 
 The repository is a MERN-style application with a React client, an Express API, and MongoDB persistence through Mongoose. The experience is intentionally low-friction: users choose a public handle, play training games, and compete by best scores rather than creating password-based accounts.
 
-> This README is based on the implementation in this repository. It does not claim JWT authentication, password login, authorization middleware, rate limiting, or payment/security integrations that are not present in the codebase.
 
 ## Table of Contents
 
