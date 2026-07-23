@@ -1,6 +1,6 @@
 # Hackademy
 
-Hackademy is a full-stack cybersecurity learning platform that teaches common digital fraud patterns through short learning modules, interactive scam simulations, and a public leaderboard. The application focuses on practical threat recognition for Indian users, including UPI fraud, digital arrest scams, SIM-swap/e-KYC abuse, fake job offers, WhatsApp or Telegram investment scams, phishing messages, and malicious lookalike links.
+Hackademy is a full-stack cybersecurity learning platform that teaches common digital fraud patterns through short learning modules, interactive scam simulations, and a public leaderboard. The application focuses on practical threat recognition for Indian users, including UPI fraud, digital arrest scams, SIM-swap/e-KYC abuse, fake job offers, WhatsApp or Telegram investment scams, phishing messages and malicious lookalike links.
 
 The repository is a MERN-style application with a React client, an Express API, and MongoDB persistence through Mongoose. The experience is intentionally low-friction: users choose a public handle, play training games, and compete by best scores rather than creating password-based accounts.
 
